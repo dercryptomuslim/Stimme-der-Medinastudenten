@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Mode (Default) - Sand/Desert Theme */
+    --background: 60 5% 96%; /* #F5F5F4 Sand Beige */
+    --foreground: 222 47% 11%; /* #0F172A Deep Night Blue */
+
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 32 95% 44%; /* #D97706 Desert Orange */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 5% 96%; /* Light Gray for secondary backgrounds */
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 26 90% 37%; /* #B45309 Gold Premium */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 32 95% 44%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark Mode - Night Desert Theme */
+    --background: 222 47% 11%; /* #0F172A Deep Night Blue */
+    --foreground: 60 5% 96%; /* #F5F5F4 Sand Beige */
+
+    --card: 217 33% 17%; /* Slightly lighter than bg */
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 32 95% 44%; /* #D97706 Desert Orange */
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 26 90% 37%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 32 95% 44%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.glass {
+  @apply bg-white/10 backdrop-blur-md border border-white/20;
+}
