@@ -29,7 +29,7 @@ const stepsDe = [
   {
     number: "04",
     title: "Online bewerben",
-    description: "Die Bewerbung erfolgt über das offizielle Online-Portal „Minhati" unter minhati.sa.",
+    description: "Die Bewerbung erfolgt über das offizielle Online-Portal Minhati unter minhati.sa.",
     icon: GraduationCap,
   },
 ];
