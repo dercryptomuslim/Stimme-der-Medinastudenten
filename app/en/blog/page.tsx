@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { BlogPageEnClient } from "./blog-client";
+import { BlogPageClientEn } from "./blog-client";
 import { getBlogIndexAlternates } from "@/lib/i18n";
 
 export const metadata: Metadata = {
@@ -23,5 +23,5 @@ export const metadata: Metadata = {
 };
 
 export default function BlogEnPage() {
-  return <BlogPageEnClient />;
+  return <BlogPageClientEn />;
 }
