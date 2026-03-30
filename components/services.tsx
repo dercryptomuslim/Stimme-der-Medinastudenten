@@ -91,14 +91,14 @@ export function Services({ locale = "de" }: { locale?: Locale }) {
               <Card className="h-full border border-slate-200 bg-white shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <CardHeader>
                   <div className="mb-2">
-                    <span className="text-xs font-semibold text-emerald-700 uppercase tracking-wide">
+                    <span className="text-xs font-semibold text-gold uppercase tracking-wide">
                       {t("Bereich", "Area")} {index + 1}
                     </span>
                   </div>
-                  <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-slate-50 text-slate-900 group-hover:bg-emerald-50 group-hover:text-emerald-700 transition-colors">
+                  <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-slate-50 text-slate-900 group-hover:bg-navy/5 group-hover:text-gold transition-colors">
                     <area.icon className="h-6 w-6" />
                   </div>
-                  <CardTitle className="text-xl font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
+                  <CardTitle className="text-xl font-bold text-slate-900 group-hover:text-gold transition-colors">
                     {area.title}
                   </CardTitle>
                 </CardHeader>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Instagram } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
 import { localizeHref } from "@/lib/i18n";
@@ -13,7 +14,10 @@ export function Footer({ locale = "de" }: { locale?: Locale }) {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid gap-12 md:grid-cols-4">
           <div className="space-y-4">
-            <h3 className="text-2xl font-serif font-bold text-white">Stimme der Medinastudenten</h3>
+            <div className="flex items-center gap-3 mb-2">
+              <Image src="/logo.jpeg" alt="Logo" width={40} height={40} className="rounded-full" />
+              <span className="font-serif text-xl font-bold text-white">Stimme der Medinastudenten</span>
+            </div>
             <p className="text-sm text-slate-400 leading-relaxed">
               {t("Studenten & Absolventen der Islamischen Universität Medina.", "Students & graduates of the Islamic University of Madinah.")} <br/>
               {t("Aus dem DACH-Raum.", "From the DACH region.")}
@@ -34,8 +38,8 @@ export function Footer({ locale = "de" }: { locale?: Locale }) {
           <div>
             <h4 className="font-semibold text-white mb-6">{t("Rechtliches", "Legal")}</h4>
             <ul className="space-y-3 text-sm text-slate-400">
-              <li><Link href={href("/impressum")} className="hover:text-emerald-500 transition-colors">{t("Impressum", "Imprint")}</Link></li>
-              <li><Link href={href("/datenschutz")} className="hover:text-emerald-500 transition-colors">{t("Datenschutz", "Privacy")}</Link></li>
+              <li><Link href={href("/impressum")} className="hover:text-gold transition-colors">{t("Impressum", "Imprint")}</Link></li>
+              <li><Link href={href("/datenschutz")} className="hover:text-gold transition-colors">{t("Datenschutz", "Privacy")}</Link></li>
             </ul>
           </div>
 

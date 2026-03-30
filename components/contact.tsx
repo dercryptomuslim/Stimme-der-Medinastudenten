@@ -98,17 +98,17 @@ export function Contact({ locale = "de" }: { locale?: Locale }) {
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="firstName" className="text-slate-700 font-medium">{t("Vorname", "First name")}</Label>
-                  <Input name="firstName" id="firstName" placeholder={t("Ahmad", "Ahmad")} className="bg-slate-50 border-slate-200 text-slate-900 focus:ring-emerald-600 h-11" required />
+                  <Input name="firstName" id="firstName" placeholder={t("Ahmad", "Ahmad")} className="bg-slate-50 border-slate-200 text-slate-900 focus:ring-navy h-11" required />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="lastName" className="text-slate-700 font-medium">{t("Nachname", "Last name")}</Label>
-                  <Input name="lastName" id="lastName" placeholder={t("Müller", "Mueller")} className="bg-slate-50 border-slate-200 text-slate-900 focus:ring-emerald-600 h-11" required />
+                  <Input name="lastName" id="lastName" placeholder={t("Müller", "Mueller")} className="bg-slate-50 border-slate-200 text-slate-900 focus:ring-navy h-11" required />
                 </div>
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="email" className="text-slate-700 font-medium">{t("E-Mail", "Email")}</Label>
-                <Input name="email" id="email" type="email" placeholder="ahmad@example.de" className="bg-slate-50 border-slate-200 text-slate-900 focus:ring-emerald-600 h-11" required />
+                <Input name="email" id="email" type="email" placeholder="ahmad@example.de" className="bg-slate-50 border-slate-200 text-slate-900 focus:ring-navy h-11" required />
               </div>
 
               <div className="space-y-2">
@@ -117,7 +117,7 @@ export function Contact({ locale = "de" }: { locale?: Locale }) {
                   name="message"
                   id="message"
                   placeholder={t("Deine Nachricht an uns...", "Your message to us...")}
-                  className="min-h-[120px] bg-slate-50 border-slate-200 text-slate-900 focus:ring-emerald-600"
+                  className="min-h-[120px] bg-slate-50 border-slate-200 text-slate-900 focus:ring-navy"
                   required
                 />
               </div>
@@ -133,7 +133,7 @@ export function Contact({ locale = "de" }: { locale?: Locale }) {
           <DialogContent>
             <DialogHeader>
               <DialogTitle
-                className={popupVariant === "success" ? "text-emerald-800" : "text-red-700"}
+                className={popupVariant === "success" ? "text-gold-dark" : "text-red-700"}
               >
                 {popupTitle}
               </DialogTitle>

@@ -14,7 +14,7 @@ export function InvestmentBanner() {
   return (
     <section className="py-8 md:py-12 bg-white">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 via-slate-800 to-emerald-900">
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 via-slate-800 to-navy-dark">
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{
@@ -23,18 +23,18 @@ export function InvestmentBanner() {
           </div>
 
           {/* Glow Effect */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gold/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
 
           <div className="relative px-6 py-8 md:px-10 md:py-10 flex flex-col md:flex-row items-center justify-between gap-6">
             {/* Left Content */}
             <div className="flex items-center gap-4 md:gap-6">
-              <div className="hidden sm:flex h-14 w-14 md:h-16 md:w-16 rounded-xl bg-emerald-500/20 items-center justify-center border border-emerald-500/30 flex-shrink-0">
-                <BookOpen className="h-7 w-7 md:h-8 md:w-8 text-emerald-400" />
+              <div className="hidden sm:flex h-14 w-14 md:h-16 md:w-16 rounded-xl bg-gold/20 items-center justify-center border border-gold/30 flex-shrink-0">
+                <BookOpen className="h-7 w-7 md:h-8 md:w-8 text-gold-light" />
               </div>
               <div className="text-center md:text-left">
                 <div className="flex items-center justify-center md:justify-start gap-2 mb-1">
-                  <Sparkles className="h-4 w-4 text-emerald-400" />
-                  <span className="text-emerald-400 text-sm font-medium uppercase tracking-wider">
+                  <Sparkles className="h-4 w-4 text-gold-light" />
+                  <span className="text-gold-light text-sm font-medium uppercase tracking-wider">
                     {t("Wissen", "Knowledge")}
                   </span>
                 </div>
@@ -55,7 +55,7 @@ export function InvestmentBanner() {
               <Button
                 asChild
                 size="lg"
-                className="h-12 md:h-14 rounded-full bg-emerald-600 px-6 md:px-8 text-base font-medium text-white hover:bg-emerald-500 shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 group"
+                className="h-12 md:h-14 rounded-full bg-navy px-6 md:px-8 text-base font-medium text-white hover:bg-navy-light shadow-lg hover:shadow-gold/25 transition-all duration-300 group"
               >
                 <Link href="#bewerbung">
                   {t("Bewerbung starten", "Start Application")}

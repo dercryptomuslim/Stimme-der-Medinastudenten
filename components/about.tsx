@@ -1,4 +1,5 @@
 import { CheckCircle2, ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import type { Locale } from "@/lib/i18n";
@@ -16,14 +17,15 @@ export function About({ locale = "de" }: { locale?: Locale }) {
           {/* Image / Visual Side */}
           <div className="w-full lg:w-1/2 relative group">
             <div className="relative aspect-[3/4] w-full max-w-md mx-auto overflow-hidden rounded-2xl bg-slate-100 shadow-2xl transition-transform duration-500 hover:scale-[1.01]">
-              {/* Placeholder for association image */}
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 to-slate-100 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-emerald-100 flex items-center justify-center">
-                    <span className="text-4xl font-serif font-bold text-emerald-700">SM</span>
-                  </div>
-                  <p className="text-slate-500 text-sm">{t("Logo folgt", "Logo coming soon")}</p>
-                </div>
+              {/* Logo */}
+              <div className="absolute inset-0 bg-gradient-to-br from-navy/5 to-slate-100 flex items-center justify-center">
+                <Image
+                  src="/logo.jpeg"
+                  alt="Stimme der Medinastudenten"
+                  width={280}
+                  height={280}
+                  className="rounded-full shadow-lg"
+                />
               </div>
 
               {/* Stats Overlay */}
@@ -46,7 +48,7 @@ export function About({ locale = "de" }: { locale?: Locale }) {
           {/* Content Side */}
           <div className="lg:w-1/2 space-y-8">
             <div>
-              <span className="text-sm font-bold text-emerald-700 tracking-wide uppercase mb-3 block">
+              <span className="text-sm font-bold text-gold tracking-wide uppercase mb-3 block">
                 {t("Über uns", "About Us")}
               </span>
               <h2 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 leading-tight">
@@ -88,8 +90,8 @@ export function About({ locale = "de" }: { locale?: Locale }) {
                 t("DACH-Gemeinschaft", "DACH Community")
               ].map((item) => (
                 <div key={item} className="flex items-center gap-3">
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-50 flex items-center justify-center">
-                    <CheckCircle2 className="h-4 w-4 text-emerald-700" />
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-navy/5 flex items-center justify-center">
+                    <CheckCircle2 className="h-4 w-4 text-gold" />
                   </div>
                   <span className="text-slate-800 font-medium">{item}</span>
                 </div>
@@ -97,7 +99,7 @@ export function About({ locale = "de" }: { locale?: Locale }) {
             </div>
 
             <div className="pt-6 flex flex-col sm:flex-row gap-4">
-              <Button asChild variant="outline" className="border-slate-200 hover:bg-slate-50 hover:text-emerald-700">
+              <Button asChild variant="outline" className="border-slate-200 hover:bg-slate-50 hover:text-navy">
                 <Link href="#studium">
                   {t("Studienbereiche entdecken", "Discover study programs")} <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>

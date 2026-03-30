@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, ChevronRight, BookOpen, GraduationCap, Users, FileCheck, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
@@ -99,7 +100,8 @@ export function Navbar() {
       <div className="container mx-auto flex h-20 items-center justify-between px-4 lg:px-8">
         {/* Logo */}
         <Link href={href("/")} className="flex items-center space-x-2 group relative z-50">
-          <span className="text-xl font-serif font-bold tracking-tight text-slate-900">
+          <Image src="/logo.jpeg" alt="Stimme der Medinastudenten" width={48} height={48} className="rounded-full" />
+          <span className="hidden sm:inline text-lg font-serif font-bold tracking-tight text-navy">
             Stimme der Medinastudenten
           </span>
         </Link>

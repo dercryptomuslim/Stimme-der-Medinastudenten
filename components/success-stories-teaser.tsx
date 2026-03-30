@@ -75,16 +75,16 @@ export function SuccessStoriesTeaser({ locale = "de" }: { locale?: Locale }) {
 
                 {/* Icon Area */}
                 <div className="relative h-48 w-full bg-white border-b border-slate-100 p-6 flex items-center justify-center">
-                  <div className="w-20 h-20 rounded-2xl bg-emerald-50 flex items-center justify-center">
-                    <item.icon className="h-10 w-10 text-emerald-700" />
+                  <div className="w-20 h-20 rounded-2xl bg-navy/5 flex items-center justify-center">
+                    <item.icon className="h-10 w-10 text-gold" />
                   </div>
-                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-emerald-700 border border-slate-100 shadow-sm">
+                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-gold border border-slate-100 shadow-sm">
                     {item.category}
                   </div>
                 </div>
 
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-emerald-700 transition-colors">
+                  <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-gold transition-colors">
                     {item.title}
                   </h3>
                   <p className="text-slate-600 text-sm leading-relaxed">

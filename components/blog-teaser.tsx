@@ -64,7 +64,7 @@ export function BlogTeaser({ locale = "de" }: { locale?: Locale }) {
 
         <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
           <div className="max-w-2xl">
-            <span className="text-sm font-bold text-emerald-700 tracking-wide uppercase mb-3 block">
+            <span className="text-sm font-bold text-gold tracking-wide uppercase mb-3 block">
               {t("Blog & Wissen", "Blog & Knowledge")}
             </span>
             <h2 className="text-3xl font-serif font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl mb-4">
@@ -78,7 +78,7 @@ export function BlogTeaser({ locale = "de" }: { locale?: Locale }) {
             </p>
           </div>
 
-          <Button asChild variant="outline" className="hidden md:flex border-slate-200 hover:bg-slate-50 hover:text-emerald-700 hover:border-emerald-200">
+          <Button asChild variant="outline" className="hidden md:flex border-slate-200 hover:bg-slate-50 hover:text-navy hover:border-gold/30">
             <Link href={href("/blog")}>
               {t("Alle Artikel ansehen", "View all articles")} <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
@@ -92,7 +92,7 @@ export function BlogTeaser({ locale = "de" }: { locale?: Locale }) {
 
                 {/* Placeholder Image Area */}
                 <div className="relative h-48 w-full overflow-hidden">
-                  <div className="h-full w-full bg-gradient-to-br from-emerald-50 to-slate-100 flex items-center justify-center">
+                  <div className="h-full w-full bg-gradient-to-br from-navy/5 to-slate-100 flex items-center justify-center">
                     <span className="text-slate-400 text-sm font-medium">{t("Bild folgt", "Image coming soon")}</span>
                   </div>
                 </div>
@@ -107,7 +107,7 @@ export function BlogTeaser({ locale = "de" }: { locale?: Locale }) {
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-emerald-700 transition-colors line-clamp-2">
+                  <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-gold transition-colors line-clamp-2">
                     {post.title}
                   </h3>
 
@@ -115,7 +115,7 @@ export function BlogTeaser({ locale = "de" }: { locale?: Locale }) {
                     {post.excerpt}
                   </p>
 
-                  <div className="flex items-center text-sm font-semibold text-emerald-700 mt-auto">
+                  <div className="flex items-center text-sm font-semibold text-gold mt-auto">
                     {t("Bald verfügbar", "Coming soon")}
                   </div>
                 </CardContent>
@@ -125,7 +125,7 @@ export function BlogTeaser({ locale = "de" }: { locale?: Locale }) {
         </div>
 
         <div className="mt-8 md:hidden">
-          <Button asChild variant="outline" className="w-full border-slate-200 hover:bg-slate-50 hover:text-emerald-700">
+          <Button asChild variant="outline" className="w-full border-slate-200 hover:bg-slate-50 hover:text-navy">
             <Link href={href("/blog")}>
               {t("Alle Artikel ansehen", "View all articles")} <ArrowRight className="ml-2 h-4 w-4" />
             </Link>

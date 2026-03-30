@@ -73,7 +73,7 @@ export function ProcessSteps({ locale = "de" }: { locale?: Locale }) {
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
 
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-sm font-bold text-emerald-400 tracking-wide uppercase mb-3 block">
+          <span className="text-sm font-bold text-gold-light tracking-wide uppercase mb-3 block">
             {t("Bewerbung", "Application")}
           </span>
           <h2 className="text-3xl font-serif font-bold tracking-tight sm:text-4xl md:text-5xl mb-6">
@@ -99,12 +99,12 @@ export function ProcessSteps({ locale = "de" }: { locale?: Locale }) {
             >
               {/* Connector Line */}
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-12 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-0.5 bg-gradient-to-r from-emerald-500/50 to-slate-700" />
+                <div className="hidden lg:block absolute top-12 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-0.5 bg-gradient-to-r from-gold/50 to-slate-700" />
               )}
 
-              <div className="bg-slate-800/50 border border-slate-700 rounded-2xl p-6 h-full hover:bg-slate-800 hover:border-emerald-500/30 transition-all duration-300">
+              <div className="bg-slate-800/50 border border-slate-700 rounded-2xl p-6 h-full hover:bg-slate-800 hover:border-gold/30 transition-all duration-300">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-gold/10 text-gold-light">
                     <step.icon className="h-6 w-6" />
                   </div>
                   <span className="text-4xl font-bold text-slate-700">{step.number}</span>
@@ -136,7 +136,7 @@ export function ProcessSteps({ locale = "de" }: { locale?: Locale }) {
               t("Alter: bis 25 Jahre", "Age: up to 25 years"),
             ].map((req) => (
               <div key={req} className="flex items-center gap-3 text-slate-300">
-                <div className="flex-shrink-0 w-2 h-2 rounded-full bg-emerald-400" />
+                <div className="flex-shrink-0 w-2 h-2 rounded-full bg-gold-light" />
                 <span className="text-sm">{req}</span>
               </div>
             ))}
@@ -151,7 +151,7 @@ export function ProcessSteps({ locale = "de" }: { locale?: Locale }) {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="mt-12 text-center"
         >
-          <Button asChild className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-full px-8 py-6 text-lg">
+          <Button asChild className="bg-navy hover:bg-navy-dark text-white rounded-full px-8 py-6 text-lg">
             <a href="https://minhati.sa" target="_blank" rel="noopener noreferrer">
               {t("Zum Bewerbungsportal (Minhati)", "Go to Application Portal (Minhati)")}
               <ArrowRight className="ml-2 h-5 w-5" />

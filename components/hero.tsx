@@ -26,8 +26,8 @@ export function Hero({ locale = "de" }: { locale?: Locale }) {
         >
           <div className="mb-8 inline-flex items-center rounded-full border border-slate-200 bg-white px-4 py-1.5 text-sm font-medium text-slate-600 shadow-sm">
             <span className="mr-2 flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-light opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-navy"></span>
             </span>
             {t("Studenten & Absolventen aus dem DACH-Raum", "Students & Graduates from the DACH Region")}
           </div>
@@ -36,14 +36,14 @@ export function Hero({ locale = "de" }: { locale?: Locale }) {
             {locale === "en" ? (
               <>
                 Voice of the <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-emerald-800 to-slate-900">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-navy to-slate-900">
                   Medina Students
                 </span>
               </>
             ) : (
               <>
                 Stimme der <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-emerald-800 to-slate-900">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-navy to-slate-900">
                   Medinastudenten
                 </span>
               </>
@@ -66,7 +66,7 @@ export function Hero({ locale = "de" }: { locale?: Locale }) {
 
           {/* Quote Highlight */}
           <div className="mx-auto mt-8 max-w-2xl">
-            <blockquote className="border-l-4 border-emerald-500 bg-emerald-50/50 pl-5 pr-6 py-4 rounded-r-lg">
+            <blockquote className="border-l-4 border-gold bg-gold/5 pl-5 pr-6 py-4 rounded-r-lg">
               <p className="text-base md:text-lg font-medium text-slate-700 italic">
                 {t(
                   "Das Streben nach Wissen ist eine lebenslange Aufgabe. Es beginnt jetzt, sobald der Wille dazu vorhanden ist.",
