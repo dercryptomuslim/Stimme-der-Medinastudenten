@@ -159,7 +159,7 @@ export function ProcessSteps({ locale = "de" }: { locale?: Locale }) {
           </Button>
           <p className="mt-4 text-sm text-slate-500">
             {t(
-              "Weitere Informationen zum Bewerbungsprozess findest du auch auf dem Telegram-Kanal „InfoStudiumKSA".",
+              "Weitere Informationen zum Bewerbungsprozess findest du auch auf dem Telegram-Kanal InfoStudiumKSA.",
               "More information about the application process can be found on the Telegram channel 'InfoStudiumKSA'."
             )}
           </p>
