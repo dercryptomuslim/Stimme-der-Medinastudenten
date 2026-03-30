@@ -3,14 +3,8 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BookOpen, Sparkles } from "lucide-react";
-import { usePathname } from "next/navigation";
-import { getLocaleFromPathname, localizeHref } from "@/lib/i18n";
 
 export function InvestmentBanner() {
-  const pathname = usePathname();
-  const locale = getLocaleFromPathname(pathname || "/");
-  const t = (de: string, en: string) => (locale === "en" ? en : de);
-
   return (
     <section className="py-8 md:py-12 bg-white">
       <div className="container mx-auto px-4 lg:px-8">
@@ -35,17 +29,14 @@ export function InvestmentBanner() {
                 <div className="flex items-center justify-center md:justify-start gap-2 mb-1">
                   <Sparkles className="h-4 w-4 text-gold-light" />
                   <span className="text-gold-light text-sm font-medium uppercase tracking-wider">
-                    {t("Wissen", "Knowledge")}
+                    Wissen
                   </span>
                 </div>
                 <h3 className="text-xl md:text-2xl font-bold text-white mb-1">
-                  {t("Studieren an der Islamischen Universität", "Study at the Islamic University")}
+                  Studieren an der Islamischen Universität
                 </h3>
                 <p className="text-slate-300 text-sm md:text-base max-w-lg">
-                  {t(
-                    "Aufrichtigkeit (Ikhlas) gehört zu den wichtigsten Grundlagen. Es geht nicht darum, mit einem Titel zurückzukehren, sondern Wissen zu erlangen und danach zu handeln.",
-                    "Sincerity (Ikhlas) is one of the most important foundations. It's not about returning with a degree, but about gaining knowledge and acting upon it."
-                  )}
+                  Aufrichtigkeit (Ikhlas) gehört zu den wichtigsten Grundlagen. Es geht nicht darum, mit einem Titel zurückzukehren, sondern Wissen zu erlangen und danach zu handeln.
                 </p>
               </div>
             </div>
@@ -58,7 +49,7 @@ export function InvestmentBanner() {
                 className="h-12 md:h-14 rounded-full bg-navy px-6 md:px-8 text-base font-medium text-white hover:bg-navy-light shadow-lg hover:shadow-gold/25 transition-all duration-300 group"
               >
                 <Link href="#bewerbung">
-                  {t("Bewerbung starten", "Start Application")}
+                  Bewerbung starten
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>

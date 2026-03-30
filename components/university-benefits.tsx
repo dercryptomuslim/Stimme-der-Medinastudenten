@@ -1,10 +1,9 @@
 "use client";
 
-import { GraduationCap, Home, UtensilsCrossed, Plane, Stethoscope, Wallet, CheckCircle2 } from "lucide-react";
+import { GraduationCap, Home, UtensilsCrossed, Plane, Stethoscope, Wallet } from "lucide-react";
 import { motion } from "framer-motion";
-import type { Locale } from "@/lib/i18n";
 
-const benefitsDe = [
+const benefits = [
   {
     icon: GraduationCap,
     title: "Vollstipendium",
@@ -37,59 +36,20 @@ const benefitsDe = [
   },
 ];
 
-const benefitsEn = [
-  {
-    icon: GraduationCap,
-    title: "Full Scholarship",
-    description: "Studying at the Islamic University is completely free. All international students receive a full scholarship.",
-  },
-  {
-    icon: Wallet,
-    title: "Monthly Allowance",
-    description: "Each student receives a monthly stipend of 840 SAR (approx. 210 EUR) for personal use.",
-  },
-  {
-    icon: Home,
-    title: "Free Accommodation",
-    description: "Furnished rooms in student dormitories are provided free of charge to all international students.",
-  },
-  {
-    icon: UtensilsCrossed,
-    title: "Subsidised Meals",
-    description: "The cafeteria offers heavily subsidised meals: breakfast 1 SAR, lunch 3 SAR, dinner 2 SAR.",
-  },
-  {
-    icon: Plane,
-    title: "Airline Tickets",
-    description: "The university provides return airline tickets to the student's home country.",
-  },
-  {
-    icon: Stethoscope,
-    title: "Medical Care",
-    description: "Free basic medical care for all students throughout the duration of their studies.",
-  },
-];
-
-export function UniversityBenefits({ locale = "de" }: { locale?: Locale }) {
-  const t = (de: string, en: string) => (locale === "en" ? en : de);
-  const benefits = locale === "en" ? benefitsEn : benefitsDe;
-
+export function UniversityBenefits() {
   return (
     <section className="py-16 md:py-24 bg-white relative overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
 
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-sm font-bold text-gold tracking-wide uppercase mb-3 block">
-            {t("Stipendium & Leistungen", "Scholarship & Benefits")}
+            Stipendium & Leistungen
           </span>
           <h2 className="text-3xl font-serif font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl mb-6">
-            {t("Was die Universität bietet", "What the University Provides")}
+            Was die Universität bietet
           </h2>
           <p className="text-lg text-slate-600">
-            {t(
-              "Die Islamische Universität Medina bietet internationalen Studenten umfassende Unterstützung - von der kostenlosen Ausbildung bis zur Unterkunft und medizinischen Versorgung.",
-              "The Islamic University of Madinah provides comprehensive support to international students - from free education to accommodation and medical care."
-            )}
+            Die Islamische Universität Medina bietet internationalen Studenten umfassende Unterstützung - von der kostenlosen Ausbildung bis zur Unterkunft und medizinischen Versorgung.
           </p>
         </div>
 
@@ -127,13 +87,10 @@ export function UniversityBenefits({ locale = "de" }: { locale?: Locale }) {
           className="mt-12 bg-slate-50 border border-slate-200 rounded-2xl p-8"
         >
           <h3 className="text-lg font-bold text-slate-900 mb-4">
-            {t("Aufenthaltsgenehmigung (Iqama)", "Residence Permit (Iqama)")}
+            Aufenthaltsgenehmigung (Iqama)
           </h3>
           <p className="text-slate-600 text-sm leading-relaxed">
-            {t(
-              "Die Universität arrangiert und finanziert die Aufenthaltsgenehmigung (Iqama) für alle internationalen Studenten. Diese wird während des gesamten Studiums aufrechterhalten und ermöglicht den legalen Aufenthalt in Saudi-Arabien.",
-              "The university arranges and finances the residence permit (Iqama) for all international students. It is maintained throughout the duration of studies and allows legal residence in Saudi Arabia."
-            )}
+            Die Universität arrangiert und finanziert die Aufenthaltsgenehmigung (Iqama) für alle internationalen Studenten. Diese wird während des gesamten Studiums aufrechterhalten und ermöglicht den legalen Aufenthalt in Saudi-Arabien.
           </p>
         </motion.div>
       </div>

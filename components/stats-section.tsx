@@ -1,20 +1,12 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import type { Locale } from "@/lib/i18n";
 
-const statsDe = [
+const stats = [
   { value: 50, prefix: "+", suffix: "", label: "Studierende aus DACH" },
   { value: 5, prefix: "", suffix: "", label: "Fakultäten" },
   { value: 100, prefix: "+", suffix: "", label: "Nationalitäten" },
   { value: 1961, prefix: "", suffix: "", label: "Universität gegründet" },
-];
-
-const statsEn = [
-  { value: 50, prefix: "+", suffix: "", label: "Students from DACH" },
-  { value: 5, prefix: "", suffix: "", label: "Faculties" },
-  { value: 100, prefix: "+", suffix: "", label: "Nationalities" },
-  { value: 1961, prefix: "", suffix: "", label: "University Founded" },
 ];
 
 function AnimatedCounter({
@@ -70,10 +62,7 @@ function AnimatedCounter({
   );
 }
 
-export function StatsSection({ locale = "de" }: { locale?: Locale }) {
-  const t = (de: string, en: string) => (locale === "en" ? en : de);
-  const stats = locale === "en" ? statsEn : statsDe;
-
+export function StatsSection() {
   return (
     <section className="py-16 md:py-20 bg-slate-900 text-white relative overflow-hidden">
       {/* Decorative Elements */}
@@ -84,13 +73,10 @@ export function StatsSection({ locale = "de" }: { locale?: Locale }) {
 
         <div className="text-center mb-12">
           <h2 className="text-3xl font-serif font-bold tracking-tight sm:text-4xl mb-4">
-            {t("Die Universität in Zahlen", "The University in Numbers")}
+            Die Universität in Zahlen
           </h2>
           <p className="text-slate-300 text-lg max-w-2xl mx-auto">
-            {t(
-              "Die Islamische Universität Medina – eine der bedeutendsten Einrichtungen für islamische Wissenschaften weltweit.",
-              "The Islamic University of Madinah – one of the most important institutions for Islamic sciences worldwide."
-            )}
+            Die Islamische Universität Medina – eine der bedeutendsten Einrichtungen für islamische Wissenschaften weltweit.
           </p>
         </div>
 

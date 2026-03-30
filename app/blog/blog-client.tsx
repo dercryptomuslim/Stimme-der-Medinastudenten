@@ -16,7 +16,7 @@ const categoryIcons = {
 
 export function BlogPageClient() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
-  const categories = blogCategories.de;
+  const categories = blogCategories;
 
   const sortedPosts = sortByDateDesc(blogPostsDe);
   const featuredPost = sortedPosts[0];

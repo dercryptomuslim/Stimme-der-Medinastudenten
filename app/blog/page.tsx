@@ -1,15 +1,13 @@
 import { Metadata } from "next";
 import { BlogPageClient } from "./blog-client";
-import { getBlogIndexAlternates } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  title: "Blog | Stimme der Medinastudenten - Einblicke aus Saudi-Arabien",
-  description: "Aktuelle Einblicke zu Firmengründung, Leben und Investment in Saudi-Arabien. Echte Erfahrung aus fast einem Jahrzehnt Unternehmertum in Medina.",
-  alternates: getBlogIndexAlternates("de"),
-  keywords: ["Blog Saudi-Arabien", "Firmengründung Saudi-Arabien", "Leben in Medina", "Investment Saudi-Arabien", "Premium Residency"],
+  title: "Blog | Stimme der Medinastudenten - Einblicke aus Medina",
+  description: "Erfahrungen, Wissen und praktische Einblicke von Studenten und Absolventen der Islamischen Universität in Medina.",
+  keywords: ["Blog Medina", "Islamische Universität", "Leben in Medina", "Studium Medina", "Bewerbung Medina"],
   openGraph: {
-    title: "Blog | Einblicke aus Saudi-Arabien - Stimme der Medinastudenten",
-    description: "Aktuelle Einblicke zu Firmengründung, Leben und Investment in Saudi-Arabien. Echte Erfahrung aus Medina.",
+    title: "Blog | Stimme der Medinastudenten",
+    description: "Erfahrungen, Wissen und praktische Einblicke von Studenten und Absolventen der Islamischen Universität in Medina.",
     url: "https://www.stimme-medinastudenten.de/blog",
     siteName: "Stimme der Medinastudenten",
     locale: "de_DE",
@@ -17,8 +15,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog | Einblicke aus Saudi-Arabien",
-    description: "Aktuelle Einblicke zu Firmengründung, Leben und Investment in Saudi-Arabien.",
+    title: "Blog | Stimme der Medinastudenten",
+    description: "Erfahrungen, Wissen und praktische Einblicke von Studenten und Absolventen der Islamischen Universität in Medina.",
   },
 };
 

@@ -2,12 +2,8 @@ import { CheckCircle2, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import type { Locale } from "@/lib/i18n";
-import { localizeHref } from "@/lib/i18n";
 
-export function About({ locale = "de" }: { locale?: Locale }) {
-  const t = (de: string, en: string) => (locale === "en" ? en : de);
-  const href = (raw: string) => localizeHref(raw, locale);
+export function About() {
   return (
     <section id="ueber-uns" className="pt-8 md:pt-12 pb-12 md:pb-24 bg-white relative overflow-hidden">
 
@@ -31,11 +27,11 @@ export function About({ locale = "de" }: { locale?: Locale }) {
               {/* Stats Overlay */}
               <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md p-6 rounded-xl border border-slate-200 shadow-lg">
                 <div className="flex items-end gap-3">
-                  <span className="text-3xl font-bold text-slate-900 tracking-tighter">{t("DACH", "DACH")}</span>
+                  <span className="text-3xl font-bold text-slate-900 tracking-tighter">DACH</span>
                   <span className="text-sm font-semibold text-slate-600 mb-1.5 leading-tight">
-                    {t("Deutschland, Österreich", "Germany, Austria")}
+                    Deutschland, Österreich
                     <br />
-                    {t("& Schweiz", "& Switzerland")}
+                    & Schweiz
                   </span>
                 </div>
               </div>
@@ -49,45 +45,36 @@ export function About({ locale = "de" }: { locale?: Locale }) {
           <div className="lg:w-1/2 space-y-8">
             <div>
               <span className="text-sm font-bold text-gold tracking-wide uppercase mb-3 block">
-                {t("Über uns", "About Us")}
+                Über uns
               </span>
               <h2 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 leading-tight">
-                {t("Studenten der", "Students of the")} <br/>
-                <span className="text-slate-500">{t("Islamischen Universität Medina", "Islamic University of Madinah")}</span>
+                Studenten der <br/>
+                <span className="text-slate-500">Islamischen Universität Medina</span>
               </h2>
             </div>
 
             <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
               <p>
-                {t(
-                  "Wir sind Studenten und Absolventen der Islamischen Universität in Medina aus dem deutschsprachigen Raum – Deutschland, Österreich und der Schweiz.",
-                  "We are students and graduates of the Islamic University of Madinah from the German-speaking region – Germany, Austria, and Switzerland."
-                )}
+                Wir sind Studenten und Absolventen der Islamischen Universität in Medina aus dem deutschsprachigen Raum – Deutschland, Österreich und der Schweiz.
               </p>
               <p>
-                {t(
-                  "Unser Verständnis der Religion gründet auf dem Qur'an und der authentischen Sunnah, im Verständnis der ersten Generationen dieser Ummah.",
-                  "Our understanding of the religion is based on the Quran and the authentic Sunnah, following the understanding of the first generations of this Ummah."
-                )}
+                Unser Verständnis der Religion gründet auf dem Qur'an und der authentischen Sunnah, im Verständnis der ersten Generationen dieser Ummah.
               </p>
             </div>
 
             {/* Important Clarification */}
             <div className="bg-slate-50 border border-slate-200 rounded-xl p-6">
               <p className="text-sm text-slate-600 leading-relaxed">
-                {t(
-                  "Nicht jede Aussage, jedes Verhalten oder jede Position von Personen, die in Medina studieren oder studiert haben, repräsentiert automatisch das, was dort gelehrt wird. Das Studium ist eine Möglichkeit zum Erwerb von Wissen. Doch wie dieses Wissen verstanden, umgesetzt und weitergegeben wird, liegt in der Verantwortung der jeweiligen Person.",
-                  "Not every statement, behavior, or position of individuals who study or have studied in Medina automatically represents what is taught there. Studying is an opportunity to acquire knowledge. However, how this knowledge is understood, applied, and passed on is the responsibility of the individual."
-                )}
+                Nicht jede Aussage, jedes Verhalten oder jede Position von Personen, die in Medina studieren oder studiert haben, repräsentiert automatisch das, was dort gelehrt wird. Das Studium ist eine Möglichkeit zum Erwerb von Wissen. Doch wie dieses Wissen verstanden, umgesetzt und weitergegeben wird, liegt in der Verantwortung der jeweiligen Person.
               </p>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2 pt-6">
               {[
-                t("Qur'an & Sunnah", "Quran & Sunnah"),
-                t("Verständnis der Salaf", "Understanding of the Salaf"),
-                t("Wissen & Aufrichtigkeit", "Knowledge & Sincerity"),
-                t("DACH-Gemeinschaft", "DACH Community")
+                "Qur'an & Sunnah",
+                "Verständnis der Salaf",
+                "Wissen & Aufrichtigkeit",
+                "DACH-Gemeinschaft"
               ].map((item) => (
                 <div key={item} className="flex items-center gap-3">
                   <div className="flex-shrink-0 w-6 h-6 rounded-full bg-navy/5 flex items-center justify-center">
@@ -101,12 +88,12 @@ export function About({ locale = "de" }: { locale?: Locale }) {
             <div className="pt-6 flex flex-col sm:flex-row gap-4">
               <Button asChild variant="outline" className="border-slate-200 hover:bg-slate-50 hover:text-navy">
                 <Link href="#studium">
-                  {t("Studienbereiche entdecken", "Discover study programs")} <ArrowRight className="ml-2 h-4 w-4" />
+                  Studienbereiche entdecken <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button asChild className="bg-slate-900 hover:bg-slate-800 text-white">
                 <Link href="#bewerbung">
-                  {t("Bewerbung & Voraussetzungen", "Application & Requirements")} <ArrowRight className="ml-2 h-4 w-4" />
+                  Bewerbung & Voraussetzungen <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
             </div>

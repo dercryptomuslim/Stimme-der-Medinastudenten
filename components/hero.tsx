@@ -5,12 +5,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import type { Locale } from "@/lib/i18n";
-import { localizeHref } from "@/lib/i18n";
 
-export function Hero({ locale = "de" }: { locale?: Locale }) {
-  const t = (de: string, en: string) => (locale === "en" ? en : de);
-  const href = (raw: string) => localizeHref(raw, locale);
+export function Hero() {
   return (
     <section className="relative flex min-h-[85dvh] w-full items-center justify-center overflow-hidden bg-white pt-24 md:pt-32 pb-12 md:pb-16">
 
@@ -29,38 +25,21 @@ export function Hero({ locale = "de" }: { locale?: Locale }) {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-light opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-navy"></span>
             </span>
-            {t("Studenten & Absolventen aus dem DACH-Raum", "Students & Graduates from the DACH Region")}
+            Studenten & Absolventen aus dem DACH-Raum
           </div>
 
           <h1 className="text-5xl font-serif font-bold tracking-tight text-slate-900 sm:text-6xl md:text-7xl lg:text-8xl mb-8">
-            {locale === "en" ? (
-              <>
-                Voice of the <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-navy to-slate-900">
-                  Medina Students
-                </span>
-              </>
-            ) : (
-              <>
-                Stimme der <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-navy to-slate-900">
-                  Medinastudenten
-                </span>
-              </>
-            )}
+            Stimme der <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-navy to-slate-900">
+              Medinastudenten
+            </span>
           </h1>
 
           <p className="mx-auto mt-6 max-w-3xl text-lg text-slate-600 md:text-xl leading-relaxed">
-            {t(
-              "Wir sind Studenten und Absolventen der Islamischen Universität in Medina aus Deutschland, Österreich und der Schweiz.",
-              "We are students and graduates of the Islamic University of Madinah from Germany, Austria, and Switzerland."
-            )}{" "}
+            Wir sind Studenten und Absolventen der Islamischen Universität in Medina aus Deutschland, Österreich und der Schweiz.{" "}
             <br className="hidden md:block" />
             <span className="font-medium text-slate-800">
-              {t(
-                "Unser Verständnis gründet auf dem Qur'an und der authentischen Sunnah.",
-                "Our understanding is based on the Quran and the authentic Sunnah."
-              )}
+              Unser Verständnis gründet auf dem Qur'an und der authentischen Sunnah.
             </span>
           </p>
 
@@ -68,10 +47,7 @@ export function Hero({ locale = "de" }: { locale?: Locale }) {
           <div className="mx-auto mt-8 max-w-2xl">
             <blockquote className="border-l-4 border-gold bg-gold/5 pl-5 pr-6 py-4 rounded-r-lg">
               <p className="text-base md:text-lg font-medium text-slate-700 italic">
-                {t(
-                  "Das Streben nach Wissen ist eine lebenslange Aufgabe. Es beginnt jetzt, sobald der Wille dazu vorhanden ist.",
-                  "The pursuit of knowledge is a lifelong endeavor. It begins now, as soon as the will is there."
-                )}
+                Das Streben nach Wissen ist eine lebenslange Aufgabe. Es beginnt jetzt, sobald der Wille dazu vorhanden ist.
               </p>
             </blockquote>
           </div>
@@ -83,7 +59,7 @@ export function Hero({ locale = "de" }: { locale?: Locale }) {
               className="h-14 rounded-full bg-slate-900 px-8 text-lg font-medium text-white hover:bg-slate-800 shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <Link href="#ueber-uns">
-                {t("Über uns erfahren", "Learn about us")}
+                Über uns erfahren
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
@@ -94,7 +70,7 @@ export function Hero({ locale = "de" }: { locale?: Locale }) {
               className="h-14 rounded-full border-slate-200 bg-white px-8 text-lg text-slate-600 hover:bg-slate-50 hover:text-slate-900 hover:border-slate-300 shadow-sm"
             >
               <Link href="#studium">
-                {t("Studienbereiche", "Study Programs")}
+                Studienbereiche
               </Link>
             </Button>
           </div>

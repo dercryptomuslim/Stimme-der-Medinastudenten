@@ -6,7 +6,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
-import type { Locale } from "@/lib/i18n";
 import {
   Dialog,
   DialogContent,
@@ -16,9 +15,8 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-export function Contact({ locale = "de" }: { locale?: Locale }) {
+export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const t = (de: string, en: string) => (locale === "en" ? en : de);
   const [popupOpen, setPopupOpen] = useState(false);
   const [popupVariant, setPopupVariant] = useState<"success" | "error">("success");
   const [popupTitle, setPopupTitle] = useState("");
@@ -45,26 +43,21 @@ export function Contact({ locale = "de" }: { locale?: Locale }) {
 
       if (response.ok) {
         setPopupVariant("success");
-        setPopupTitle(t("Gesendet!", "Sent!"));
-        setPopupMessage(
-          t(
-            "Danke für deine Nachricht! Wir melden uns bei dir.",
-            "Thanks for your message! We'll get back to you."
-          )
-        );
+        setPopupTitle("Gesendet!");
+        setPopupMessage("Danke für deine Nachricht! Wir melden uns bei dir.");
         setPopupOpen(true);
         (e.target as HTMLFormElement).reset();
       } else {
         setPopupVariant("error");
-        setPopupTitle(t("Fehler beim Senden", "Failed to send"));
-        setPopupMessage(t("Bitte versuche es später erneut.", "Please try again later."));
+        setPopupTitle("Fehler beim Senden");
+        setPopupMessage("Bitte versuche es später erneut.");
         setPopupOpen(true);
       }
     } catch (error) {
       console.error("Submission error:", error);
       setPopupVariant("error");
-      setPopupTitle(t("Unerwarteter Fehler", "Unexpected error"));
-      setPopupMessage(t("Bitte versuche es später erneut.", "Please try again later."));
+      setPopupTitle("Unerwarteter Fehler");
+      setPopupMessage("Bitte versuche es später erneut.");
       setPopupOpen(true);
     } finally {
       setIsSubmitting(false);
@@ -76,54 +69,51 @@ export function Contact({ locale = "de" }: { locale?: Locale }) {
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="max-w-2xl mx-auto text-center mb-16">
           <h2 className="text-3xl font-serif font-bold tracking-tight text-slate-900 sm:text-4xl mb-4">
-            {t("Kontakt", "Contact")}
+            Kontakt
           </h2>
           <p className="text-lg text-slate-600">
-            {t(
-              "Solltest du angenommen worden sein, kannst du dich bei uns melden. Anfragen vor einer Zusage können nicht berücksichtigt werden.",
-              "If you have been accepted, you can contact us. Inquiries before an acceptance cannot be considered."
-            )}
+            Solltest du angenommen worden sein, kannst du dich bei uns melden. Anfragen vor einer Zusage können nicht berücksichtigt werden.
           </p>
         </div>
 
         <Card className="max-w-xl mx-auto border border-slate-200 bg-white shadow-xl">
           <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl font-bold text-slate-900">{t("Nachricht senden", "Send a message")}</CardTitle>
+            <CardTitle className="text-2xl font-bold text-slate-900">Nachricht senden</CardTitle>
             <CardDescription className="text-slate-500 text-base">
-              {t("Nur für angenommene Studenten.", "Only for accepted students.")}
+              Nur für angenommene Studenten.
             </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="firstName" className="text-slate-700 font-medium">{t("Vorname", "First name")}</Label>
-                  <Input name="firstName" id="firstName" placeholder={t("Ahmad", "Ahmad")} className="bg-slate-50 border-slate-200 text-slate-900 focus:ring-navy h-11" required />
+                  <Label htmlFor="firstName" className="text-slate-700 font-medium">Vorname</Label>
+                  <Input name="firstName" id="firstName" placeholder="Ahmad" className="bg-slate-50 border-slate-200 text-slate-900 focus:ring-navy h-11" required />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="lastName" className="text-slate-700 font-medium">{t("Nachname", "Last name")}</Label>
-                  <Input name="lastName" id="lastName" placeholder={t("Müller", "Mueller")} className="bg-slate-50 border-slate-200 text-slate-900 focus:ring-navy h-11" required />
+                  <Label htmlFor="lastName" className="text-slate-700 font-medium">Nachname</Label>
+                  <Input name="lastName" id="lastName" placeholder="Müller" className="bg-slate-50 border-slate-200 text-slate-900 focus:ring-navy h-11" required />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-slate-700 font-medium">{t("E-Mail", "Email")}</Label>
+                <Label htmlFor="email" className="text-slate-700 font-medium">E-Mail</Label>
                 <Input name="email" id="email" type="email" placeholder="ahmad@example.de" className="bg-slate-50 border-slate-200 text-slate-900 focus:ring-navy h-11" required />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="message" className="text-slate-700 font-medium">{t("Nachricht", "Message")}</Label>
+                <Label htmlFor="message" className="text-slate-700 font-medium">Nachricht</Label>
                 <Textarea
                   name="message"
                   id="message"
-                  placeholder={t("Deine Nachricht an uns...", "Your message to us...")}
+                  placeholder="Deine Nachricht an uns..."
                   className="min-h-[120px] bg-slate-50 border-slate-200 text-slate-900 focus:ring-navy"
                   required
                 />
               </div>
 
               <Button type="submit" disabled={isSubmitting} className="w-full bg-slate-900 hover:bg-slate-800 text-white h-12 text-base font-semibold shadow-md">
-                {isSubmitting ? t("Sende...", "Sending...") : t("Nachricht senden", "Send message")}
+                {isSubmitting ? "Sende..." : "Nachricht senden"}
               </Button>
             </form>
           </CardContent>
@@ -145,7 +135,7 @@ export function Contact({ locale = "de" }: { locale?: Locale }) {
                 onClick={() => setPopupOpen(false)}
                 className="bg-slate-900 hover:bg-slate-800 text-white"
               >
-                {t("OK", "OK")}
+                OK
               </Button>
             </DialogFooter>
           </DialogContent>

@@ -18,16 +18,9 @@ export function sortByDateDesc(posts: BlogPost[]): BlogPost[] {
 }
 
 export const blogCategories = {
-  de: {
-    studium: { label: "Studium", icon: "BookOpen" },
-    leben: { label: "Leben in Medina", icon: "Home" },
-    bewerbung: { label: "Bewerbung", icon: "FileCheck" },
-  },
-  en: {
-    studium: { label: "Studies", icon: "BookOpen" },
-    leben: { label: "Life in Medina", icon: "Home" },
-    bewerbung: { label: "Application", icon: "FileCheck" },
-  },
+  studium: { label: "Studium", icon: "BookOpen" },
+  leben: { label: "Leben in Medina", icon: "Home" },
+  bewerbung: { label: "Bewerbung", icon: "FileCheck" },
 };
 
 // Placeholder blog posts - to be filled with actual content
@@ -60,39 +53,6 @@ export const blogPostsDe: BlogPost[] = [
     dateISO: "2026-04-01",
     readTime: "- min",
     content: "<p>Dieser Artikel wird bald veröffentlicht.</p>",
-    category: "bewerbung",
-  },
-];
-
-export const blogPostsEn: BlogPost[] = [
-  {
-    slug: "life-in-medina",
-    title: "Life as a Student in Medina",
-    excerpt: "An honest look at daily life, challenges, and special moments as a student at the Islamic University.",
-    date: "Coming soon",
-    dateISO: "2026-04-01",
-    readTime: "- min",
-    content: "<p>This article will be published soon.</p>",
-    category: "leben",
-  },
-  {
-    slug: "learning-arabic",
-    title: "Learning Arabic in Medina – Tips & Experiences",
-    excerpt: "Practical tips and personal experiences on learning the Arabic language directly in Medina.",
-    date: "Coming soon",
-    dateISO: "2026-04-01",
-    readTime: "- min",
-    content: "<p>This article will be published soon.</p>",
-    category: "studium",
-  },
-  {
-    slug: "application-tips",
-    title: "Applying to the Islamic University – What You Need to Know",
-    excerpt: "Everything important about the application, requirements, and process for prospective students from the DACH region.",
-    date: "Coming soon",
-    dateISO: "2026-04-01",
-    readTime: "- min",
-    content: "<p>This article will be published soon.</p>",
     category: "bewerbung",
   },
 ];

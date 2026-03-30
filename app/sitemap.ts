@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { blogPostsDe, blogPostsEn } from "@/lib/blog-data";
+import { blogPostsDe } from "@/lib/blog-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.stimme-medinastudenten.de";
@@ -10,16 +10,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/impressum",
     "/datenschutz",
     "/blog",
-    "/en",
-    "/en/imprint",
-    "/en/privacy",
-    "/en/blog",
   ];
 
-  const blogRoutesDe = blogPostsDe.map((post) => `/blog/${post.slug}`);
-  const blogRoutesEn = blogPostsEn.map((post) => `/en/blog/${post.slug}`);
+  const blogRoutes = blogPostsDe.map((post) => `/blog/${post.slug}`);
 
-  const allRoutes = [...staticRoutes, ...blogRoutesDe, ...blogRoutesEn];
+  const allRoutes = [...staticRoutes, ...blogRoutes];
 
   return allRoutes.map((path) => ({
     url: `${baseUrl}${path}`,

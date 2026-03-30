@@ -1,11 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, BookOpen, GraduationCap, Users } from "lucide-react";
-import Link from "next/link";
-import type { Locale } from "@/lib/i18n";
-import { localizeHref } from "@/lib/i18n";
+import { BookOpen, GraduationCap, Users } from "lucide-react";
 
-const highlightsDe = [
+const highlights = [
   {
     title: "5 Fakultäten",
     category: "Studienschwerpunkt",
@@ -26,30 +22,7 @@ const highlightsDe = [
   }
 ];
 
-const highlightsEn = [
-  {
-    title: "5 Faculties",
-    category: "Main Focus",
-    description: "Shariah, Da'wah & Usul ad-Din, Hadith, Quran, and Arabic Language – five specialised faculties for comprehensive Islamic education.",
-    icon: BookOpen
-  },
-  {
-    title: "Full Scholarship & Housing",
-    category: "Support",
-    description: "Free education, monthly allowance (840 SAR), free accommodation, subsidised meals, and medical care.",
-    icon: GraduationCap
-  },
-  {
-    title: "International Community",
-    category: "Student Life",
-    description: "Students from over 100 countries study together in Medina – in close proximity to the Prophet's Mosque.",
-    icon: Users
-  }
-];
-
-export function SuccessStoriesTeaser({ locale = "de" }: { locale?: Locale }) {
-  const t = (de: string, en: string) => (locale === "en" ? en : de);
-  const highlights = locale === "en" ? highlightsEn : highlightsDe;
+export function SuccessStoriesTeaser() {
   return (
     <section className="pt-16 md:pt-24 pb-12 md:pb-16 bg-white relative">
       <div className="container mx-auto px-4 lg:px-8">
@@ -57,13 +30,10 @@ export function SuccessStoriesTeaser({ locale = "de" }: { locale?: Locale }) {
         <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
           <div className="max-w-2xl">
             <h2 className="text-3xl font-serif font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl mb-4">
-              {t("Das Studium in Medina", "Studying in Medina")}
+              Das Studium in Medina
             </h2>
             <p className="text-lg text-slate-600">
-              {t(
-                "Einblicke in das akademische Leben und die vielfältigen Möglichkeiten an der Islamischen Universität.",
-                "Insights into academic life and the diverse opportunities at the Islamic University."
-              )}
+              Einblicke in das akademische Leben und die vielfältigen Möglichkeiten an der Islamischen Universität.
             </p>
           </div>
         </div>

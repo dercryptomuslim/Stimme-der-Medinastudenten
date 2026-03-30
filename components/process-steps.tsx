@@ -3,11 +3,9 @@
 import Link from "next/link";
 import { Heart, FileCheck, Globe, GraduationCap, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import type { Locale } from "@/lib/i18n";
-import { localizeHref } from "@/lib/i18n";
 import { motion } from "framer-motion";
 
-const stepsDe = [
+const steps = [
   {
     number: "01",
     title: "Aufrichtige Absicht",
@@ -34,37 +32,7 @@ const stepsDe = [
   },
 ];
 
-const stepsEn = [
-  {
-    number: "01",
-    title: "Sincere Intention",
-    description: "Ask yourself honestly: What is my goal? Why do I want to study? What have I already done for this path?",
-    icon: Heart,
-  },
-  {
-    number: "02",
-    title: "Check Requirements",
-    description: "High school diploma, valid passport, photo, medical certificate, two Tazkiyah (recommendation letters), age up to 25.",
-    icon: FileCheck,
-  },
-  {
-    number: "03",
-    title: "Visit Saudi Arabia",
-    description: "We recommend visiting Saudi Arabia with a tourist visa first to gain a realistic impression of life there.",
-    icon: Globe,
-  },
-  {
-    number: "04",
-    title: "Apply Online",
-    description: "The application is submitted through the official online portal 'Minhati' at minhati.sa.",
-    icon: GraduationCap,
-  },
-];
-
-export function ProcessSteps({ locale = "de" }: { locale?: Locale }) {
-  const t = (de: string, en: string) => (locale === "en" ? en : de);
-  const steps = locale === "en" ? stepsEn : stepsDe;
-
+export function ProcessSteps() {
   return (
     <section id="bewerbung" className="py-16 md:py-24 bg-slate-900 text-white relative overflow-hidden">
       {/* Background Pattern */}
@@ -74,16 +42,13 @@ export function ProcessSteps({ locale = "de" }: { locale?: Locale }) {
 
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-sm font-bold text-gold-light tracking-wide uppercase mb-3 block">
-            {t("Bewerbung", "Application")}
+            Bewerbung
           </span>
           <h2 className="text-3xl font-serif font-bold tracking-tight sm:text-4xl md:text-5xl mb-6">
-            {t("Dein Weg zum Studium in Medina", "Your Path to Studying in Medina")}
+            Dein Weg zum Studium in Medina
           </h2>
           <p className="text-lg text-slate-400">
-            {t(
-              "Bevor man diesen Weg einschlägt, sollte man sich ernsthaft und aufrichtig damit auseinandersetzen, ob dieser Weg wirklich der eigene ist. Das Streben nach Wissen ist keine kurzfristige Angelegenheit, sondern eine lebenslange Aufgabe.",
-              "Before embarking on this path, one should seriously and sincerely consider whether this path is truly one's own. The pursuit of knowledge is not a short-term matter, but a lifelong task."
-            )}
+            Bevor man diesen Weg einschlägt, sollte man sich ernsthaft und aufrichtig damit auseinandersetzen, ob dieser Weg wirklich der eigene ist. Das Streben nach Wissen ist keine kurzfristige Angelegenheit, sondern eine lebenslange Aufgabe.
           </p>
         </div>
 
@@ -125,18 +90,18 @@ export function ProcessSteps({ locale = "de" }: { locale?: Locale }) {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="mt-12 bg-slate-800/50 border border-slate-700 rounded-2xl p-8"
         >
-          <h3 className="text-xl font-bold text-white mb-4">{t("Voraussetzungen (Bachelor)", "Requirements (Bachelor)")}</h3>
+          <h3 className="text-xl font-bold text-white mb-4">Voraussetzungen (Bachelor)</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              t("Hochschulreife (Abitur, Matura oder gleichwertig)", "High school diploma (or equivalent)"),
-              t("Gültiger Reisepass (mind. 6 Monate gültig)", "Valid passport (at least 6 months validity)"),
-              t("Digitales Passbild", "Digital passport photo"),
-              t("Ärztliches Gutachten (frei von ansteckenden Krankheiten)", "Medical certificate (free from contagious diseases)"),
-              t("Zwei Tazkiyah (Empfehlungsschreiben)", "Two Tazkiyah (recommendation letters)"),
-              t("Alter: bis 25 Jahre (Bachelor), bis 30 Jahre (Master)", "Age: up to 25 (Bachelor), up to 30 (Master)"),
-              t("Muslim, gutes Benehmen und Verhalten", "Muslim, good conduct and behavior"),
-              t("Bereitschaft, sich an die Regeln der Universität zu halten", "Willingness to abide by university rules and regulations"),
-              t("Körperlich fit für das Studium", "Physically fit for study"),
+              "Hochschulreife (Abitur, Matura oder gleichwertig)",
+              "Gültiger Reisepass (mind. 6 Monate gültig)",
+              "Digitales Passbild",
+              "Ärztliches Gutachten (frei von ansteckenden Krankheiten)",
+              "Zwei Tazkiyah (Empfehlungsschreiben)",
+              "Alter: bis 25 Jahre (Bachelor), bis 30 Jahre (Master)",
+              "Muslim, gutes Benehmen und Verhalten",
+              "Bereitschaft, sich an die Regeln der Universität zu halten",
+              "Körperlich fit für das Studium",
             ].map((req) => (
               <div key={req} className="flex items-center gap-3 text-slate-300">
                 <div className="flex-shrink-0 w-2 h-2 rounded-full bg-gold-light" />
@@ -156,15 +121,12 @@ export function ProcessSteps({ locale = "de" }: { locale?: Locale }) {
         >
           <Button asChild className="bg-navy hover:bg-navy-dark text-white rounded-full px-8 py-6 text-lg">
             <a href="https://minhati.sa" target="_blank" rel="noopener noreferrer">
-              {t("Zum Bewerbungsportal (Minhati)", "Go to Application Portal (Minhati)")}
+              Zum Bewerbungsportal (Minhati)
               <ArrowRight className="ml-2 h-5 w-5" />
             </a>
           </Button>
           <p className="mt-4 text-sm text-slate-500">
-            {t(
-              "Weitere Informationen zum Bewerbungsprozess findest du auch auf dem Telegram-Kanal InfoStudiumKSA.",
-              "More information about the application process can be found on the Telegram channel 'InfoStudiumKSA'."
-            )}
+            Weitere Informationen zum Bewerbungsprozess findest du auch auf dem Telegram-Kanal InfoStudiumKSA.
           </p>
         </motion.div>
 

@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, Clock, ArrowRight } from "lucide-react";
 import { Metadata } from "next";
 import Script from "next/script";
-import { getBlogPostAlternates } from "@/lib/i18n";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -36,7 +35,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${post.title} | Stimme der Medinastudenten`,
     description,
-    alternates: getBlogPostAlternates("de", post.slug),
     keywords: defaultKeywords,
     openGraph: {
       title: post.title,
@@ -131,7 +129,7 @@ export default async function BlogPostPage({ params }: Props) {
               [&_li]:my-[6px]
               [&_strong]:font-extrabold
               [&_em]:italic
-              [&_a]:text-emerald-700 [&_a:hover]:text-emerald-800 [&_a]:underline
+              [&_a]:text-gold [&_a:hover]:text-gold-dark [&_a]:underline
               [&_figure]:my-12
               [&_figcaption]:text-sm [&_figcaption]:text-slate-500 [&_figcaption]:mt-3 [&_figcaption]:text-center
               [&_img]:w-full [&_img]:rounded-xl [&_img]:shadow-lg
