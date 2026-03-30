@@ -1,58 +1,44 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import Link from "next/link";
-import Image from "next/image";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { ArrowRight, Calendar, Clock, Building2, FileCheck, Home } from "lucide-react";
+import { ArrowRight, Calendar, Clock, BookOpen, Home, FileCheck } from "lucide-react";
 import { blogPostsEn, blogCategories, sortByDateDesc } from "@/lib/blog-data";
-import { getCanonicalBlogSlug } from "@/lib/i18n";
 
 const categoryIcons = {
-  gruendung: Building2,
-  residency: FileCheck,
+  studium: BookOpen,
   leben: Home,
+  bewerbung: FileCheck,
 };
 
-export function BlogPageEnClient() {
+export function BlogPageClientEn() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
-  const [viewsMap, setViewsMap] = useState<Record<string, number>>({});
   const categories = blogCategories.en;
 
-  useEffect(() => {
-    fetch("/api/blog/views")
-      .then((res) => res.json())
-      .then((data) => typeof data === "object" && setViewsMap(data))
-      .catch(() => {});
-  }, []);
-  
-  // Sort posts by date (newest first)
   const sortedPosts = sortByDateDesc(blogPostsEn);
-  
-  // Featured Post is the newest (first after sorting)
   const featuredPost = sortedPosts[0];
   const otherPosts = sortedPosts.slice(1);
-  
-  // Filter by category
-  const filteredPosts = activeCategory 
+
+  const filteredPosts = activeCategory
     ? otherPosts.filter(post => post.category === activeCategory)
     : otherPosts;
 
   return (
     <main className="min-h-screen bg-slate-50 flex flex-col">
       <Navbar />
-      
+
       <section className="pt-32 pb-16 md:pb-24">
         <div className="container mx-auto px-4 lg:px-8">
-          
+
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h1 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-6">
-              Insights & Expertise
+              Blog & Knowledge
             </h1>
             <p className="text-lg text-slate-600">
-              No theory. Shared experiences from nearly a decade of entrepreneurship in Saudi Arabia.
+              Experiences, knowledge, and practical insights from students and graduates of the Islamic University of Madinah.
             </p>
           </div>
 
@@ -92,26 +78,15 @@ export function BlogPageEnClient() {
             <Link href={`/en/blog/${featuredPost.slug}`} className="group block mb-12">
               <Card className="overflow-hidden border border-slate-200 bg-white shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div className="grid md:grid-cols-2 gap-0">
-                  {/* Image */}
                   <div className="relative h-64 md:h-full min-h-[300px] overflow-hidden">
-                    {featuredPost.image ? (
-                      <Image 
-                        src={featuredPost.image} 
-                        alt={featuredPost.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    ) : (
-                      <div className="h-full w-full bg-slate-100 flex items-center justify-center">
-                        <span className="text-sm font-medium text-slate-400">IMAGE</span>
-                      </div>
-                    )}
+                    <div className="h-full w-full bg-gradient-to-br from-emerald-50 to-slate-100 flex items-center justify-center">
+                      <span className="text-sm font-medium text-slate-400">Image coming soon</span>
+                    </div>
                     <div className="absolute top-4 left-4 bg-emerald-600 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                       Latest Article
                     </div>
                   </div>
-                  
-                  {/* Content */}
+
                   <div className="p-8 md:p-10 flex flex-col justify-center">
                     <div className="flex items-center gap-4 text-xs text-slate-500 font-medium uppercase tracking-wider mb-4 flex-wrap">
                       <span className="flex items-center gap-1.5">
@@ -120,22 +95,19 @@ export function BlogPageEnClient() {
                       <span className="flex items-center gap-1.5">
                         <Clock className="h-3 w-3" /> {featuredPost.readTime}
                       </span>
-                      {viewsMap[getCanonicalBlogSlug(featuredPost.slug)] != null && (
-                        <span>{viewsMap[getCanonicalBlogSlug(featuredPost.slug)]} views</span>
-                      )}
                       <span className="bg-slate-100 px-2 py-0.5 rounded text-slate-600">
                         {categories[featuredPost.category as keyof typeof categories]?.label}
                       </span>
                     </div>
-                    
+
                     <h2 className="text-2xl md:text-3xl font-serif font-bold text-slate-900 mb-4 group-hover:text-emerald-700 transition-colors leading-tight">
                       {featuredPost.title}
                     </h2>
-                    
+
                     <p className="text-slate-600 leading-relaxed mb-6 line-clamp-3">
                       {featuredPost.excerpt}
                     </p>
-                    
+
                     <div className="text-base font-semibold text-emerald-700 flex items-center gap-2 group-hover:gap-3 transition-all">
                       Read now <ArrowRight className="h-5 w-5" />
                     </div>
@@ -150,22 +122,11 @@ export function BlogPageEnClient() {
             {(activeCategory ? sortedPosts.filter(p => p.category === activeCategory) : filteredPosts).map((post) => (
               <Link key={post.slug} href={`/en/blog/${post.slug}`} className="group h-full">
                 <Card className="h-full flex flex-col border border-slate-200 bg-white shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-                  
-                  {/* Blog Image */}
+
                   <div className="h-48 w-full relative overflow-hidden">
-                    {post.image ? (
-                      <Image 
-                        src={post.image} 
-                        alt={post.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    ) : (
-                      <div className="h-full w-full bg-slate-100 flex items-center justify-center text-slate-400">
-                        <span className="text-sm font-medium">IMAGE</span>
-                      </div>
-                    )}
-                    {/* Category Badge */}
+                    <div className="h-full w-full bg-gradient-to-br from-emerald-50 to-slate-100 flex items-center justify-center text-slate-400">
+                      <span className="text-sm font-medium">Image coming soon</span>
+                    </div>
                     <div className="absolute top-3 left-3">
                       {(() => {
                         const Icon = categoryIcons[post.category as keyof typeof categoryIcons];
@@ -187,15 +148,12 @@ export function BlogPageEnClient() {
                       <span className="flex items-center gap-1.5">
                         <Clock className="h-3 w-3" /> {post.readTime}
                       </span>
-                      {viewsMap[getCanonicalBlogSlug(post.slug)] != null && (
-                        <span>{viewsMap[getCanonicalBlogSlug(post.slug)]} views</span>
-                      )}
                     </div>
                     <h2 className="text-xl font-bold text-slate-900 line-clamp-2 group-hover:text-emerald-700 transition-colors">
                       {post.title}
                     </h2>
                   </CardHeader>
-                  
+
                   <CardContent className="pb-4 flex-grow">
                     <p className="text-slate-600 text-sm leading-relaxed line-clamp-3">
                       {post.excerpt}
@@ -212,7 +170,6 @@ export function BlogPageEnClient() {
             ))}
           </div>
 
-          {/* Empty State */}
           {activeCategory && sortedPosts.filter(p => p.category === activeCategory).length === 0 && (
             <div className="text-center py-16">
               <p className="text-slate-500 text-lg">No articles found in this category.</p>
