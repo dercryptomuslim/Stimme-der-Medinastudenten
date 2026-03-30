@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.stimme-medinastudenten.de"
+        }
+      ],
+      "destination": "https://stimme-medinastudenten.de/:path*",
+      "permanent": true
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from { height: 0 }
+    to { height: var(--radix-accordion-content-height) }
+  }
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height) }
+    to { height: 0 }
+  }
+}
+
+:root {
+  /* Light Mode (Standard) - Clean & Serious */
+  --background: oklch(1 0 0); /* White */
+  --foreground: oklch(0.13 0.028 261.692); /* Slate 900 */
+  
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.13 0.028 261.692);
+  
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.13 0.028 261.692);
+  
+  /* Primary Green (Saudi Emerald) - oklch(0.5 0.15 150) approx */
+  --primary: oklch(0.55 0.16 150.5); 
+  --primary-foreground: oklch(0.985 0 0);
+  
+  --secondary: oklch(0.967 0.001 286.375); /* Slate 100 */
+  --secondary-foreground: oklch(0.21 0.034 264.665);
+  
+  --muted: oklch(0.967 0.001 286.375);
+  --muted-foreground: oklch(0.552 0.016 285.938); /* Slate 500 */
+  
+  --accent: oklch(0.967 0.001 286.375);
+  --accent-foreground: oklch(0.21 0.034 264.665);
+  
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  
+  --border: oklch(0.92 0.004 286.32); /* Slate 200 */
+  --input: oklch(0.92 0.004 286.32);
+  --ring: oklch(0.55 0.16 150.5); /* Matching Primary Green */
+  
+  --radius: 0.5rem;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* Utilities */
+.container-padding {
+  @apply px-4 sm:px-6 lg:px-8;
+}
