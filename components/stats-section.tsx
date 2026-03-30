@@ -5,15 +5,15 @@ import type { Locale } from "@/lib/i18n";
 
 const statsDe = [
   { value: 50, prefix: "+", suffix: "", label: "Studierende aus DACH" },
-  { value: 5, prefix: "", suffix: "", label: "Studienbereiche" },
-  { value: 3, prefix: "", suffix: "", label: "Länder vertreten" },
+  { value: 5, prefix: "", suffix: "", label: "Fakultäten" },
+  { value: 100, prefix: "+", suffix: "", label: "Nationalitäten" },
   { value: 1961, prefix: "", suffix: "", label: "Universität gegründet" },
 ];
 
 const statsEn = [
   { value: 50, prefix: "+", suffix: "", label: "Students from DACH" },
-  { value: 5, prefix: "", suffix: "", label: "Study Areas" },
-  { value: 3, prefix: "", suffix: "", label: "Countries Represented" },
+  { value: 5, prefix: "", suffix: "", label: "Faculties" },
+  { value: 100, prefix: "+", suffix: "", label: "Nationalities" },
   { value: 1961, prefix: "", suffix: "", label: "University Founded" },
 ];
 

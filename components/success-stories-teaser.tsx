@@ -7,42 +7,42 @@ import { localizeHref } from "@/lib/i18n";
 
 const highlightsDe = [
   {
-    title: "Islamische Wissenschaften",
+    title: "5 Fakultäten",
     category: "Studienschwerpunkt",
-    description: "Aqidah, Hadith, Tafsir, Fiqh und arabische Sprache – die zentralen Säulen des Studiums an der Islamischen Universität.",
+    description: "Scharia, Da'wa & Usul ad-Din, Hadith, Qur'an und Arabische Sprache – fünf spezialisierte Fakultäten für umfassende islamische Bildung.",
     icon: BookOpen
   },
   {
-    title: "Akademische Vielfalt",
-    category: "Weitere Fachbereiche",
-    description: "Neben den islamischen Studien bietet die Universität auch Ingenieurwissenschaften, Informatik und Naturwissenschaften an.",
+    title: "Vollstipendium & Unterkunft",
+    category: "Unterstützung",
+    description: "Kostenloses Studium, monatliches Taschengeld (840 SAR), kostenlose Unterkunft, subventioniertes Essen und medizinische Versorgung.",
     icon: GraduationCap
   },
   {
     title: "Internationale Gemeinschaft",
     category: "Studentenleben",
-    description: "Studenten aus über 100 Ländern studieren gemeinsam in Medina – eine einzigartige internationale Gemeinschaft.",
+    description: "Studenten aus über 100 Ländern studieren gemeinsam in Medina – in unmittelbarer Nähe zur Prophetenmoschee.",
     icon: Users
   }
 ];
 
 const highlightsEn = [
   {
-    title: "Islamic Sciences",
+    title: "5 Faculties",
     category: "Main Focus",
-    description: "Aqidah, Hadith, Tafsir, Fiqh, and Arabic language – the central pillars of study at the Islamic University.",
+    description: "Shariah, Da'wah & Usul ad-Din, Hadith, Quran, and Arabic Language – five specialised faculties for comprehensive Islamic education.",
     icon: BookOpen
   },
   {
-    title: "Academic Diversity",
-    category: "Other Disciplines",
-    description: "Beyond Islamic studies, the university also offers engineering, computer science, and natural sciences.",
+    title: "Full Scholarship & Housing",
+    category: "Support",
+    description: "Free education, monthly allowance (840 SAR), free accommodation, subsidised meals, and medical care.",
     icon: GraduationCap
   },
   {
     title: "International Community",
     category: "Student Life",
-    description: "Students from over 100 countries study together in Medina – a unique international community.",
+    description: "Students from over 100 countries study together in Medina – in close proximity to the Prophet's Mosque.",
     icon: Users
   }
 ];

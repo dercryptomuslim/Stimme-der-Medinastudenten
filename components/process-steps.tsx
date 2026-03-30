@@ -129,11 +129,14 @@ export function ProcessSteps({ locale = "de" }: { locale?: Locale }) {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               t("Hochschulreife (Abitur, Matura oder gleichwertig)", "High school diploma (or equivalent)"),
-              t("Gültiger Reisepass", "Valid passport"),
+              t("Gültiger Reisepass (mind. 6 Monate gültig)", "Valid passport (at least 6 months validity)"),
               t("Digitales Passbild", "Digital passport photo"),
-              t("Ärztliches Gutachten", "Medical certificate"),
+              t("Ärztliches Gutachten (frei von ansteckenden Krankheiten)", "Medical certificate (free from contagious diseases)"),
               t("Zwei Tazkiyah (Empfehlungsschreiben)", "Two Tazkiyah (recommendation letters)"),
-              t("Alter: bis 25 Jahre", "Age: up to 25 years"),
+              t("Alter: bis 25 Jahre (Bachelor), bis 30 Jahre (Master)", "Age: up to 25 (Bachelor), up to 30 (Master)"),
+              t("Muslim, gutes Benehmen und Verhalten", "Muslim, good conduct and behavior"),
+              t("Bereitschaft, sich an die Regeln der Universität zu halten", "Willingness to abide by university rules and regulations"),
+              t("Körperlich fit für das Studium", "Physically fit for study"),
             ].map((req) => (
               <div key={req} className="flex items-center gap-3 text-slate-300">
                 <div className="flex-shrink-0 w-2 h-2 rounded-full bg-gold-light" />

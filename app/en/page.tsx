@@ -9,6 +9,7 @@ import { StatsSection } from "@/components/stats-section";
 import { ProcessSteps } from "@/components/process-steps";
 import { BlogTeaser } from "@/components/blog-teaser";
 import { InvestmentBanner } from "@/components/investment-banner";
+import { UniversityBenefits } from "@/components/university-benefits";
 
 export default function HomeEn() {
   return (
@@ -18,6 +19,7 @@ export default function HomeEn() {
         <Hero locale="en" />
         <About locale="en" />
         <Services locale="en" />
+        <UniversityBenefits locale="en" />
         <ProcessSteps locale="en" />
         <SuccessStoriesTeaser locale="en" />
         <InvestmentBanner />

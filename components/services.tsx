@@ -1,61 +1,73 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Languages, Scale, Cpu, ArrowUpRight, ArrowRight } from "lucide-react";
+import { BookOpen, Languages, Scale, Cpu, ArrowUpRight, ArrowRight, ScrollText, Mic, BookMarked } from "lucide-react";
 import Link from "next/link";
 import type { Locale } from "@/lib/i18n";
 import { localizeHref } from "@/lib/i18n";
 
 const studyAreasDe = [
   {
-    title: "Aqidah & Usul ad-Din",
-    description: "Glaubenslehre und die Grundlagen der Religion – das Fundament des islamischen Wissens.",
-    icon: BookOpen,
-    features: ["Glaubenslehre", "Usul ad-Din", "Tawhid"],
+    title: "Fakultät für Scharia",
+    description: "Islamisches Recht (Fiqh), Rechtsgrundlagen (Usul al-Fiqh), Erbrecht, vergleichende Rechtswissenschaft und islamische Wirtschaftslehre.",
+    icon: Scale,
+    features: ["Fiqh", "Usul al-Fiqh", "Erbrecht", "Islamische Wirtschaft"],
   },
   {
-    title: "Hadith & Tafsir",
-    description: "Die Wissenschaften des Hadith und die Auslegung des Qur'an durch klassische und moderne Methoden.",
-    icon: BookOpen,
-    features: ["Hadith-Wissenschaften", "Tafsir", "Qur'an-Studien"],
+    title: "Fakultät für Da'wa & Usul ad-Din",
+    description: "Glaubenslehre (Aqidah), Einladung zum Islam (Da'wa), vergleichende Religionswissenschaft, Pädagogik und Psychologie.",
+    icon: Mic,
+    features: ["Aqidah", "Da'wa", "Religionswissenschaft", "Pädagogik"],
   },
   {
-    title: "Fiqh & Arabische Sprache",
-    description: "Islamisches Recht und seine Grundlagen sowie die arabische Sprache und ihre Wissenschaften.",
+    title: "Fakultät für Hadith & Islamische Studien",
+    description: "Die Wissenschaften des Hadith, Hadith-Überlieferungsketten, Hadith-Kritik, Sira (Prophetenbiographie) und islamische Geschichte.",
+    icon: ScrollText,
+    features: ["Hadith-Wissenschaften", "Sira", "Islamische Geschichte"],
+  },
+  {
+    title: "Fakultät für Qur'an & Islamische Studien",
+    description: "Qur'an-Exegese (Tafsir), Qur'an-Rezitation (Tilawa), Qur'an-Wissenschaften und Tajwid.",
+    icon: BookOpen,
+    features: ["Tafsir", "Tilawa", "Qur'an-Wissenschaften", "Tajwid"],
+  },
+  {
+    title: "Fakultät für Arabische Sprache",
+    description: "Arabische Grammatik (Nahw), Morphologie (Sarf), Rhetorik (Balagha), arabische Literatur und Linguistik.",
     icon: Languages,
-    features: ["Fiqh", "Usul al-Fiqh", "Arabische Sprache"],
-  },
-  {
-    title: "Weitere Fachbereiche",
-    description: "Neben den islamischen Studien bietet die Universität auch Ingenieurwissenschaften, Informatik und Naturwissenschaften.",
-    icon: Cpu,
-    features: ["Ingenieurwesen", "Informatik", "Naturwissenschaften"],
+    features: ["Nahw", "Sarf", "Balagha", "Arabische Literatur"],
   },
 ];
 
 const studyAreasEn = [
   {
-    title: "Aqidah & Usul ad-Din",
-    description: "Creed and the foundations of religion – the cornerstone of Islamic knowledge.",
-    icon: BookOpen,
-    features: ["Islamic Creed", "Usul ad-Din", "Tawhid"],
+    title: "Faculty of Shariah",
+    description: "Islamic jurisprudence (Fiqh), legal theory (Usul al-Fiqh), inheritance law, comparative law, and Islamic economics.",
+    icon: Scale,
+    features: ["Fiqh", "Usul al-Fiqh", "Inheritance Law", "Islamic Economics"],
   },
   {
-    title: "Hadith & Tafsir",
-    description: "The sciences of Hadith and the exegesis of the Quran through classical and modern methods.",
-    icon: BookOpen,
-    features: ["Hadith Sciences", "Tafsir", "Quran Studies"],
+    title: "Faculty of Da'wah & Usul ad-Din",
+    description: "Islamic creed (Aqidah), propagation of Islam (Da'wah), comparative religion, education, and psychology.",
+    icon: Mic,
+    features: ["Aqidah", "Da'wah", "Comparative Religion", "Education"],
   },
   {
-    title: "Fiqh & Arabic Language",
-    description: "Islamic jurisprudence and its principles, along with the Arabic language and its sciences.",
+    title: "Faculty of Hadith & Islamic Studies",
+    description: "Hadith sciences, chains of narration, Hadith criticism, Sira (biography of the Prophet), and Islamic history.",
+    icon: ScrollText,
+    features: ["Hadith Sciences", "Sira", "Islamic History"],
+  },
+  {
+    title: "Faculty of Quran & Islamic Studies",
+    description: "Quran exegesis (Tafsir), Quran recitation (Tilawa), Quranic sciences, and Tajwid.",
+    icon: BookOpen,
+    features: ["Tafsir", "Tilawa", "Quranic Sciences", "Tajwid"],
+  },
+  {
+    title: "Faculty of Arabic Language",
+    description: "Arabic grammar (Nahw), morphology (Sarf), rhetoric (Balagha), Arabic literature, and linguistics.",
     icon: Languages,
-    features: ["Fiqh", "Usul al-Fiqh", "Arabic Language"],
-  },
-  {
-    title: "Other Disciplines",
-    description: "Beyond Islamic studies, the university also offers engineering, computer science, and natural sciences.",
-    icon: Cpu,
-    features: ["Engineering", "Computer Science", "Natural Sciences"],
+    features: ["Nahw", "Sarf", "Balagha", "Arabic Literature"],
   },
 ];
 
@@ -85,7 +97,7 @@ export function Services({ locale = "de" }: { locale?: Locale }) {
           </div>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {studyAreas.map((area, index) => (
             <div key={area.title} className="group block h-full">
               <Card className="h-full border border-slate-200 bg-white shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
