@@ -58,7 +58,7 @@ export function About() {
                 Wir sind Studenten und Absolventen der Islamischen Universität in Medina aus dem deutschsprachigen Raum – Deutschland, Österreich und der Schweiz.
               </p>
               <p>
-                Unser Verständnis der Religion gründet auf dem Qur'an und der authentischen Sunnah, im Verständnis der ersten Generationen dieser Ummah.
+                Unser Verständnis der Religion gründet auf dem Qur&rsquo;an und der authentischen Sunnah, im Verständnis der ersten Generationen dieser Ummah.
               </p>
             </div>
 

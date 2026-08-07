@@ -5,50 +5,51 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const CONSENT_KEY = "cookie-consent";
+const GA_MEASUREMENT_ID = "G-5H0KZ4V7QH";
 
-type ConsentStatus = "pending" | "accepted" | "declined";
+// Lädt Google Analytics nach – wird erst nach erteilter Einwilligung aufgerufen.
+function enableAnalytics() {
+  if (typeof window === "undefined" || typeof window.gtag === "function") return;
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function gtag() {
+    // eslint-disable-next-line prefer-rest-params
+    window.dataLayer.push(arguments);
+  };
+  window.gtag("js", new Date());
+  window.gtag("config", GA_MEASUREMENT_ID, {
+    anonymize_ip: true,
+  });
+
+  const script = document.createElement("script");
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+  script.async = true;
+  document.head.appendChild(script);
+}
 
 export function CookieConsent() {
-  const [consentStatus, setConsentStatus] = useState<ConsentStatus>("pending");
+  // Das Banner ist ausschließlich für Besucher ohne gespeicherte Entscheidung sichtbar –
+  // eine separate Status-State-Variable wird daher nicht benötigt.
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     // Check if user has already made a choice
     const savedConsent = localStorage.getItem(CONSENT_KEY);
-    if (savedConsent === "accepted" || savedConsent === "declined") {
-      setConsentStatus(savedConsent as ConsentStatus);
-      if (savedConsent === "accepted") {
-        enableAnalytics();
-      }
-    } else {
-      // Show banner after a short delay for better UX
-      setTimeout(() => setIsVisible(true), 500);
+    if (savedConsent === "accepted") {
+      enableAnalytics();
+      return;
     }
+    if (savedConsent === "declined") {
+      return;
+    }
+
+    // Show banner after a short delay for better UX
+    const timer = setTimeout(() => setIsVisible(true), 500);
+    return () => clearTimeout(timer);
   }, []);
-
-  const enableAnalytics = () => {
-    // Load Google Analytics
-    if (typeof window !== "undefined" && !window.gtag) {
-      window.dataLayer = window.dataLayer || [];
-      window.gtag = function gtag() {
-        // eslint-disable-next-line prefer-rest-params
-        window.dataLayer.push(arguments);
-      };
-      window.gtag("js", new Date());
-      window.gtag("config", "G-5H0KZ4V7QH", {
-        anonymize_ip: true,
-      });
-
-      const script = document.createElement("script");
-      script.src = "https://www.googletagmanager.com/gtag/js?id=G-5H0KZ4V7QH";
-      script.async = true;
-      document.head.appendChild(script);
-    }
-  };
 
   const handleAccept = () => {
     localStorage.setItem(CONSENT_KEY, "accepted");
-    setConsentStatus("accepted");
     setIsVisible(false);
     enableAnalytics();
     window.dispatchEvent(new Event("consentChanged"));
@@ -56,14 +57,15 @@ export function CookieConsent() {
 
   const handleDecline = () => {
     localStorage.setItem(CONSENT_KEY, "declined");
-    setConsentStatus("declined");
     setIsVisible(false);
     if (typeof window !== "undefined") {
-      (window as unknown as Record<string, unknown>)[`ga-disable-G-5H0KZ4V7QH`] = true;
+      (window as unknown as Record<string, unknown>)[
+        `ga-disable-${GA_MEASUREMENT_ID}`
+      ] = true;
     }
   };
 
-  if (!isVisible || consentStatus !== "pending") {
+  if (!isVisible) {
     return null;
   }
 
@@ -101,18 +103,4 @@ export function CookieConsent() {
       </div>
     </div>
   );
-}
-
-// Hook to check consent status (for other components if needed)
-export function useConsentStatus(): ConsentStatus {
-  const [status, setStatus] = useState<ConsentStatus>("pending");
-
-  useEffect(() => {
-    const saved = localStorage.getItem(CONSENT_KEY);
-    if (saved === "accepted" || saved === "declined") {
-      setStatus(saved);
-    }
-  }, []);
-
-  return status;
 }

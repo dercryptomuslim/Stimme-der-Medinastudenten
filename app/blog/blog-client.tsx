@@ -62,7 +62,7 @@ export function BlogPageClient() {
                   onClick={() => setActiveCategory(activeCategory === key ? null : key)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-2 ${
                     activeCategory === key
-                      ? "bg-emerald-600 text-white shadow-lg"
+                      ? "bg-navy text-white shadow-lg"
                       : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
                   }`}
                 >
@@ -79,10 +79,10 @@ export function BlogPageClient() {
               <Card className="overflow-hidden border border-slate-200 bg-white shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div className="grid md:grid-cols-2 gap-0">
                   <div className="relative h-64 md:h-full min-h-[300px] overflow-hidden">
-                    <div className="h-full w-full bg-gradient-to-br from-emerald-50 to-slate-100 flex items-center justify-center">
+                    <div className="h-full w-full bg-gradient-to-br from-navy/5 to-slate-100 flex items-center justify-center">
                       <span className="text-sm font-medium text-slate-400">Bild folgt</span>
                     </div>
-                    <div className="absolute top-4 left-4 bg-emerald-600 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                    <div className="absolute top-4 left-4 bg-gold text-navy-dark px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                       Neuester Artikel
                     </div>
                   </div>
@@ -100,7 +100,7 @@ export function BlogPageClient() {
                       </span>
                     </div>
 
-                    <h2 className="text-2xl md:text-3xl font-serif font-bold text-slate-900 mb-4 group-hover:text-emerald-700 transition-colors leading-tight">
+                    <h2 className="text-2xl md:text-3xl font-serif font-bold text-slate-900 mb-4 group-hover:text-navy transition-colors leading-tight">
                       {featuredPost.title}
                     </h2>
 
@@ -108,7 +108,7 @@ export function BlogPageClient() {
                       {featuredPost.excerpt}
                     </p>
 
-                    <div className="text-base font-semibold text-emerald-700 flex items-center gap-2 group-hover:gap-3 transition-all">
+                    <div className="text-base font-semibold text-navy flex items-center gap-2 group-hover:gap-3 transition-all">
                       Jetzt lesen <ArrowRight className="h-5 w-5" />
                     </div>
                   </div>
@@ -124,7 +124,7 @@ export function BlogPageClient() {
                 <Card className="h-full flex flex-col border border-slate-200 bg-white shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
 
                   <div className="h-48 w-full relative overflow-hidden">
-                    <div className="h-full w-full bg-gradient-to-br from-emerald-50 to-slate-100 flex items-center justify-center text-slate-400">
+                    <div className="h-full w-full bg-gradient-to-br from-navy/5 to-slate-100 flex items-center justify-center text-slate-400">
                       <span className="text-sm font-medium">Bild folgt</span>
                     </div>
                     <div className="absolute top-3 left-3">
@@ -149,7 +149,7 @@ export function BlogPageClient() {
                         <Clock className="h-3 w-3" /> {post.readTime}
                       </span>
                     </div>
-                    <h2 className="text-xl font-bold text-slate-900 line-clamp-2 group-hover:text-emerald-700 transition-colors">
+                    <h2 className="text-xl font-bold text-slate-900 line-clamp-2 group-hover:text-navy transition-colors">
                       {post.title}
                     </h2>
                   </CardHeader>
@@ -161,7 +161,7 @@ export function BlogPageClient() {
                   </CardContent>
 
                   <CardFooter className="pt-0 pb-6">
-                    <div className="text-sm font-semibold text-emerald-700 flex items-center gap-2 group-hover:gap-3 transition-all">
+                    <div className="text-sm font-semibold text-navy flex items-center gap-2 group-hover:gap-3 transition-all">
                       Jetzt weiterlesen <ArrowRight className="h-4 w-4" />
                     </div>
                   </CardFooter>

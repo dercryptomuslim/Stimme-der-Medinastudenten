@@ -93,7 +93,7 @@ export default function PrivacyPage() {
               Anbieter ist die Alfahosting GmbH, Ankerstraße 3b, 06108 Halle (Saale) (nachfolgend Alfahosting) Wenn Sie unsere Website besuchen, erfasst Alfahosting verschiedene Logfiles inklusive Ihrer IP-Adressen.
             </p>
             <p className="text-slate-600 mb-4">
-              Details entnehmen Sie der Datenschutzerklärung von Alfahosting: <a href="https://alfahosting.de/datenschutz/" target="_blank" rel="noopener noreferrer" className="text-emerald-700 hover:underline">https://alfahosting.de/datenschutz/</a>.
+              Details entnehmen Sie der Datenschutzerklärung von Alfahosting: <a href="https://alfahosting.de/datenschutz/" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">https://alfahosting.de/datenschutz/</a>.
             </p>
             <p className="text-slate-600 mb-4">
               Die Verwendung von Alfahosting erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung unserer Website. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG, soweit die Einwilligung die Speicherung von Cookies oder den Zugriff auf Informationen im Endgerät des Nutzers (z. B. für Device-Fingerprinting) im Sinne des TDDDG umfasst. Die Einwilligung ist jederzeit widerrufbar.
@@ -259,7 +259,7 @@ export default function PrivacyPage() {
               Die Nutzung dieses Dienstes erfolgt auf Grundlage Ihrer Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Die Einwilligung ist jederzeit widerrufbar.
             </p>
             <p className="text-slate-600 mb-4">
-              Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von Instagram: <a href="https://privacycenter.instagram.com/policy/" target="_blank" rel="noopener noreferrer" className="text-emerald-700 hover:underline">https://privacycenter.instagram.com/policy/</a>.
+              Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von Instagram: <a href="https://privacycenter.instagram.com/policy/" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">https://privacycenter.instagram.com/policy/</a>.
             </p>
 
             <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">6. Newsletter</h2>
@@ -281,7 +281,7 @@ export default function PrivacyPage() {
               Die Nutzung von YouTube erfolgt im Interesse einer ansprechenden Darstellung unserer Online-Angebote. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar.
             </p>
             <p className="text-slate-600 mb-4">
-              Weitere Informationen zum Umgang mit Nutzerdaten finden Sie in der Datenschutzerklärung von YouTube unter: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer" className="text-emerald-700 hover:underline">https://policies.google.com/privacy?hl=de</a>.
+              Weitere Informationen zum Umgang mit Nutzerdaten finden Sie in der Datenschutzerklärung von YouTube unter: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">https://policies.google.com/privacy?hl=de</a>.
             </p>
 
             <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">Google Fonts</h3>
@@ -289,7 +289,7 @@ export default function PrivacyPage() {
               Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten so genannte Google Fonts, die von Google bereitgestellt werden.
             </p>
             <p className="text-slate-600 mb-4">
-              Weitere Informationen zu Google Fonts finden Sie unter <a href="https://developers.google.com/fonts/faq" target="_blank" rel="noopener noreferrer" className="text-emerald-700 hover:underline">https://developers.google.com/fonts/faq</a> und in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer" className="text-emerald-700 hover:underline">https://policies.google.com/privacy?hl=de</a>.
+              Weitere Informationen zu Google Fonts finden Sie unter <a href="https://developers.google.com/fonts/faq" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">https://developers.google.com/fonts/faq</a> und in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">https://policies.google.com/privacy?hl=de</a>.
             </p>
 
             <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">Google Maps</h3>
@@ -297,7 +297,7 @@ export default function PrivacyPage() {
               Diese Seite nutzt den Kartendienst Google Maps. Anbieter ist die Google Ireland Limited („Google“), Gordon House, Barrow Street, Dublin 4, Irland.
             </p>
             <p className="text-slate-600 mb-4">
-              Mehr Informationen zum Umgang mit Nutzerdaten finden Sie in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer" className="text-emerald-700 hover:underline">https://policies.google.com/privacy?hl=de</a>.
+              Mehr Informationen zum Umgang mit Nutzerdaten finden Sie in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">https://policies.google.com/privacy?hl=de</a>.
             </p>
 
             <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">Google reCAPTCHA</h3>
@@ -305,7 +305,7 @@ export default function PrivacyPage() {
               Wir nutzen „Google reCAPTCHA“ (im Folgenden „reCAPTCHA“) auf dieser Website. Anbieter ist die Google Ireland Limited („Google“), Gordon House, Barrow Street, Dublin 4, Irland.
             </p>
             <p className="text-slate-600 mb-4">
-              Weitere Informationen zu Google reCAPTCHA entnehmen Sie den Google-Datenschutzbestimmungen und den Google Nutzungsbedingungen unter folgenden Links: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer" className="text-emerald-700 hover:underline">https://policies.google.com/privacy?hl=de</a> und <a href="https://policies.google.com/terms?hl=de" target="_blank" rel="noopener noreferrer" className="text-emerald-700 hover:underline">https://policies.google.com/terms?hl=de</a>.
+              Weitere Informationen zu Google reCAPTCHA entnehmen Sie den Google-Datenschutzbestimmungen und den Google Nutzungsbedingungen unter folgenden Links: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">https://policies.google.com/privacy?hl=de</a> und <a href="https://policies.google.com/terms?hl=de" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">https://policies.google.com/terms?hl=de</a>.
             </p>
 
             <p className="text-slate-500 text-sm mt-12 border-t border-slate-200 pt-4">

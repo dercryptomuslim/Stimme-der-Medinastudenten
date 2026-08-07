@@ -53,13 +53,13 @@ export default function ImpressumPage() {
 
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Kontakt</h2>
             <p className="text-slate-600 mb-8">
-              E-Mail: <a href="mailto:kontakt@stimme-medinastudenten.de" className="text-emerald-700 hover:underline">kontakt@stimme-medinastudenten.de</a>
+              E-Mail: <a href="mailto:kontakt@stimme-medinastudenten.de" className="text-navy hover:text-gold-dark hover:underline">kontakt@stimme-medinastudenten.de</a>
             </p>
 
             <h2 className="text-2xl font-bold text-slate-900 mb-4">EU-Streitschlichtung</h2>
             <p className="text-slate-600 mb-8">
               Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:{" "}
-              <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" className="text-emerald-700 hover:underline">
+              <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">
                 https://ec.europa.eu/consumers/odr/
               </a>.<br />
               Unsere E-Mail-Adresse finden Sie oben im Impressum.

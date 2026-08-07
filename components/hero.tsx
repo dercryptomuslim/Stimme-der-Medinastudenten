@@ -39,7 +39,7 @@ export function Hero() {
             Wir sind Studenten und Absolventen der Islamischen Universität in Medina aus Deutschland, Österreich und der Schweiz.{" "}
             <br className="hidden md:block" />
             <span className="font-medium text-slate-800">
-              Unser Verständnis gründet auf dem Qur'an und der authentischen Sunnah.
+              Unser Verständnis gründet auf dem Qur&rsquo;an und der authentischen Sunnah.
             </span>
           </p>
 

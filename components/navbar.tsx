@@ -3,41 +3,45 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, ChevronRight, BookOpen, GraduationCap, Users, FileCheck, ArrowRight } from "lucide-react";
+import { Menu, ChevronRight, BookOpen, GraduationCap, FileCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
+// Absolute Anchor (/#…), damit die Links auch auf Unterseiten wie /blog greifen.
 const navItems = [
   {
     title: "Studienbereiche",
-    href: "#studium",
+    href: "/#studium",
     description: "Islamische & weitere Wissenschaften.",
     icon: BookOpen
   },
   {
     title: "Bewerbung",
-    href: "#bewerbung",
+    href: "/#bewerbung",
     description: "Voraussetzungen & Ablauf.",
     icon: FileCheck
   },
   {
     title: "Universität",
-    href: "#ueber-uns",
+    href: "/#ueber-uns",
     description: "Die Islamische Universität Medina.",
     icon: GraduationCap
   },
 ];
+
+const navLinkStyle = cn(
+  navigationMenuTriggerStyle(),
+  "text-slate-600 hover:text-slate-900 bg-transparent hover:bg-slate-50 font-medium"
+);
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -70,35 +74,29 @@ export function Navbar() {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <Link href="/" legacyBehavior passHref>
-                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-slate-600 hover:text-slate-900 bg-transparent hover:bg-slate-50 font-medium")}>
-                    Startseite
-                  </NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink asChild className={navLinkStyle}>
+                  <Link href="/">Startseite</Link>
+                </NavigationMenuLink>
               </NavigationMenuItem>
 
               {navItems.map((item) => (
                 <NavigationMenuItem key={item.title}>
-                  <Link href={item.href} legacyBehavior passHref>
-                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-slate-600 hover:text-slate-900 bg-transparent hover:bg-slate-50 font-medium")}>
-                      {item.title}
-                    </NavigationMenuLink>
-                  </Link>
+                  <NavigationMenuLink asChild className={navLinkStyle}>
+                    <Link href={item.href}>{item.title}</Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
               ))}
 
               <NavigationMenuItem>
-                <Link href="/blog" legacyBehavior passHref>
-                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-slate-600 hover:text-slate-900 bg-transparent hover:bg-slate-50 font-medium")}>
-                    Blog
-                  </NavigationMenuLink>
-                </Link>
+                <NavigationMenuLink asChild className={navLinkStyle}>
+                  <Link href="/blog">Blog</Link>
+                </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
 
           <Button asChild className="ml-4 bg-slate-900 text-white hover:bg-slate-800 rounded-full px-6 font-medium shadow-md hover:shadow-lg transition-all">
-            <Link href="#kontakt">Kontakt</Link>
+            <Link href="/#kontakt">Kontakt</Link>
           </Button>
         </div>
 
@@ -155,7 +153,7 @@ export function Navbar() {
 
               <div className="p-6 border-t border-slate-100 bg-slate-50 mt-auto">
                 <Button asChild className="w-full h-12 bg-slate-900 hover:bg-slate-800 text-white text-base font-semibold rounded-lg shadow-sm">
-                  <Link href="#kontakt" onClick={() => setIsOpen(false)}>
+                  <Link href="/#kontakt" onClick={() => setIsOpen(false)}>
                     Kontakt
                   </Link>
                 </Button>
