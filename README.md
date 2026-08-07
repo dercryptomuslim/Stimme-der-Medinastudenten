@@ -112,9 +112,22 @@ Die drei vorhandenen Artikel sind bewusst faktisch gehalten und stützen sich
 nur auf Angaben, die auch auf der Startseite stehen. Erfahrungsberichte aus
 erster Hand fehlen bislang — die sollten von Studenten selbst kommen.
 
-Für Artikelbilder ist ein Platzhalter „Bild folgt" hinterlegt. Sobald Bilder
-vorliegen, das Feld `image` befüllen und die Platzhalter in
-`app/blog/blog-client.tsx` ersetzen.
+Artikelbilder liegen als SVG unter `public/blog/` und werden über das Feld
+`image` zugeordnet. Ohne `image` fällt die Karte auf den Platzhalter „Bild
+folgt" zurück.
+
+Die vorhandenen Muster sind mit Higgsfield (Modell `recraft_v4_1`, Variante
+`vector`) erzeugt, mit der Markenpalette als `colors`-Parameter. Bewusst
+gegenstandslose Ornamentik – die Seite verzichtet durchgängig auf
+Abbildungen von Lebewesen. Nach dem Generieren einmal durch SVGO schicken:
+
+```bash
+npx svgo@3 -f public/blog -o public/blog --multipass -p 2
+```
+
+Wichtig beim Prompten: flächenfüllende, gleichmäßig verteilte Muster
+verlangen („edge to edge, no blank areas"). Freigestellte Motive mit viel
+Weißraum verschwinden im `object-cover`-Zuschnitt der Karten.
 
 ### Analytics-Events
 
@@ -173,7 +186,6 @@ die echte Domain um.
 - [ ] **Erfahrungsberichte ergänzen.** Die drei vorhandenen Artikel sind
       faktische Übersichten. Was fehlt, sind Texte von Studenten über den
       tatsächlichen Alltag.
-- [ ] **Artikelbilder** — aktuell überall „Bild folgt".
 - [ ] **Instagram-Link im Footer** zeigt auf `#`.
 - [ ] **Kennzahlen belegen.** „+50 Studierende aus DACH" in
       `components/stats-section.tsx` sollte belastbar sein.

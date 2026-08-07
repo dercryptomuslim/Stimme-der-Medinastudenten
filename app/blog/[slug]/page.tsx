@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, Clock, ArrowRight } from "lucide-react";
 import { Metadata } from "next";
 import Script from "next/script";
+import Image from "next/image";
 import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/site";
 
 interface Props {
@@ -48,11 +49,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       publishedTime: `${post.dateISO}T12:00:00+03:00`,
       authors: [SITE_NAME],
+      images: post.image ? [absoluteUrl(post.image)] : undefined,
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description,
+      images: post.image ? [absoluteUrl(post.image)] : undefined,
     },
   };
 }
@@ -122,6 +125,20 @@ export default async function BlogPostPage({ params }: Props) {
               </span>
             </div>
           </header>
+
+          {post.image && (
+            <div className="relative mb-12 aspect-[16/9] w-full overflow-hidden rounded-xl bg-navy shadow-lg">
+              <Image
+                src={post.image}
+                alt=""
+                fill
+                unoptimized
+                sizes="(max-width: 768px) 100vw, 768px"
+                priority
+                className="object-cover"
+              />
+            </div>
+          )}
 
           <div
             className="max-w-none font-serif text-slate-900

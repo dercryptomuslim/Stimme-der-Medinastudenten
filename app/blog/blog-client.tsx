@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import Link from "next/link";
+import Image from "next/image";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { ArrowRight, Calendar, Clock, BookOpen, Home, FileCheck } from "lucide-react";
 import { blogPostsDe, blogCategories, sortByDateDesc } from "@/lib/blog-data";
@@ -78,10 +79,21 @@ export function BlogPageClient() {
             <Link href={`/blog/${featuredPost.slug}`} className="group block mb-12">
               <Card className="overflow-hidden border border-slate-200 bg-white shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div className="grid md:grid-cols-2 gap-0">
-                  <div className="relative h-64 md:h-full min-h-[300px] overflow-hidden">
-                    <div className="h-full w-full bg-gradient-to-br from-navy/5 to-slate-100 flex items-center justify-center">
-                      <span className="text-sm font-medium text-slate-400">Bild folgt</span>
-                    </div>
+                  <div className="relative h-64 md:h-full min-h-[300px] overflow-hidden bg-navy">
+                    {featuredPost.image ? (
+                      <Image
+                        src={featuredPost.image}
+                        alt=""
+                        fill
+                        unoptimized
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div className="h-full w-full bg-gradient-to-br from-navy/5 to-slate-100 flex items-center justify-center">
+                        <span className="text-sm font-medium text-slate-400">Bild folgt</span>
+                      </div>
+                    )}
                     <div className="absolute top-4 left-4 bg-gold text-navy-dark px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                       Neuester Artikel
                     </div>
@@ -123,10 +135,21 @@ export function BlogPageClient() {
               <Link key={post.slug} href={`/blog/${post.slug}`} className="group h-full">
                 <Card className="h-full flex flex-col border border-slate-200 bg-white shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
 
-                  <div className="h-48 w-full relative overflow-hidden">
-                    <div className="h-full w-full bg-gradient-to-br from-navy/5 to-slate-100 flex items-center justify-center text-slate-400">
-                      <span className="text-sm font-medium">Bild folgt</span>
-                    </div>
+                  <div className="h-48 w-full relative overflow-hidden bg-navy">
+                    {post.image ? (
+                      <Image
+                        src={post.image}
+                        alt=""
+                        fill
+                        unoptimized
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div className="h-full w-full bg-gradient-to-br from-navy/5 to-slate-100 flex items-center justify-center text-slate-400">
+                        <span className="text-sm font-medium">Bild folgt</span>
+                      </div>
+                    )}
                     <div className="absolute top-3 left-3">
                       {(() => {
                         const Icon = categoryIcons[post.category as keyof typeof categoryIcons];

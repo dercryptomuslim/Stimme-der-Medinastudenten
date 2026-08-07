@@ -26,6 +26,7 @@ export const blogCategories = {
 export const blogPostsDe: BlogPost[] = [
   {
     slug: "bewerbungstipps",
+    image: "/blog/bewerbung.svg",
     title: "Bewerbung an der Islamischen Universität Medina – der Ablauf im Überblick",
     excerpt:
       "Voraussetzungen, Unterlagen und der Weg über das Portal Minhati – was Studieninteressierte aus dem DACH-Raum vor der Bewerbung wissen sollten.",
@@ -115,6 +116,7 @@ export const blogPostsDe: BlogPost[] = [
   },
   {
     slug: "arabisch-lernen",
+    image: "/blog/arabisch.svg",
     title: "Arabisch für das Studium in Medina – worauf es ankommt",
     excerpt:
       "Warum Arabisch über den Studienerfolg entscheidet, was die Fakultät für Arabische Sprache lehrt und wie man die Zeit vor der Abreise sinnvoll nutzt.",
@@ -172,6 +174,7 @@ export const blogPostsDe: BlogPost[] = [
   },
   {
     slug: "leben-in-medina",
+    image: "/blog/leben.svg",
     title: "Studieren in Medina – Stipendium, Unterkunft und Alltag",
     excerpt:
       "Was die Universität internationalen Studenten konkret stellt, wie sich die Lebenshaltung zusammensetzt und worauf man sich einstellen sollte.",
