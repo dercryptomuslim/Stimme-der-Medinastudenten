@@ -1,12 +1,19 @@
 /**
  * Einzige Quelle für die kanonische Domain.
  *
- * Apex-Domain ohne "www", passend zum Redirect in vercel.json
- * (www.stimme-medinastudenten.de -> stimme-medinastudenten.de, 301).
- * Beide Stellen müssen dieselbe Variante nennen – sonst zeigen die
- * Canonical-Tags auf eine URL, die permanent weiterleitet.
+ * Solange keine eigene Domain angebunden ist, muss hier die tatsächlich
+ * erreichbare Adresse stehen – ein Canonical auf eine nicht existierende
+ * Domain entwertet sonst die gesamte Indexierung.
+ *
+ * Sobald die Wunschdomain in Vercel hinterlegt ist, wird
+ * NEXT_PUBLIC_SITE_URL auf diese gesetzt (ohne abschließenden Slash).
+ * Der www-Redirect in vercel.json muss dann zur selben Variante passen.
  */
-export const SITE_URL = "https://stimme-medinastudenten.de";
+const FALLBACK_URL = "https://stimme-der-medinastudenten.vercel.app";
+
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL || FALLBACK_URL
+).replace(/\/+$/, "");
 
 export const SITE_NAME = "Stimme der Medinastudenten";
 
