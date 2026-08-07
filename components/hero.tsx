@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { trackCtaClick } from "@/lib/analytics";
 
 export function Hero() {
   return (
@@ -58,7 +59,16 @@ export function Hero() {
               size="lg"
               className="h-14 rounded-full bg-slate-900 px-8 text-lg font-medium text-white hover:bg-slate-800 shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <Link href="#ueber-uns">
+              <Link
+                href="#ueber-uns"
+                onClick={() =>
+                  trackCtaClick({
+                    buttonText: "Über uns erfahren",
+                    location: "hero",
+                    destination: "#ueber-uns",
+                  })
+                }
+              >
                 Über uns erfahren
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
@@ -69,7 +79,16 @@ export function Hero() {
               size="lg"
               className="h-14 rounded-full border-slate-200 bg-white px-8 text-lg text-slate-600 hover:bg-slate-50 hover:text-slate-900 hover:border-slate-300 shadow-sm"
             >
-              <Link href="#studium">
+              <Link
+                href="#studium"
+                onClick={() =>
+                  trackCtaClick({
+                    buttonText: "Studienbereiche",
+                    location: "hero",
+                    destination: "#studium",
+                  })
+                }
+              >
                 Studienbereiche
               </Link>
             </Button>

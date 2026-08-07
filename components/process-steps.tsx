@@ -3,6 +3,7 @@
 import { Heart, FileCheck, Globe, GraduationCap, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { trackExternalLinkClick } from "@/lib/analytics";
 
 const steps = [
   {
@@ -119,7 +120,17 @@ export function ProcessSteps() {
           className="mt-12 text-center"
         >
           <Button asChild className="bg-navy hover:bg-navy-dark text-white rounded-full px-8 py-6 text-lg">
-            <a href="https://minhati.sa" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://minhati.sa"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() =>
+                trackExternalLinkClick({
+                  url: "https://minhati.sa",
+                  linkText: "Zum Bewerbungsportal (Minhati)",
+                })
+              }
+            >
               Zum Bewerbungsportal (Minhati)
               <ArrowRight className="ml-2 h-5 w-5" />
             </a>

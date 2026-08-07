@@ -23,36 +23,217 @@ export const blogCategories = {
   bewerbung: { label: "Bewerbung", icon: "FileCheck" },
 };
 
-// Placeholder blog posts - to be filled with actual content
 export const blogPostsDe: BlogPost[] = [
   {
-    slug: "leben-in-medina",
-    title: "Das Leben als Student in Medina",
-    excerpt: "Ein ehrlicher Einblick in den Alltag, die Herausforderungen und die besonderen Momente als Student an der Islamischen Universität.",
-    date: "Bald verfügbar",
-    dateISO: "2026-04-01",
-    readTime: "- min",
-    content: "<p>Dieser Artikel wird bald veröffentlicht.</p>",
-    category: "leben",
+    slug: "bewerbungstipps",
+    title: "Bewerbung an der Islamischen Universität Medina – der Ablauf im Überblick",
+    excerpt:
+      "Voraussetzungen, Unterlagen und der Weg über das Portal Minhati – was Studieninteressierte aus dem DACH-Raum vor der Bewerbung wissen sollten.",
+    metaDescription:
+      "Bewerbung an der Islamischen Universität Medina: Voraussetzungen, benötigte Unterlagen, Altersgrenzen und der Ablauf über das Portal Minhati.",
+    date: "7. August 2026",
+    dateISO: "2026-08-07",
+    readTime: "6 min",
+    category: "bewerbung",
+    content: `
+<p class="lead">Die Bewerbung an der Islamischen Universität Medina läuft anders ab als an einer deutschen Hochschule. Es gibt kein zentrales Portal wie Hochschulstart, keine Bewerbungsfrist, die überall gleich kommuniziert wird, und keine Studienberatung, die man anrufen kann. Dieser Text ordnet die Schritte, die tatsächlich anfallen.</p>
+
+<h2>Bevor die Unterlagen zusammengesucht werden</h2>
+
+<p>Der erste Schritt ist kein formaler. Bevor man diesen Weg einschlägt, sollte man sich ernsthaft damit auseinandersetzen, ob er wirklich der eigene ist. Das Streben nach Wissen ist keine kurzfristige Angelegenheit, sondern eine lebenslange Aufgabe.</p>
+
+<p>Drei Fragen helfen bei der Einordnung:</p>
+
+<ul>
+  <li><strong>Was ist mein Ziel?</strong> Ein Abschluss ist nicht dasselbe wie Wissen, und Wissen ist nicht dasselbe wie danach zu handeln.</li>
+  <li><strong>Warum möchte ich studieren?</strong> Aufrichtigkeit gehört zu den wichtigsten Grundlagen. Es geht nicht darum, mit einem Titel zurückzukehren.</li>
+  <li><strong>Was habe ich bereits für diesen Weg getan?</strong> Wer sich bisher nicht mit den Grundlagen befasst hat, wird das in Medina nachholen müssen – nur dann unter erheblich höherem Druck.</li>
+</ul>
+
+<p>Diese Selbstprüfung ist kein Beiwerk. Sie entscheidet häufiger über den Verlauf des Studiums als die Formalien.</p>
+
+<h2>Die formalen Voraussetzungen</h2>
+
+<p>Für ein Bachelorstudium gelten im Wesentlichen folgende Punkte:</p>
+
+<ul>
+  <li>Hochschulreife – Abitur, Matura oder ein gleichwertiger Abschluss</li>
+  <li>Gültiger Reisepass, mindestens sechs Monate über den Bewerbungszeitpunkt hinaus gültig</li>
+  <li>Digitales Passbild</li>
+  <li>Ärztliches Gutachten, das die Freiheit von ansteckenden Krankheiten bescheinigt</li>
+  <li>Zwei Tazkiyah – Empfehlungsschreiben</li>
+  <li>Altersgrenze: bis 25 Jahre für den Bachelor, bis 30 Jahre für den Master</li>
+  <li>Muslim, gutes Benehmen und Verhalten</li>
+  <li>Bereitschaft, sich an die Regeln der Universität zu halten</li>
+  <li>Körperliche Eignung für das Studium</li>
+</ul>
+
+<p>Die Altersgrenze ist der Punkt, an dem die meisten Bewerbungen scheitern, bevor sie begonnen haben. Wer nah an der Grenze ist, sollte sich nicht auf das kommende Jahr vertrösten.</p>
+
+<h3>Zur Tazkiyah</h3>
+
+<p>Die beiden Empfehlungsschreiben sind keine Formsache, die sich kurz vor Abgabe erledigen lässt. Sie sollten von Personen stammen, die einen tatsächlich kennen und die Auskunft über Charakter und bisherigen Lernweg geben können. Wer erst bei der Bewerbung merkt, dass niemand in Frage kommt, hat ein Problem, das sich nicht mit einem Formular lösen lässt.</p>
+
+<h2>Vorher hinfahren</h2>
+
+<p>Wir empfehlen, vor einer endgültigen Entscheidung mit einem Besuchs- oder Touristenvisum nach Saudi-Arabien zu reisen. Der Grund ist einfach: Vorstellung und Wirklichkeit gehen bei diesem Schritt oft auseinander, und das lässt sich vor Ort in zwei Wochen klären statt nach dem Umzug in zwei Jahren.</p>
+
+<p>Wer die Möglichkeit hat, sollte die Zeit nutzen, um mit Studenten zu sprechen, die bereits dort sind – nicht nur über das Studium, sondern über den Alltag, das Klima, die Entfernung zur Familie.</p>
+
+<h2>Die eigentliche Bewerbung über Minhati</h2>
+
+<p>Die Bewerbung erfolgt über das offizielle Online-Portal <a href="https://minhati.sa" target="_blank" rel="noopener noreferrer">minhati.sa</a>. Dort wird das Bewerbungsformular ausgefüllt und die Unterlagen werden hochgeladen.</p>
+
+<p>Zwei praktische Hinweise:</p>
+
+<ul>
+  <li>Die Angaben im Portal müssen exakt mit dem Reisepass übereinstimmen – Schreibweise des Namens, Passnummer, Geburtsdatum. Abweichungen führen später zu Verzögerungen.</li>
+  <li>Dokumente sollten sauber eingescannt vorliegen, nicht als abfotografierte Bildschirmaufnahme.</li>
+</ul>
+
+<p>Aktuelle Informationen zum Bewerbungsprozess, insbesondere zu Zeiträumen, werden auch über den Telegram-Kanal <em>InfoStudiumKSA</em> geteilt.</p>
+
+<h2>Was das Stipendium umfasst</h2>
+
+<p>Das Studium ist für angenommene internationale Studenten kostenlos. Zum Stipendium gehören darüber hinaus:</p>
+
+<ul>
+  <li>Ein monatliches Taschengeld von 840 SAR zur freien Verfügung</li>
+  <li>Ein möbliertes Zimmer im Studentenwohnheim</li>
+  <li>Stark vergünstigte Mahlzeiten in der Mensa</li>
+  <li>Hin- und Rückflugtickets in das Heimatland</li>
+  <li>Medizinische Grundversorgung</li>
+  <li>Die Aufenthaltsgenehmigung (Iqama), die von der Universität arrangiert und finanziert wird</li>
+</ul>
+
+<h2>Nach der Bewerbung</h2>
+
+<p>Zwischen Bewerbung und Rückmeldung liegt Wartezeit, und sie lässt sich nicht abkürzen. Wer in dieser Phase Arabisch lernt, verliert nichts – unabhängig davon, wie die Entscheidung ausfällt.</p>
+
+<p>Eine Bitte in eigener Sache: Anfragen an uns können wir erst berücksichtigen, wenn eine Zusage der Universität vorliegt. Wir sind keine Vermittlung und haben keinen Einfluss auf das Verfahren. Sobald du angenommen wurdest, melde dich gern – dann können wir bei den Fragen helfen, die danach kommen.</p>
+`,
   },
   {
     slug: "arabisch-lernen",
-    title: "Arabisch lernen in Medina – Tipps & Erfahrungen",
-    excerpt: "Praktische Tipps und persönliche Erfahrungen zum Erlernen der arabischen Sprache direkt in Medina.",
-    date: "Bald verfügbar",
-    dateISO: "2026-04-01",
-    readTime: "- min",
-    content: "<p>Dieser Artikel wird bald veröffentlicht.</p>",
+    title: "Arabisch für das Studium in Medina – worauf es ankommt",
+    excerpt:
+      "Warum Arabisch über den Studienerfolg entscheidet, was die Fakultät für Arabische Sprache lehrt und wie man die Zeit vor der Abreise sinnvoll nutzt.",
+    metaDescription:
+      "Arabisch lernen für das Studium an der Islamischen Universität Medina: Bedeutung der Sprache, Inhalte der Sprachfakultät und Vorbereitung vor der Abreise.",
+    date: "7. August 2026",
+    dateISO: "2026-08-07",
+    readTime: "5 min",
     category: "studium",
+    content: `
+<p class="lead">Arabisch ist an der Islamischen Universität Medina kein Nebenfach, sondern die Voraussetzung für alles andere. Wer die Sprache nicht beherrscht, kommt an die Texte nicht heran – und das Studium besteht zu einem großen Teil aus dem Lesen und Verstehen klassischer Texte.</p>
+
+<h2>Warum die Sprache alles andere trägt</h2>
+
+<p>Die Studiengänge verbinden die Arbeit an klassischen Texten mit akademischer Ausbildung. Das bedeutet konkret: Vorlesungen auf Arabisch, Prüfungen auf Arabisch, Literatur auf Arabisch. Übersetzungen sind eine Hilfe für den Anfang, aber kein Ersatz. Wer Tafsir, Fiqh oder die Hadith-Wissenschaften ernsthaft studieren will, muss die Quellsprache lesen können.</p>
+
+<p>Das gilt auch außerhalb des Hörsaals. Der Alltag in Medina – Behördengänge, Einkäufe, Gespräche mit Kommilitonen aus über hundert Ländern – läuft auf Arabisch. Diese ständige Umgebung ist der größte Vorteil des Studienorts, aber sie nützt nur dem, der genug Grundlage mitbringt, um daran anzuknüpfen.</p>
+
+<h2>Was die Fakultät für Arabische Sprache lehrt</h2>
+
+<p>Die Sprache wird an der Universität als eigene Wissenschaft behandelt, nicht als Kommunikationstraining. Die Fakultät für Arabische Sprache deckt im Kern folgende Bereiche ab:</p>
+
+<ul>
+  <li><strong>Nahw</strong> – die Grammatik, also der Satzbau und die Flexion</li>
+  <li><strong>Sarf</strong> – die Morphologie, der Aufbau der Wortformen aus den Wurzeln</li>
+  <li><strong>Balagha</strong> – die Rhetorik, die Lehre vom sprachlichen Ausdruck</li>
+  <li><strong>Arabische Literatur</strong> und <strong>Linguistik</strong></li>
+</ul>
+
+<p>Nahw und Sarf sind dabei das Fundament. Sie erklären, warum ein Satz bedeutet, was er bedeutet – und genau darauf beruht die gesamte klassische Textarbeit. Wer sie beherrscht, kann sich einen unbekannten Text selbst erschließen. Wer sie nicht beherrscht, bleibt auf fremde Erklärungen angewiesen.</p>
+
+<h2>Die Zeit vor der Abreise nutzen</h2>
+
+<p>Zwischen Bewerbung und Zusage liegen Monate. Diese Zeit ist der beste Moment, um mit der Sprache anzufangen – und zwar unabhängig davon, wie die Entscheidung ausfällt. Nichts von dem, was man hier lernt, ist verloren.</p>
+
+<p>Sinnvolle Reihenfolge für den Anfang:</p>
+
+<ul>
+  <li><strong>Das Alphabet und flüssiges Lesen.</strong> Nicht buchstabierend, sondern in normalem Tempo. Das klingt banal und wird regelmäßig unterschätzt.</li>
+  <li><strong>Die Vokalzeichen sicher beherrschen.</strong> Ohne sie lässt sich die Grammatik später nicht sinnvoll erarbeiten.</li>
+  <li><strong>Grundwortschatz aufbauen.</strong> Konsequent und täglich, lieber zwanzig Minuten jeden Tag als drei Stunden am Wochenende.</li>
+  <li><strong>Erste Grundlagen in Nahw und Sarf.</strong> Am besten mit jemandem, der korrigieren kann – falsch Eingeübtes wieder abzulegen kostet mehr Zeit, als es gekostet hat, es zu lernen.</li>
+</ul>
+
+<h3>Was realistisch ist</h3>
+
+<p>Niemand kommt nach einem halben Jahr Vorbereitung fließend in Medina an, und das wird auch nicht erwartet. Das Ziel ist ein anderes: nicht bei null anzufangen, wenn ohnehin schon alles neu ist – neues Land, neues Klima, neue Umgebung, Entfernung zur Familie. Wer die Schrift beherrscht und die Grundstrukturen kennt, hat in den ersten Monaten deutlich mehr Kapazität für alles Übrige.</p>
+
+<h2>In Medina selbst</h2>
+
+<p>Der Vorteil des Studienorts ist die Selbstverständlichkeit, mit der die Sprache überall vorkommt. Dieser Vorteil stellt sich allerdings nicht von allein ein. Studenten aus dem DACH-Raum finden schnell andere Deutschsprachige – das ist menschlich nachvollziehbar und für die Sprache das Schlechteste, was passieren kann.</p>
+
+<p>Wer die Umgebung nutzen will, muss sich bewusst dafür entscheiden: Arabisch sprechen, auch wenn es holprig ist, auch wenn es länger dauert, auch wenn Deutsch bequemer wäre.</p>
+`,
   },
   {
-    slug: "bewerbungstipps",
-    title: "Bewerbung an der Islamischen Universität – Was du wissen musst",
-    excerpt: "Alles Wichtige rund um die Bewerbung, Voraussetzungen und den Ablauf für Studieninteressierte aus dem DACH-Raum.",
-    date: "Bald verfügbar",
-    dateISO: "2026-04-01",
-    readTime: "- min",
-    content: "<p>Dieser Artikel wird bald veröffentlicht.</p>",
-    category: "bewerbung",
+    slug: "leben-in-medina",
+    title: "Studieren in Medina – Stipendium, Unterkunft und Alltag",
+    excerpt:
+      "Was die Universität internationalen Studenten konkret stellt, wie sich die Lebenshaltung zusammensetzt und worauf man sich einstellen sollte.",
+    metaDescription:
+      "Leben als Student in Medina: Vollstipendium, Taschengeld, Unterkunft, Mensa und medizinische Versorgung an der Islamischen Universität im Überblick.",
+    date: "7. August 2026",
+    dateISO: "2026-08-07",
+    readTime: "5 min",
+    category: "leben",
+    content: `
+<p class="lead">Über das Studium in Medina kursieren sehr unterschiedliche Vorstellungen – von der romantisierten Version bis zur abschreckenden. Dieser Text hält sich an das, was die Universität internationalen Studenten tatsächlich stellt, und an das, worauf man sich einstellen sollte.</p>
+
+<h2>Was das Stipendium abdeckt</h2>
+
+<p>Alle angenommenen internationalen Studenten erhalten ein Vollstipendium. Das Studium selbst ist vollständig kostenlos. Dazu kommen:</p>
+
+<ul>
+  <li><strong>Monatliches Taschengeld:</strong> 840 SAR zur freien Verfügung</li>
+  <li><strong>Unterkunft:</strong> ein möbliertes Zimmer im Studentenwohnheim, kostenlos</li>
+  <li><strong>Verpflegung:</strong> stark subventionierte Mahlzeiten in der Mensa – Frühstück 1 SAR, Mittagessen 3 SAR, Abendessen 2 SAR</li>
+  <li><strong>Flüge:</strong> Hin- und Rückflugtickets in das Heimatland</li>
+  <li><strong>Medizinische Grundversorgung</strong> während des gesamten Studiums</li>
+  <li><strong>Aufenthaltsgenehmigung:</strong> die Iqama wird von der Universität arrangiert und finanziert und während des Studiums aufrechterhalten</li>
+</ul>
+
+<p>Rechnet man Mensa und Unterkunft gegen das Taschengeld, sind die Grundkosten gedeckt. Das Taschengeld ist kein Gehalt – es reicht für den Alltag, nicht für größere Anschaffungen oder häufige Heimflüge über die gestellten hinaus.</p>
+
+<h2>Die Universität und ihre Fakultäten</h2>
+
+<p>Die Universität wurde 1961 gegründet. Studenten aus über hundert Ländern studieren dort gemeinsam, in unmittelbarer Nähe zur Prophetenmoschee.</p>
+
+<p>Der Schwerpunkt liegt auf den islamischen Wissenschaften, aufgeteilt auf fünf Fakultäten:</p>
+
+<ul>
+  <li><strong>Scharia</strong> – Fiqh, Usul al-Fiqh, Erbrecht, vergleichende Rechtswissenschaft, islamische Wirtschaftslehre</li>
+  <li><strong>Da'wa und Usul ad-Din</strong> – Aqidah, Da'wa, vergleichende Religionswissenschaft, Pädagogik, Psychologie</li>
+  <li><strong>Hadith und Islamische Studien</strong> – Hadith-Wissenschaften, Überlieferungsketten, Hadith-Kritik, Sira, islamische Geschichte</li>
+  <li><strong>Qur'an und Islamische Studien</strong> – Tafsir, Tilawa, Qur'an-Wissenschaften, Tajwid</li>
+  <li><strong>Arabische Sprache</strong> – Nahw, Sarf, Balagha, Literatur, Linguistik</li>
+</ul>
+
+<h2>Worauf man sich einstellen sollte</h2>
+
+<p>Die materielle Seite ist geregelt. Die Anpassung ist es nicht, und darüber wird seltener gesprochen.</p>
+
+<h3>Entfernung</h3>
+
+<p>Die Familie ist mehrere Flugstunden entfernt. Bei Geburten, Krankheiten und Todesfällen ist man nicht da. Das ist der Punkt, der erfahrungsgemäß schwerer wiegt als alles andere – und er lässt sich vorher schlecht abschätzen.</p>
+
+<h3>Sprache und Umfeld</h3>
+
+<p>Der Alltag läuft auf Arabisch. Wer ohne Grundlagen ankommt, verbringt die erste Zeit vor allem damit, sich zurechtzufinden, statt zu studieren.</p>
+
+<h3>Eigenverantwortung</h3>
+
+<p>Es gibt keine Struktur, die einen trägt, wenn die eigene Motivation nachlässt. Das Studium ist eine Möglichkeit zum Erwerb von Wissen – wie dieses Wissen verstanden, umgesetzt und weitergegeben wird, liegt in der Verantwortung der jeweiligen Person.</p>
+
+<h2>Eine Einordnung zum Schluss</h2>
+
+<p>Nicht jede Aussage, jedes Verhalten oder jede Position von Personen, die in Medina studieren oder studiert haben, repräsentiert automatisch das, was dort gelehrt wird. Der Studienort verleiht keine Autorität, und ein Abschluss ersetzt weder Verständnis noch Charakter.</p>
+
+<p>Wer den Weg erwägt, sollte ihn wegen des Wissens gehen – nicht wegen des Titels, der am Ende steht.</p>
+`,
   },
 ];

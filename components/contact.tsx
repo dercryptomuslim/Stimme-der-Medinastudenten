@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
+import { trackFormError, trackFormSubmit } from "@/lib/analytics";
 import {
   Dialog,
   DialogContent,
@@ -42,12 +43,14 @@ export function Contact() {
       });
 
       if (response.ok) {
+        trackFormSubmit({ formName: "kontakt", topic: "kontaktanfrage" });
         setPopupVariant("success");
         setPopupTitle("Gesendet!");
         setPopupMessage("Danke für deine Nachricht! Wir melden uns bei dir.");
         setPopupOpen(true);
         (e.target as HTMLFormElement).reset();
       } else {
+        trackFormError({ formName: "kontakt", reason: `http_${response.status}` });
         setPopupVariant("error");
         setPopupTitle("Fehler beim Senden");
         setPopupMessage("Bitte versuche es später erneut.");
@@ -55,6 +58,7 @@ export function Contact() {
       }
     } catch (error) {
       console.error("Submission error:", error);
+      trackFormError({ formName: "kontakt", reason: "network" });
       setPopupVariant("error");
       setPopupTitle("Unerwarteter Fehler");
       setPopupMessage("Bitte versuche es später erneut.");

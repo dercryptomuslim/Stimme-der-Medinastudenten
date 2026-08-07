@@ -45,14 +45,15 @@ export function trackFormSubmit(formData: {
   });
 }
 
-// Track funnel completion
-export function trackFunnelComplete(funnelData: {
-  outcome: string;
-  stepPath: string;
+// Track a failed submission separately – sonst sieht die Erfolgsquote
+// besser aus als sie ist.
+export function trackFormError(formData: {
+  formName: string;
+  reason: string;
 }) {
-  trackEvent("funnel_complete", {
-    funnel_outcome: funnelData.outcome,
-    funnel_path: funnelData.stepPath,
+  trackEvent("form_error", {
+    form_name: formData.formName,
+    error_reason: formData.reason,
   });
 }
 
@@ -70,24 +71,6 @@ export function trackCtaClick(ctaData: {
     button_text: ctaData.buttonText,
     click_location: ctaData.location,
     destination: ctaData.destination || "",
-  });
-}
-
-// Track booking/calendar button clicks
-export function trackBookingClick(bookingData: {
-  source: string;
-  bookingType?: string;
-}) {
-  trackEvent("booking_click", {
-    booking_source: bookingData.source,
-    booking_type: bookingData.bookingType || "consultation",
-  });
-}
-
-// Track phone number clicks
-export function trackPhoneClick(phone: string) {
-  trackEvent("phone_click", {
-    phone_number: phone,
   });
 }
 

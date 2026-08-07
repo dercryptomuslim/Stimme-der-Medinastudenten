@@ -104,7 +104,24 @@ Artikel liegen als Objekte in `lib/blog-data.ts`, das Feld `content` enthält
 HTML. Neue Artikel dort ergänzen — Übersicht, Detailseite, Sitemap und die
 statische Generierung ziehen automatisch nach.
 
-Die drei vorhandenen Einträge sind Platzhalter ohne Inhalt.
+Verfügbare Auszeichnungen im `content`: `h2`, `h3`, `p`, `p.lead` für den
+Vorspann, `ul`/`li`, `strong`, `em`, `a`, `figure`/`figcaption`, `img`. Die
+Formatierung steckt in `app/blog/[slug]/page.tsx`.
+
+Die drei vorhandenen Artikel sind bewusst faktisch gehalten und stützen sich
+nur auf Angaben, die auch auf der Startseite stehen. Erfahrungsberichte aus
+erster Hand fehlen bislang — die sollten von Studenten selbst kommen.
+
+Für Artikelbilder ist ein Platzhalter „Bild folgt" hinterlegt. Sobald Bilder
+vorliegen, das Feld `image` befüllen und die Platzhalter in
+`app/blog/blog-client.tsx` ersetzen.
+
+### Analytics-Events
+
+Erfasst werden `form_submit`, `form_error`, `cta_click`,
+`external_link_click` (u. a. der Wechsel zum Bewerbungsportal Minhati) und
+`scroll_depth`. Alle laufen über `lib/analytics.ts` und feuern nur nach
+erteilter Einwilligung.
 
 ### Analytics und Einwilligung
 
@@ -153,8 +170,10 @@ die echte Domain um.
 - [ ] **Datenschutzerklärung prüfen lassen.** Bearbeitete e-recht24-Vorlage.
       Tatsächlich eingesetzt werden: Vercel, Google Analytics, Google Sheets,
       Resend, Google Fonts lokal.
-- [ ] **Blogartikel schreiben.** Drei leere Platzhalter stehen indexierbar in
-      der Sitemap.
+- [ ] **Erfahrungsberichte ergänzen.** Die drei vorhandenen Artikel sind
+      faktische Übersichten. Was fehlt, sind Texte von Studenten über den
+      tatsächlichen Alltag.
+- [ ] **Artikelbilder** — aktuell überall „Bild folgt".
 - [ ] **Instagram-Link im Footer** zeigt auf `#`.
 - [ ] **Kennzahlen belegen.** „+50 Studierende aus DACH" in
       `components/stats-section.tsx` sollte belastbar sein.
