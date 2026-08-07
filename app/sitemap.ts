@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
 import { blogPostsDe } from "@/lib/blog-data";
+import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.stimme-medinastudenten.de";
+  const baseUrl = SITE_URL;
   const now = new Date();
 
   const staticRoutes = [

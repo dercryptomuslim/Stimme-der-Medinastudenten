@@ -5,10 +5,14 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const CONSENT_KEY = "cookie-consent";
-const GA_MEASUREMENT_ID = "G-5H0KZ4V7QH";
+
+// Ohne gesetzte Property wird kein Analytics geladen – und damit auch keine
+// Einwilligung abgefragt. In Vercel als NEXT_PUBLIC_GA_MEASUREMENT_ID setzen.
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 // Lädt Google Analytics nach – wird erst nach erteilter Einwilligung aufgerufen.
 function enableAnalytics() {
+  if (!GA_MEASUREMENT_ID) return;
   if (typeof window === "undefined" || typeof window.gtag === "function") return;
 
   window.dataLayer = window.dataLayer || [];
@@ -33,6 +37,9 @@ export function CookieConsent() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    // Kein Tracking konfiguriert -> keine einwilligungspflichtigen Cookies -> kein Banner.
+    if (!GA_MEASUREMENT_ID) return;
+
     // Check if user has already made a choice
     const savedConsent = localStorage.getItem(CONSENT_KEY);
     if (savedConsent === "accepted") {

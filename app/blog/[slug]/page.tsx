@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, Clock, ArrowRight } from "lucide-react";
 import { Metadata } from "next";
 import Script from "next/script";
+import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/site";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -30,21 +31,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const defaultKeywords = ["Islamische Universität Medina", "Stimme der Medinastudenten", "Studium Medina"];
   const description = post.metaDescription ?? post.excerpt;
-  const baseUrl = "https://www.stimme-medinastudenten.de";
 
   return {
     title: `${post.title} | Stimme der Medinastudenten`,
     description,
     keywords: defaultKeywords,
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
     openGraph: {
       title: post.title,
       description,
-      url: `${baseUrl}/blog/${post.slug}`,
-      siteName: "Stimme der Medinastudenten",
+      url: absoluteUrl(`/blog/${post.slug}`),
+      siteName: SITE_NAME,
       locale: "de_DE",
       type: "article",
       publishedTime: `${post.dateISO}T12:00:00+03:00`,
-      authors: ["Stimme der Medinastudenten"],
+      authors: [SITE_NAME],
     },
     twitter: {
       card: "summary_large_image",
@@ -66,16 +69,16 @@ function generateArticleJsonLd(post: BlogPost) {
     "dateModified": iso,
     "author": {
       "@type": "Organization",
-      "name": "Stimme der Medinastudenten",
-      "url": "https://www.stimme-medinastudenten.de"
+      "name": SITE_NAME,
+      "url": SITE_URL
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Stimme der Medinastudenten e.V.",
+      "name": SITE_NAME,
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://www.stimme-medinastudenten.de/blog/${post.slug}`
+      "@id": absoluteUrl(`/blog/${post.slug}`)
     }
   };
 }

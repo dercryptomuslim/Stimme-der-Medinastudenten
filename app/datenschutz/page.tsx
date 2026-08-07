@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Metadata } from "next";
+import { absoluteUrl, SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Datenschutzerklärung | Stimme der Medinastudenten",
@@ -11,8 +12,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Datenschutzerklärung | Stimme der Medinastudenten",
     description: "Informationen zum Datenschutz und zur Verarbeitung personenbezogener Daten.",
-    url: "https://www.stimme-medinastudenten.de/datenschutz",
-    siteName: "Stimme der Medinastudenten",
+    url: absoluteUrl("/datenschutz"),
+    siteName: SITE_NAME,
     locale: "de_DE",
     type: "website",
   },
@@ -88,15 +89,18 @@ export default function PrivacyPage() {
               Wir hosten die Inhalte unserer Website bei folgendem Anbieter:
             </p>
 
-            <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">Alfahosting</h3>
+            <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">Vercel</h3>
             <p className="text-slate-600 mb-4">
-              Anbieter ist die Alfahosting GmbH, Ankerstraße 3b, 06108 Halle (Saale) (nachfolgend Alfahosting) Wenn Sie unsere Website besuchen, erfasst Alfahosting verschiedene Logfiles inklusive Ihrer IP-Adressen.
+              Anbieter ist die Vercel Inc., 440 N Barranca Avenue #4133, Covina, CA 91723, USA (nachfolgend Vercel). Wenn Sie unsere Website besuchen, erfasst Vercel verschiedene Logfiles inklusive Ihrer IP-Adressen.
             </p>
             <p className="text-slate-600 mb-4">
-              Details entnehmen Sie der Datenschutzerklärung von Alfahosting: <a href="https://alfahosting.de/datenschutz/" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">https://alfahosting.de/datenschutz/</a>.
+              Details entnehmen Sie der Datenschutzerklärung von Vercel: <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">https://vercel.com/legal/privacy-policy</a>.
             </p>
             <p className="text-slate-600 mb-4">
-              Die Verwendung von Alfahosting erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung unserer Website. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG, soweit die Einwilligung die Speicherung von Cookies oder den Zugriff auf Informationen im Endgerät des Nutzers (z. B. für Device-Fingerprinting) im Sinne des TDDDG umfasst. Die Einwilligung ist jederzeit widerrufbar.
+              Die Verwendung von Vercel erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung unserer Website. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG, soweit die Einwilligung die Speicherung von Cookies oder den Zugriff auf Informationen im Endgerät des Nutzers (z. B. für Device-Fingerprinting) im Sinne des TDDDG umfasst. Die Einwilligung ist jederzeit widerrufbar.
+            </p>
+            <p className="text-slate-600 mb-4">
+              Die Datenübermittlung in die USA wird auf die EU-Standardvertragsklauseln gestützt. Vercel ist zudem unter dem EU-US Data Privacy Framework (DPF) zertifiziert.
             </p>
 
             <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">3. Allgemeine Hinweise und Pflichtinformationen</h2>
@@ -226,86 +230,57 @@ export default function PrivacyPage() {
               Welche Cookies und Dienste auf dieser Website eingesetzt werden, können Sie dieser Datenschutzerklärung entnehmen.
             </p>
 
-            {/* Restlicher Inhalt folgt den gleichen Mustern für Social Media, Newsletter, Plugins etc. */}
-            <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">5. Soziale Medien</h2>
-            <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">Social-Media-Elemente mit Shariff</h3>
+            <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">Kontaktformular</h3>
             <p className="text-slate-600 mb-4">
-              Auf dieser Website werden Elemente von sozialen Medien verwendet (z. B. Facebook, X, Instagram, Pinterest, XING, LinkedIn, Tumblr).
+              Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
             </p>
             <p className="text-slate-600 mb-4">
-              Die Social-Media- Elemente können Sie in der Regel anhand der jeweiligen Social-Media-Logos erkennen. Um den Datenschutz auf dieser Website zu gewährleisten, verwenden wir diese Elemente nur zusammen mit der sogenannten „Shariff“-Lösung. Diese Anwendung verhindert, dass die auf dieser Website integrierten Social- Media-Elemente Ihre personenbezogenen Daten schon beim ersten Betreten der Seite an den jeweiligen Anbieter übertragen.
+              Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO) oder auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), sofern diese abgefragt wurde; die Einwilligung ist jederzeit widerrufbar.
             </p>
             <p className="text-slate-600 mb-4">
-              Erst wenn Sie das jeweilige Social-Media-Element durch Anklicken der zugehörigen Schaltfläche aktivieren, wird eine direkte Verbindung zum Server des Anbieters hergestellt (Einwilligung). Sobald Sie das Social-Media-Element aktivieren, erhält der jeweilige Anbieter die Information, dass Sie mit Ihrer IP-Adresse diese Website besucht haben. Wenn Sie gleichzeitig in Ihrem jeweiligen Social-Media-Account (z. B. Facebook) eingeloggt sind, kann der jeweilige Anbieter den Besuch dieser Website Ihrem Benutzerkonto zuordnen.
-            </p>
-            <p className="text-slate-600 mb-4">
-              Das Aktivieren des Plugins stellt eine Einwilligung im Sinne des Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG dar. Diese Einwilligung können Sie jederzeit mit Wirkung für die Zukunft widerrufen.
-            </p>
-            <p className="text-slate-600 mb-4">
-              Der Einsatz des Dienstes erfolgt, um die gesetzlich vorgeschriebenen Einwilligungen für den Einsatz bestimmter Technologien einzuholen. Rechtsgrundlage hierfür ist Art. 6 Abs. 1 lit. c DSGVO.
+              Die über das Kontaktformular übermittelten Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt. Zwingende gesetzliche Bestimmungen – insbesondere Aufbewahrungsfristen – bleiben unberührt.
             </p>
 
-            <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">Instagram</h3>
+            <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">Google Sheets</h3>
             <p className="text-slate-600 mb-4">
-              Auf dieser Website sind Funktionen des Dienstes Instagram eingebunden. Diese Funktionen werden angeboten durch die Meta Platforms Ireland Limited, Merrion Road, Dublin 4, D04 X2K5, Irland.
+              Die über das Kontaktformular übermittelten Angaben werden in einer Tabelle bei Google Sheets gespeichert. Anbieter ist die Google Ireland Limited („Google“), Gordon House, Barrow Street, Dublin 4, Irland. Google verarbeitet die Daten ausschließlich weisungsgebunden für uns; wir haben mit Google einen Vertrag über Auftragsverarbeitung (AVV) geschlossen.
             </p>
             <p className="text-slate-600 mb-4">
-              Wenn das Social-Media-Element aktiv ist, wird eine direkte Verbindung zwischen Ihrem Endgerät und dem Instagram-Server hergestellt. Instagram erhält dadurch Informationen über den Besuch dieser Website durch Sie.
-            </p>
-            <p className="text-slate-600 mb-4">
-              Wenn Sie in Ihrem Instagram-Account eingeloggt sind, können Sie durch Anklicken des Instagram-Buttons die Inhalte dieser Website mit Ihrem Instagram-Profil verlinken. Dadurch kann Instagram den Besuch dieser Website Ihrem Benutzerkonto zuordnen. Wir weisen darauf hin, dass wir als Anbieter der Seiten keine Kenntnis vom Inhalt der übermittelten Daten sowie deren Nutzung durch Instagram erhalten.
-            </p>
-            <p className="text-slate-600 mb-4">
-              Die Nutzung dieses Dienstes erfolgt auf Grundlage Ihrer Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Die Einwilligung ist jederzeit widerrufbar.
-            </p>
-            <p className="text-slate-600 mb-4">
-              Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von Instagram: <a href="https://privacycenter.instagram.com/policy/" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">https://privacycenter.instagram.com/policy/</a>.
+              Weitere Informationen finden Sie in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">https://policies.google.com/privacy?hl=de</a>.
             </p>
 
-            <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">6. Newsletter</h2>
-            <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">Newsletterdaten</h3>
+            <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">Resend</h3>
             <p className="text-slate-600 mb-4">
-              Wenn Sie den auf der Website angebotenen Newsletter beziehen möchten, benötigen wir von Ihnen eine E-Mail-Adresse sowie Informationen, welche uns die Überprüfung gestatten, dass Sie der Inhaber der angegebenen E-Mail-Adresse sind und mit dem Empfang des Newsletters einverstanden sind. Weitere Daten werden nicht bzw. nur auf freiwilliger Basis erhoben. Diese Daten verwenden wir ausschließlich für den Versand der angeforderten Informationen und geben diese nicht an Dritte weiter.
+              Für den Versand der Benachrichtigung über eine neue Anfrage an unser eigenes Postfach nutzen wir den E-Mail-Dienst Resend. Anbieter ist die Resend, Inc., 2261 Market Street #5039, San Francisco, CA 94114, USA. Dabei werden die von Ihnen im Kontaktformular angegebenen Daten an Resend übermittelt und dort verarbeitet.
             </p>
             <p className="text-slate-600 mb-4">
-              Die Verarbeitung der in das Newsletteranmeldeformular eingegebenen Daten erfolgt ausschließlich auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Die erteilte Einwilligung zur Speicherung der Daten, der E-Mail-Adresse sowie deren Nutzung zum Versand des Newsletters können Sie jederzeit widerrufen, etwa über den „Austragen“-Link im Newsletter. Die Rechtmäßigkeit der bereits erfolgten Datenverarbeitungsvorgänge bleibt vom Widerruf unberührt.
-            </p>
-
-            <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">7. Plugins und Tools</h2>
-            
-            <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">YouTube</h3>
-            <p className="text-slate-600 mb-4">
-              Diese Website bindet Videos der Website YouTube ein. Betreiber der Website ist die Google Ireland Limited („Google“), Gordon House, Barrow Street, Dublin 4, Irland.
-            </p>
-            <p className="text-slate-600 mb-4">
-              Die Nutzung von YouTube erfolgt im Interesse einer ansprechenden Darstellung unserer Online-Angebote. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar.
-            </p>
-            <p className="text-slate-600 mb-4">
-              Weitere Informationen zum Umgang mit Nutzerdaten finden Sie in der Datenschutzerklärung von YouTube unter: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">https://policies.google.com/privacy?hl=de</a>.
+              Die Nutzung erfolgt auf Grundlage unseres berechtigten Interesses an einer zuverlässigen Bearbeitung eingehender Anfragen (Art. 6 Abs. 1 lit. f DSGVO). Die Datenübermittlung in die USA wird auf die EU-Standardvertragsklauseln gestützt. Weitere Informationen: <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">https://resend.com/legal/privacy-policy</a>.
             </p>
 
-            <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">Google Fonts</h3>
+            <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">5. Analyse-Tools</h2>
+
+            <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">Google Analytics</h3>
             <p className="text-slate-600 mb-4">
-              Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten so genannte Google Fonts, die von Google bereitgestellt werden.
+              Diese Website nutzt Funktionen des Webanalysedienstes Google Analytics. Anbieter ist die Google Ireland Limited („Google“), Gordon House, Barrow Street, Dublin 4, Irland.
+            </p>
+            <p className="text-slate-600 mb-4">
+              Google Analytics ermöglicht es uns, das Verhalten der Websitebesucher zu erfassen und auszuwerten. Dabei werden verschiedene Nutzungsdaten wie aufgerufene Seiten, Verweildauer, ungefährer Standort und die Herkunft der Zugriffe erhoben. Die IP-Adresse wird gekürzt verarbeitet (IP-Anonymisierung).
+            </p>
+            <p className="text-slate-600 mb-4">
+              Die Speicherung von Google-Analytics-Cookies und der Einsatz dieses Analyse-Tools erfolgen ausschließlich auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG). Ohne Ihre Einwilligung wird Google Analytics nicht geladen. Ihre Einwilligung können Sie jederzeit mit Wirkung für die Zukunft widerrufen, indem Sie die im Browser für diese Website gespeicherten Daten löschen und die Auswahl im Cookie-Hinweis erneut treffen.
+            </p>
+            <p className="text-slate-600 mb-4">
+              Die Datenübermittlung in die USA wird auf die EU-Standardvertragsklauseln gestützt. Wir haben mit Google einen Vertrag über Auftragsverarbeitung (AVV) geschlossen. Weitere Informationen zum Umgang mit Nutzerdaten bei Google Analytics finden Sie in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">https://policies.google.com/privacy?hl=de</a>.
+            </p>
+
+            <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">6. Plugins und Tools</h2>
+
+            <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">Google Fonts (lokales Hosting)</h3>
+            <p className="text-slate-600 mb-4">
+              Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten so genannte Google Fonts, die von Google bereitgestellt werden. Die Google Fonts sind lokal installiert. Eine Verbindung zu Servern von Google findet dabei nicht statt.
             </p>
             <p className="text-slate-600 mb-4">
               Weitere Informationen zu Google Fonts finden Sie unter <a href="https://developers.google.com/fonts/faq" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">https://developers.google.com/fonts/faq</a> und in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">https://policies.google.com/privacy?hl=de</a>.
-            </p>
-
-            <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">Google Maps</h3>
-            <p className="text-slate-600 mb-4">
-              Diese Seite nutzt den Kartendienst Google Maps. Anbieter ist die Google Ireland Limited („Google“), Gordon House, Barrow Street, Dublin 4, Irland.
-            </p>
-            <p className="text-slate-600 mb-4">
-              Mehr Informationen zum Umgang mit Nutzerdaten finden Sie in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">https://policies.google.com/privacy?hl=de</a>.
-            </p>
-
-            <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">Google reCAPTCHA</h3>
-            <p className="text-slate-600 mb-4">
-              Wir nutzen „Google reCAPTCHA“ (im Folgenden „reCAPTCHA“) auf dieser Website. Anbieter ist die Google Ireland Limited („Google“), Gordon House, Barrow Street, Dublin 4, Irland.
-            </p>
-            <p className="text-slate-600 mb-4">
-              Weitere Informationen zu Google reCAPTCHA entnehmen Sie den Google-Datenschutzbestimmungen und den Google Nutzungsbedingungen unter folgenden Links: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">https://policies.google.com/privacy?hl=de</a> und <a href="https://policies.google.com/terms?hl=de" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">https://policies.google.com/terms?hl=de</a>.
             </p>
 
             <p className="text-slate-500 text-sm mt-12 border-t border-slate-200 pt-4">
@@ -320,4 +295,3 @@ export default function PrivacyPage() {
     </main>
   );
 }
-

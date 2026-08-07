@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import { AnalyticsProvider } from "@/components/analytics-provider";
 import { CookieConsent } from "@/components/cookie-consent";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
   title: "Stimme der Medinastudenten | Studenten der Islamischen Universität Medina",
   description:
     "Wir sind Studenten und Absolventen der Islamischen Universität in Medina aus dem deutschsprachigen Raum – Deutschland, Österreich und der Schweiz.",
-  metadataBase: new URL("https://www.stimme-medinastudenten.de"),
+  metadataBase: new URL(SITE_URL),
   alternates: {
     canonical: "/",
   },
@@ -44,8 +45,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "de_DE",
-    url: "https://www.stimme-medinastudenten.de",
-    siteName: "Stimme der Medinastudenten",
+    url: SITE_URL,
+    siteName: SITE_NAME,
     title: "Stimme der Medinastudenten | Islamische Universität Medina",
     description:
       "Wir sind Studenten und Absolventen der Islamischen Universität in Medina aus dem deutschsprachigen Raum – Deutschland, Österreich und der Schweiz.",
@@ -61,8 +62,8 @@ export const metadata: Metadata = {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
-  "name": "Stimme der Medinastudenten",
-  "url": "https://www.stimme-medinastudenten.de",
+  "name": SITE_NAME,
+  "url": SITE_URL,
   "description": "Studenten und Absolventen der Islamischen Universität in Medina aus dem deutschsprachigen Raum (DACH).",
   "address": {
     "@type": "PostalAddress",

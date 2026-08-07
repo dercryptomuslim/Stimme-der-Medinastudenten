@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Metadata } from "next";
+import { absoluteUrl, SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Impressum | Stimme der Medinastudenten e.V.",
@@ -11,8 +12,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Impressum | Stimme der Medinastudenten e.V.",
     description: "Rechtliche Angaben und Impressum von Stimme der Medinastudenten e.V., Medina, Saudi-Arabien.",
-    url: "https://www.stimme-medinastudenten.de/impressum",
-    siteName: "Stimme der Medinastudenten",
+    url: absoluteUrl("/impressum"),
+    siteName: SITE_NAME,
     locale: "de_DE",
     type: "website",
   },
