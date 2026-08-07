@@ -120,10 +120,12 @@ export default function PrivacyPage() {
             <p className="text-slate-600 mb-4">
               Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:
             </p>
+            {/* TODO vor dem Go-Live: identisch zum Impressum ausfüllen. */}
             <p className="text-slate-600 mb-4">
-              Stimme der Medinastudenten e.V.<br />
-              Medina<br />
-              Saudi-Arabien
+              [VOLLSTÄNDIGER VOR- UND NACHNAME]<br />
+              [STRASSE UND HAUSNUMMER]<br />
+              [POSTLEITZAHL UND ORT]<br />
+              [LAND]
             </p>
             <p className="text-slate-600 mb-4">
               E-Mail: kontakt@stimme-medinastudenten.de

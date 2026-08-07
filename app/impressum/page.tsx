@@ -4,14 +4,14 @@ import { Metadata } from "next";
 import { absoluteUrl, SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Impressum | Stimme der Medinastudenten e.V.",
-  description: "Rechtliche Angaben und Impressum von Stimme der Medinastudenten e.V., Medina, Saudi-Arabien. Kontaktdaten und Angaben gemäß § 5 TMG.",
+  title: "Impressum | Stimme der Medinastudenten",
+  description: "Rechtliche Angaben und Impressum von Stimme der Medinastudenten. Kontaktdaten und Angaben gemäß § 5 TMG.",
   alternates: {
     canonical: "/impressum",
   },
   openGraph: {
-    title: "Impressum | Stimme der Medinastudenten e.V.",
-    description: "Rechtliche Angaben und Impressum von Stimme der Medinastudenten e.V., Medina, Saudi-Arabien.",
+    title: "Impressum | Stimme der Medinastudenten",
+    description: "Rechtliche Angaben und Impressum von Stimme der Medinastudenten.",
     url: absoluteUrl("/impressum"),
     siteName: SITE_NAME,
     locale: "de_DE",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
     title: "Impressum | Stimme der Medinastudenten",
-    description: "Rechtliche Angaben und Impressum von Stimme der Medinastudenten e.V.",
+    description: "Rechtliche Angaben und Impressum von Stimme der Medinastudenten.",
   },
   robots: {
     index: true,
@@ -45,16 +45,37 @@ export default function ImpressumPage() {
         <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
           <div className="prose prose-slate lg:prose-lg mx-auto">
             
+            {/*
+              TODO vor dem Go-Live: Platzhalter durch die echten Daten ersetzen.
+              § 5 TMG verlangt eine ladungsfähige Anschrift – Postfach genügt nicht.
+              Ohne diese Angaben darf die Seite nicht öffentlich erreichbar sein.
+            */}
+            <div className="mb-8 rounded-lg border-2 border-dashed border-red-300 bg-red-50 p-4 text-sm text-red-800">
+              <strong>Hinweis für die Redaktion:</strong> Dieses Impressum enthält noch
+              Platzhalter. Vor der Veröffentlichung müssen Name und ladungsfähige
+              Anschrift eingetragen und dieser Hinweis entfernt werden.
+            </div>
+
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Angaben gemäß § 5 TMG</h2>
             <p className="text-slate-600 mb-8">
-              Stimme der Medinastudenten e.V.<br />
-              Medina<br />
-              Saudi-Arabien
+              [VOLLSTÄNDIGER VOR- UND NACHNAME]<br />
+              [STRASSE UND HAUSNUMMER]<br />
+              [POSTLEITZAHL UND ORT]<br />
+              [LAND]
             </p>
 
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Kontakt</h2>
             <p className="text-slate-600 mb-8">
               E-Mail: <a href="mailto:kontakt@stimme-medinastudenten.de" className="text-navy hover:text-gold-dark hover:underline">kontakt@stimme-medinastudenten.de</a>
+            </p>
+
+            <h2 className="text-2xl font-bold text-slate-900 mb-4">Redaktionell verantwortlich</h2>
+            <p className="text-slate-600 mb-8">
+              Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:<br />
+              [VOLLSTÄNDIGER VOR- UND NACHNAME]<br />
+              [STRASSE UND HAUSNUMMER]<br />
+              [POSTLEITZAHL UND ORT]<br />
+              [LAND]
             </p>
 
             <h2 className="text-2xl font-bold text-slate-900 mb-4">EU-Streitschlichtung</h2>
