@@ -42,6 +42,7 @@ Settings → Environment Variables dieselben Werte hinterlegen.
 | Variable | Pflicht | Wirkung wenn leer |
 |---|---|---|
 | `NEXT_PUBLIC_SITE_URL` | empfohlen | Fällt auf die `.vercel.app`-Adresse zurück |
+| `NEXT_PUBLIC_ALLOW_INDEXING` | zum Launch | Seite bleibt auf `noindex`, robots.txt sperrt alles |
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | nein | Kein Analytics **und** kein Cookie-Banner |
 | `GOOGLE_SHEET_ID` | ja | Kontaktformular antwortet mit HTTP 500 |
 | `GOOGLE_SERVICE_ACCOUNT_EMAIL` | ja | dito |
@@ -118,7 +119,24 @@ und lokal ausgeliefert. Es besteht zur Laufzeit keine Verbindung zu Google.
 ## Deployment
 
 Vercel-Projekt `stimme-der-medinastudenten`. Push auf `main` löst ein
-Production-Deployment aus.
+Production-Deployment aus. Erreichbar unter
+https://stimme-der-medinastudenten.vercel.app
+
+### Indexierung
+
+Standardmäßig ist die Seite für Suchmaschinen gesperrt: `robots.txt` liefert
+`Disallow: /` und jede Seite trägt `noindex, nofollow`. Das gilt bewusst auch
+für Impressum und Datenschutz, die sonst eine eigene Regel setzen.
+
+Zum Launch in Vercel setzen:
+
+```
+NEXT_PUBLIC_SITE_URL=https://<eigene-domain>
+NEXT_PUBLIC_ALLOW_INDEXING=true
+```
+
+Damit schalten Canonicals, Sitemap, `robots.txt` und Open Graph gemeinsam auf
+die echte Domain um.
 
 ## Offene Punkte vor dem Go-Live
 

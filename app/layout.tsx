@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import { AnalyticsProvider } from "@/components/analytics-provider";
 import { CookieConsent } from "@/components/cookie-consent";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { IS_INDEXABLE, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -33,6 +33,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  // Gilt für alle Seiten, die nichts Eigenes setzen.
+  robots: IS_INDEXABLE ? { index: true, follow: true } : { index: false, follow: false },
   keywords: [
     "Islamische Universität Medina",
     "Studium Medina",

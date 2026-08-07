@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Metadata } from "next";
-import { absoluteUrl, SITE_NAME } from "@/lib/site";
+import { absoluteUrl, IS_INDEXABLE, SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Datenschutzerklärung | Stimme der Medinastudenten",
@@ -22,10 +22,7 @@ export const metadata: Metadata = {
     title: "Datenschutzerklärung | Stimme der Medinastudenten",
   description: "Informationen zum Datenschutz und zur Verarbeitung personenbezogener Daten.",
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: IS_INDEXABLE ? { index: true, follow: true } : { index: false, follow: false },
 };
 
 export default function PrivacyPage() {

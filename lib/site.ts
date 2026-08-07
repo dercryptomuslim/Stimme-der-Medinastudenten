@@ -17,6 +17,17 @@ export const SITE_URL = (
 
 export const SITE_NAME = "Stimme der Medinastudenten";
 
+/**
+ * Steuert, ob Suchmaschinen die Seite aufnehmen dürfen.
+ *
+ * Standard ist bewusst "nein": Solange die Seite nur unter der
+ * .vercel.app-Adresse läuft und Impressum wie Blog noch Platzhalter
+ * enthalten, soll nichts davon im Index landen.
+ *
+ * Zum Launch NEXT_PUBLIC_ALLOW_INDEXING=true setzen.
+ */
+export const IS_INDEXABLE = process.env.NEXT_PUBLIC_ALLOW_INDEXING === "true";
+
 export function absoluteUrl(path = ""): string {
   return `${SITE_URL}${path}`;
 }
