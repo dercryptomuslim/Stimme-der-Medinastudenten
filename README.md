@@ -146,6 +146,17 @@ existiert weder das Script noch `window.gtag`.
 Die Schriften kommen über `next/font` und werden zur Buildzeit heruntergeladen
 und lokal ausgeliefert. Es besteht zur Laufzeit keine Verbindung zu Google.
 
+## Interner Bereich
+
+Geplant, aber noch nicht gebaut: ein geschützter Mitgliederbereich mit
+praktischen Informationen zum Leben in Medina. Architektur, Datenmodell und
+Rechtekonzept stehen in [docs/intranet.md](docs/intranet.md), die
+anwendungsfertige Migration in `supabase/migrations/`.
+
+Es existiert noch kein Backend. `/intern` liefert 404, solange
+`NEXT_PUBLIC_INTERN_VORSCHAU` nicht auf `true` steht — dann zeigt die Route
+eine reine Strukturvorschau ohne Anmeldung und ohne Inhalte.
+
 ## Deployment
 
 Vercel-Projekt `stimme-der-medinastudenten`. Push auf `main` löst ein
