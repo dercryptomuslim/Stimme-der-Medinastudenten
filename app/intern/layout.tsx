@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Metadata } from "next";
-import { KeyRound, LogOut, ShieldCheck } from "lucide-react";
+import { KeyRound, LogOut, PenSquare, ShieldCheck } from "lucide-react";
 import { Footer } from "@/components/footer";
 import { INTERN_ENABLED } from "@/lib/supabase/config";
-import { aktuellesProfil, istAdmin } from "@/lib/supabase/mitglied";
+import { aktuellesProfil, darfSchreiben, istAdmin } from "@/lib/supabase/mitglied";
 import { abmelden } from "@/app/login/actions";
 
 export const metadata: Metadata = {
@@ -34,6 +34,15 @@ export default async function InternLayout({
           </Link>
 
           <div className="flex items-center gap-4">
+            {darfSchreiben(profil) && (
+              <Link
+                href="/intern/redaktion"
+                className="flex items-center gap-1.5 text-sm font-medium text-slate-600 transition-colors hover:text-navy"
+              >
+                <PenSquare className="h-4 w-4" />
+                <span className="hidden sm:inline">Redaktion</span>
+              </Link>
+            )}
             {istAdmin(profil) && (
               <Link
                 href="/intern/verwaltung"

@@ -43,3 +43,11 @@ export function istAdmin(profil: Profil | null): boolean {
 export function darfLesen(profil: Profil | null): boolean {
   return profil?.status === "freigegeben";
 }
+
+/** Darf Beiträge anlegen und bearbeiten (Redakteure und Admins). */
+export function darfSchreiben(profil: Profil | null): boolean {
+  return (
+    profil?.status === "freigegeben" &&
+    (profil.rolle === "redakteur" || profil.rolle === "admin")
+  );
+}

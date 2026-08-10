@@ -1,47 +1,33 @@
-import { notFound, redirect } from "next/navigation";
+import { redirect } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Hash } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { aktuellesProfil, darfLesen } from "@/lib/supabase/mitglied";
-import { type Beitrag, type Rubrik } from "@/lib/intern";
-import { RubrikIcon } from "@/components/rubrik-icon";
+import { tagLabel, type Beitrag } from "@/lib/intern";
 import { TagListe } from "@/components/tag-liste";
 
 export const dynamic = "force-dynamic";
 
-export default async function RubrikPage({
+export default async function ThemaPage({
   params,
 }: {
-  params: Promise<{ rubrik: string }>;
+  params: Promise<{ tag: string }>;
 }) {
   const profil = await aktuellesProfil();
   if (!darfLesen(profil)) {
     redirect("/intern/warteliste");
   }
 
-  const { rubrik: slug } = await params;
+  const { tag } = await params;
   const supabase = await createClient();
 
-  const { data: rubrikData } = await supabase
-    .from("rubrik")
-    .select("slug, titel, beschreibung, icon, reihenfolge")
-    .eq("slug", slug)
-    .maybeSingle();
-
-  if (!rubrikData) {
-    notFound();
-  }
-
-  const rubrik = rubrikData as Rubrik;
-
-  // RLS filtert unveröffentlichte Beiträge für Mitglieder bereits heraus;
-  // Redakteure sehen sie hier mit.
+  // Alle sichtbaren Beiträge mit diesem Tag, rubrikübergreifend.
   const { data } = await supabase
     .from("beitrag")
     .select(
       "id, rubrik_slug, slug, titel, anriss, inhalt, veroeffentlicht, tags, geaendert_am"
     )
-    .eq("rubrik_slug", slug)
+    .contains("tags", [tag])
     .order("geaendert_am", { ascending: false });
 
   const beitraege = (data ?? []) as Beitrag[];
@@ -56,24 +42,19 @@ export default async function RubrikPage({
           <ArrowLeft className="mr-2 h-4 w-4" /> Zurück zur Übersicht
         </Link>
 
-        <div className="mb-10 flex items-start gap-4">
+        <div className="mb-10 flex items-center gap-3">
           <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-navy/5">
-            <RubrikIcon name={rubrik.icon} className="h-6 w-6 text-gold" />
+            <Hash className="h-6 w-6 text-gold" />
           </div>
-          <div>
-            <h1 className="font-serif text-3xl font-bold text-slate-900 md:text-4xl">
-              {rubrik.titel}
-            </h1>
-            {rubrik.beschreibung && (
-              <p className="mt-2 text-slate-600">{rubrik.beschreibung}</p>
-            )}
-          </div>
+          <h1 className="font-serif text-3xl font-bold text-slate-900 md:text-4xl">
+            {tagLabel(tag)}
+          </h1>
         </div>
 
         {beitraege.length === 0 ? (
           <div className="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-8 text-center">
             <p className="text-slate-600">
-              In dieser Rubrik gibt es noch keine Beiträge.
+              Zu diesem Thema gibt es noch keine Beiträge.
             </p>
           </div>
         ) : (
@@ -81,7 +62,7 @@ export default async function RubrikPage({
             {beitraege.map((beitrag) => (
               <Link
                 key={beitrag.id}
-                href={`/intern/${rubrik.slug}/${beitrag.slug}`}
+                href={`/intern/${beitrag.rubrik_slug}/${beitrag.slug}`}
                 className="group block rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
               >
                 <div className="mb-2 flex items-center gap-3">

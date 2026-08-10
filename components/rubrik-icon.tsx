@@ -5,6 +5,12 @@ import {
   UtensilsCrossed,
   Building2,
   BookOpen,
+  HeartPulse,
+  Home,
+  ShoppingCart,
+  Wallet,
+  Smartphone,
+  LayoutGrid,
 } from "lucide-react";
 
 /**
@@ -33,6 +39,18 @@ export function RubrikIcon({
       return <UtensilsCrossed className={className} />;
     case "Building2":
       return <Building2 className={className} />;
+    case "HeartPulse":
+      return <HeartPulse className={className} />;
+    case "Home":
+      return <Home className={className} />;
+    case "ShoppingCart":
+      return <ShoppingCart className={className} />;
+    case "Wallet":
+      return <Wallet className={className} />;
+    case "Smartphone":
+      return <Smartphone className={className} />;
+    case "LayoutGrid":
+      return <LayoutGrid className={className} />;
     default:
       return <BookOpen className={className} />;
   }
