@@ -207,20 +207,49 @@ Die Folge ist der Fehler „PKCE code verifier not found in storage".
 Das `&` vor `token_hash` ist Absicht – `{{ .RedirectTo }}` enthält bereits
 `?weiter=…`.
 
-### 3. Mailversand auf Resend umstellen (aufgeschoben)
+### 3. Eigenes SMTP einrichten – zwingend
 
 Unter **Project Settings → Authentication → SMTP Settings**.
 
-Derzeit läuft der Versand über den eingebauten Mailer von Supabase. Der ist
-laut deren eigener Dokumentation nur zu Demonstrationszwecken gedacht und hat
-ein projektweites Stundenlimit, das sich ausschließlich mit eigenem SMTP
-anheben lässt. Da der Anmeldelink der einzige Weg in den Bereich ist, ist der
-Mailversand hier gleichbedeutend mit dem Anmeldesystem: Läuft das Limit voll,
-kommt niemand mehr hinein – es gibt kein Passwort als Rückfallebene.
+Das ist keine Optimierung, sondern Voraussetzung: **Supabase erlaubt das
+Bearbeiten der E-Mail-Vorlagen nur mit eigenem SMTP.** Ohne diesen Schritt
+lässt sich Schritt 2b nicht ausführen, und ohne 2b schlägt jede Anmeldung
+fehl, die nicht im selben Browser geöffnet wird.
 
-Für die ersten Anmeldungen genügt der eingebaute Versand. Vor der Freigabe an
-eine größere Gruppe sollte umgestellt werden. Der Wechsel erfordert keine
-Codeänderung.
+Dazu kommt das Sendelimit des eingebauten Mailers, den Supabase selbst als
+nur zu Demonstrationszwecken gedacht bezeichnet. Da der Anmeldelink der
+einzige Weg in den Bereich ist, ist der Mailversand gleichbedeutend mit dem
+Anmeldesystem – es gibt kein Passwort als Rückfallebene.
+
+Zugangsdaten für Resend:
+
+| Feld | Wert |
+|---|---|
+| Host | `smtp.resend.com` |
+| Port | `587` |
+| Username | `resend` |
+| Password | Resend-API-Key |
+
+### 3b. Absenderadresse – hängt an der Domain
+
+Resend verschickt über `onboarding@resend.dev` ausschließlich an die eigene
+Kontoadresse. Für alle anderen Empfänger verlangt Resend eine verifizierte
+Domain.
+
+Verifiziert ist bisher nur `fajrup.co` – die gehört zu einem anderen Projekt.
+Anmeldemails für Medinastudenten von dort zu verschicken wäre technisch
+möglich, aber falsch: Studenten bekämen Zugangslinks von einer fremden
+Domain, was von Phishing kaum zu unterscheiden ist.
+
+Daraus folgt die Reihenfolge:
+
+1. **Jetzt:** SMTP mit `onboarding@resend.dev`. Reicht, um das eigene Konto
+   anzulegen, zum Admin zu machen und den gesamten Ablauf zu prüfen.
+2. **Bevor der Bereich für Mitglieder geöffnet wird:** eigene Domain
+   registrieren, in Resend verifizieren, Absender umstellen.
+
+Die Domainfrage blockiert damit nicht mehr nur den öffentlichen Launch,
+sondern auch die Öffnung des Mitgliederbereichs.
 
 ### 4. Umgebungsvariablen setzen
 
