@@ -41,6 +41,18 @@ Mitgliederdaten in einer gemeinsamen Datenbank mit unbeteiligten Projekten
 lassen sich datenschutzrechtlich nur schwer sauber begründen — Löschkonzept,
 Zugriffsbeschränkung und Auftragsverarbeitung betreffen dann jedes Mal alles.
 
+### Vollständig server-seitig
+
+Kein Client-Baustein spricht mit Supabase. Anmeldung, Sessionprüfung und alle
+Abfragen laufen über Server Actions, Server Components und die Middleware.
+Folge: Im ausgelieferten Browser-Bundle steht **kein** Supabase-Schlüssel —
+nachgeprüft über alle 11 Chunks der Anmeldeseite.
+
+Das ist strenger als nötig; der Anon-Key wäre öffentlich unbedenklich. Sollte
+später ein Client-Baustein Supabase brauchen (etwa `onAuthStateChange`), muss
+`createBrowserClient` neu angelegt werden — die frühere Datei war ungenutzt
+und wurde entfernt.
+
 ### Abschaltung als Standard
 
 Ohne `NEXT_PUBLIC_SUPABASE_URL` und `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
