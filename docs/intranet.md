@@ -56,7 +56,8 @@ und wurde entfernt.
 ### Abschaltung als Standard
 
 Ohne `NEXT_PUBLIC_SUPABASE_URL` und `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
-liefern `/login`, `/intern/*` und `/auth/callback` durchgängig 404. Ein
+liefern `/login`, `/intern/*`, `/auth/confirm` und `/auth/callback`
+durchgängig 404. Ein
 Bereich, der nach Mitgliederbereich aussieht, darf nie ohne echte Anmeldung
 existieren — auch nicht versehentlich.
 
@@ -128,7 +129,8 @@ einem httpOnly-Cookie.
 | Pfad | Zugriff |
 |---|---|
 | `/login` | offen |
-| `/auth/callback` | offen, tauscht den Link-Token gegen eine Session |
+| `/auth/confirm` | offen, prüft token_hash und legt die Session an |
+| `/auth/callback` | offen, Rückfallebene für Links im PKCE-Code-Format |
 | `/intern` | nur freigegeben — Übersicht der Rubriken |
 | `/intern/[rubrik]` | nur freigegeben — Beiträge der Rubrik |
 | `/intern/[rubrik]/[slug]` | nur freigegeben — einzelner Beitrag |
@@ -171,17 +173,39 @@ Im Dashboard unter **SQL Editor** den Inhalt von
 
 ### 2. Anmeldung konfigurieren
 
-Unter **Authentication → Providers** nur *Email* aktiv lassen, darin
-*Confirm email* und Magic Link aktivieren, *Enable Signups* eingeschaltet
-lassen — die Zugangskontrolle passiert über die Freigabe, nicht über
-gesperrte Registrierung.
+Unter **Authentication → Providers** nur *Email* aktiv lassen, *Enable
+Signups* eingeschaltet lassen — die Zugangskontrolle passiert über die
+Freigabe, nicht über gesperrte Registrierung.
 
 Unter **Authentication → URL Configuration** eintragen:
 
-- *Site URL*: die Adresse der Website
-- *Redirect URLs*: `<Adresse>/auth/callback`
+- *Site URL*: die Adresse der Website, nicht der Standardwert
+  `http://localhost:3000`
+- *Redirect URLs*: `<Adresse>/auth/confirm` und für die lokale Entwicklung
+  `http://localhost:7001/auth/confirm`
 
-Ohne den Callback-Eintrag lehnt Supabase jeden Anmeldelink ab.
+Steht die Zieladresse nicht in der Allowlist, wird sie **stillschweigend
+verworfen** und der Link führt zur Site URL. Supabase meldet dabei keinen
+Fehler – das ist die häufigste Ursache für Anmeldelinks, die scheinbar ins
+Nichts führen.
+
+### 2b. E-Mail-Vorlagen umstellen
+
+**Zwingend erforderlich.** Unter **Authentication → Email Templates** in den
+Vorlagen *Magic Link* und *Confirm signup* den Link ersetzen durch:
+
+```html
+<a href="{{ .RedirectTo }}&token_hash={{ .TokenHash }}&type=email">Anmelden</a>
+```
+
+Der Standardlink nutzt `{{ .ConfirmationURL }}` und damit den PKCE-Ablauf.
+Der setzt voraus, dass der Verifier-Cookie noch in genau dem Browser liegt,
+der die Anmeldung angefordert hat. Bei E-Mail-Links ist das die Ausnahme:
+geöffnet wird auf dem Handy, in einer Vorschau, in einem anderen Browser.
+Die Folge ist der Fehler „PKCE code verifier not found in storage".
+
+Das `&` vor `token_hash` ist Absicht – `{{ .RedirectTo }}` enthält bereits
+`?weiter=…`.
 
 ### 3. Mailversand auf Resend umstellen (aufgeschoben)
 

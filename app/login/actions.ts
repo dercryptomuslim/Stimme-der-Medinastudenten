@@ -37,10 +37,13 @@ export async function magicLinkSenden(
     ? `${schema}://${host}`
     : (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:7001");
 
+  // Ziel ist /auth/confirm (token_hash), nicht /auth/callback (PKCE-Code).
+  // Die E-Mail-Vorlage hängt an diese Adresse &token_hash=…&type=… an – der
+  // Fragezeichen-Parameter muss deshalb hier schon vorhanden sein.
   const { error } = await supabase.auth.signInWithOtp({
     email,
     options: {
-      emailRedirectTo: `${herkunft}/auth/callback?weiter=${encodeURIComponent(weiter)}`,
+      emailRedirectTo: `${herkunft}/auth/confirm?weiter=${encodeURIComponent(weiter)}`,
     },
   });
 

@@ -4,6 +4,9 @@
  * Der interne Bereich ist nur erreichbar, wenn beide Werte gesetzt sind.
  * Fehlt einer, liefern alle geschützten Routen 404 – ein Bereich, der nach
  * Mitgliederbereich aussieht, darf niemals ohne echte Anmeldung existieren.
+ *
+ * Ergänzend müssen in Supabase die E-Mail-Vorlagen auf token_hash umgestellt
+ * sein, sonst schlägt die Anmeldung fehl. Siehe docs/intranet.md, Schritt 2b.
  */
 
 export const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";

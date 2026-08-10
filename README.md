@@ -152,15 +152,20 @@ Geschützter Mitgliederbereich mit praktischen Informationen zum Leben in
 Medina. Anmeldung per Magic Link über Supabase, Freigabe neuer Konten von
 Hand.
 
-Die Anwendung ist gebaut, die Datenbank noch nicht eingerichtet.
-Architektur, Datenmodell, Rechtekonzept und die Schritte zur Inbetriebnahme
-stehen in [docs/intranet.md](docs/intranet.md), die Migration in
+Architektur, Datenmodell, Rechtekonzept und die Einrichtung stehen in
+[docs/intranet.md](docs/intranet.md), die Migration in
 `supabase/migrations/`.
+
+**Wichtig:** Die E-Mail-Vorlagen in Supabase müssen auf `token_hash`
+umgestellt sein (siehe Einrichtung, Schritt 2b). Mit dem Standardlink
+scheitert jede Anmeldung, die nicht im selben Browser geöffnet wird, der sie
+angefordert hat.
 
 | Route | Zugriff |
 |---|---|
 | `/login` | offen, fordert einen Anmeldelink an |
-| `/auth/callback` | tauscht den Link gegen eine Session |
+| `/auth/confirm` | prüft den Anmeldelink und legt die Session an |
+| `/auth/callback` | Rückfallebene für Links im PKCE-Code-Format |
 | `/intern` | nur freigegebene Mitglieder |
 | `/intern/[rubrik]` | nur freigegebene Mitglieder |
 | `/intern/warteliste` | angemeldet, noch nicht freigegeben |
