@@ -3,7 +3,8 @@
 Geschützter Mitgliederbereich für Studenten der Islamischen Universität Medina
 mit praktischen Informationen zum Leben vor Ort.
 
-**Stand:** geplant, nicht gebaut. Es existiert noch kein Backend.
+**Stand:** Anwendung gebaut, Datenbank noch nicht eingerichtet.
+Zur Inbetriebnahme siehe [Einrichtung](#einrichtung) am Ende.
 
 ## Entscheidungen
 
@@ -25,18 +26,25 @@ bereits eingerichtete Resend-Konto als SMTP-Anbieter in Supabase.
 
 ## Technik
 
-- **Supabase** (Postgres + Auth), Region `eu-central-1`
+- **Supabase** (Postgres + Auth), Projekt `dhxoeirilwrufhenhkpl`,
+  Region `eu-central-1` (Frankfurt), eigene Organisation, Free-Tarif
 - **Row Level Security** auf allen Tabellen — die Zugriffsregeln liegen in der
   Datenbank, nicht in der Anwendung. Ein Fehler im Frontend legt damit keine
   Daten offen.
 - **`@supabase/ssr`** für Cookie-basierte Sessions im App Router
-- Kosten: 10 $/Monat für ein eigenes Projekt in der bestehenden Organisation
 
 ### Warum ein eigenes Projekt
 
 Mitgliederdaten in einer gemeinsamen Datenbank mit unbeteiligten Projekten
 lassen sich datenschutzrechtlich nur schwer sauber begründen — Löschkonzept,
 Zugriffsbeschränkung und Auftragsverarbeitung betreffen dann jedes Mal alles.
+
+### Abschaltung als Standard
+
+Ohne `NEXT_PUBLIC_SUPABASE_URL` und `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+liefern `/login`, `/intern/*` und `/auth/callback` durchgängig 404. Ein
+Bereich, der nach Mitgliederbereich aussieht, darf nie ohne echte Anmeldung
+existieren — auch nicht versehentlich.
 
 ## Datenmodell
 
@@ -135,6 +143,61 @@ drei gefüllt sind.
   je Rubrik wird die Plattform binnen eines Jahres unbrauchbar.
 - **Benachrichtigung bei Registrierung.** Über Resend an eine Team-Adresse,
   analog zum Kontaktformular.
+
+## Einrichtung
+
+Diese Schritte lassen sich nicht aus dem Code heraus erledigen — der
+Supabase-Connector ist nur für die Organisation *Nomad Agency* autorisiert und
+erreicht dieses Projekt nicht.
+
+### 1. Migration einspielen
+
+Im Dashboard unter **SQL Editor** den Inhalt von
+`supabase/migrations/20260808000000_intranet.sql` einfügen und ausführen.
+
+### 2. Anmeldung konfigurieren
+
+Unter **Authentication → Providers** nur *Email* aktiv lassen, darin
+*Confirm email* und Magic Link aktivieren, *Enable Signups* eingeschaltet
+lassen — die Zugangskontrolle passiert über die Freigabe, nicht über
+gesperrte Registrierung.
+
+Unter **Authentication → URL Configuration** eintragen:
+
+- *Site URL*: die Adresse der Website
+- *Redirect URLs*: `<Adresse>/auth/callback`
+
+Ohne den Callback-Eintrag lehnt Supabase jeden Anmeldelink ab.
+
+### 3. Mailversand auf Resend umstellen
+
+Unter **Project Settings → Authentication → SMTP Settings**. Der eingebaute
+Versand von Supabase hat ein enges Sendelimit und ist für den Betrieb nicht
+gedacht. Zugangsdaten liefert Resend, das für das Kontaktformular ohnehin
+schon eingerichtet ist.
+
+### 4. Umgebungsvariablen setzen
+
+Aus **Settings → API** übernehmen, in Vercel und lokal in `.env.local`:
+
+```
+NEXT_PUBLIC_SUPABASE_URL=https://dhxoeirilwrufhenhkpl.supabase.co
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=…
+```
+
+Erst wenn beide gesetzt sind, existieren `/login` und `/intern` überhaupt.
+
+### 5. Ersten Admin setzen
+
+Einmal über `/login` registrieren, danach im SQL Editor:
+
+```sql
+update public.profile
+   set status = 'freigegeben', rolle = 'admin', freigegeben_am = now()
+ where email = 'DEINE-ADRESSE';
+```
+
+Ohne diesen Schritt kann niemand Freigaben erteilen — auch nicht du selbst.
 
 ## Rechtliches vor dem Start
 

@@ -148,14 +148,31 @@ und lokal ausgeliefert. Es besteht zur Laufzeit keine Verbindung zu Google.
 
 ## Interner Bereich
 
-Geplant, aber noch nicht gebaut: ein geschützter Mitgliederbereich mit
-praktischen Informationen zum Leben in Medina. Architektur, Datenmodell und
-Rechtekonzept stehen in [docs/intranet.md](docs/intranet.md), die
-anwendungsfertige Migration in `supabase/migrations/`.
+Geschützter Mitgliederbereich mit praktischen Informationen zum Leben in
+Medina. Anmeldung per Magic Link über Supabase, Freigabe neuer Konten von
+Hand.
 
-Es existiert noch kein Backend. `/intern` liefert 404, solange
-`NEXT_PUBLIC_INTERN_VORSCHAU` nicht auf `true` steht — dann zeigt die Route
-eine reine Strukturvorschau ohne Anmeldung und ohne Inhalte.
+Die Anwendung ist gebaut, die Datenbank noch nicht eingerichtet.
+Architektur, Datenmodell, Rechtekonzept und die Schritte zur Inbetriebnahme
+stehen in [docs/intranet.md](docs/intranet.md), die Migration in
+`supabase/migrations/`.
+
+| Route | Zugriff |
+|---|---|
+| `/login` | offen, fordert einen Anmeldelink an |
+| `/auth/callback` | tauscht den Link gegen eine Session |
+| `/intern` | nur freigegebene Mitglieder |
+| `/intern/[rubrik]` | nur freigegebene Mitglieder |
+| `/intern/warteliste` | angemeldet, noch nicht freigegeben |
+| `/intern/verwaltung` | nur Admins |
+
+Solange `NEXT_PUBLIC_SUPABASE_URL` und `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+fehlen, liefern **alle** diese Routen 404. Ein Bereich, der nach
+Mitgliederbereich aussieht, darf nie ohne echte Anmeldung existieren.
+
+Der eigentliche Zugriffsschutz sind die RLS-Policies in der Datenbank, nicht
+die Middleware. Wer nicht freigegeben ist, bekommt von Postgres keine Zeile —
+unabhängig davon, was das Frontend tut.
 
 ## Deployment
 

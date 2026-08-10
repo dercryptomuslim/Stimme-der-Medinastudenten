@@ -1,117 +1,72 @@
-import { notFound } from "next/navigation";
-import { Metadata } from "next";
-import { Users, Car, MapPin, Lock } from "lucide-react";
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
-import { INTERN_VORSCHAU, RUBRIKEN } from "@/lib/intern";
+import { redirect } from "next/navigation";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { createClient } from "@/lib/supabase/server";
+import { aktuellesProfil, darfLesen } from "@/lib/supabase/mitglied";
+import { type Rubrik } from "@/lib/intern";
+import { RubrikIcon } from "@/components/rubrik-icon";
 
-const ICONS = { Users, Car, MapPin } as const;
+export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-  title: "Interner Bereich | Stimme der Medinastudenten",
-  // Der interne Bereich gehört unter keinen Umständen in einen Suchindex.
-  robots: { index: false, follow: false },
-};
+export default async function InternPage() {
+  const profil = await aktuellesProfil();
 
-export default function InternPage() {
-  // Ohne Anmeldung darf nichts erreichbar sein, das nach einem
-  // Mitgliederbereich aussieht. Sobald Supabase angebunden ist, ersetzt die
-  // Sessionprüfung diese Abfrage.
-  if (!INTERN_VORSCHAU) {
-    notFound();
+  // Wer nicht freigegeben ist, sieht die Statusseite. Selbst wenn diese
+  // Prüfung fehlschlüge, gäbe RLS keine Rubriken heraus.
+  if (!darfLesen(profil)) {
+    redirect("/intern/warteliste");
   }
 
+  const supabase = await createClient();
+  const { data } = await supabase
+    .from("rubrik")
+    .select("slug, titel, beschreibung, icon, reihenfolge")
+    .order("reihenfolge");
+
+  const rubriken = (data ?? []) as Rubrik[];
+
   return (
-    <main className="min-h-screen bg-white text-slate-900 flex flex-col">
-      <Navbar />
+    <section className="py-12 md:py-16">
+      <div className="container mx-auto max-w-4xl px-4 lg:px-8">
+        <h1 className="mb-3 font-serif text-3xl font-bold text-slate-900 md:text-4xl">
+          Willkommen{profil?.name ? `, ${profil.name}` : ""}
+        </h1>
+        <p className="mb-10 text-lg text-slate-600">
+          Praktische Informationen zum Leben in Medina – gesammelt von
+          Studenten, die vor Ort sind.
+        </p>
 
-      <section className="pt-32 pb-16 bg-slate-50 border-b border-slate-100">
-        <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
-          <div className="mb-8 rounded-lg border-2 border-dashed border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">
-            <strong>Strukturvorschau.</strong> Es gibt noch keine Anmeldung und
-            keine Inhalte. Diese Seite zeigt nur, wie der interne Bereich
-            aufgebaut sein wird.
-          </div>
-
-          <div className="flex items-center gap-3 mb-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy/5">
-              <Lock className="h-5 w-5 text-gold" />
-            </div>
-            <span className="text-sm font-bold uppercase tracking-wide text-gold">
-              Nur für Mitglieder
-            </span>
-          </div>
-
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-6">
-            Interner Bereich
-          </h1>
-          <p className="text-lg text-slate-600 max-w-2xl">
-            Praktische Informationen zum Leben in Medina – gesammelt von
-            Studenten, die vor Ort sind.
+        {rubriken.length === 0 ? (
+          <p className="rounded-xl border border-slate-200 bg-slate-50 p-6 text-slate-600">
+            Es sind noch keine Rubriken angelegt.
           </p>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
-          <div className="grid gap-6 md:grid-cols-3">
-            {RUBRIKEN.map((rubrik) => {
-              const Icon = ICONS[rubrik.icon];
-              return (
-                <div
+        ) : (
+          <div className="grid gap-6 md:grid-cols-2">
+            {rubriken.map((rubrik) => (
+                <Link
                   key={rubrik.slug}
-                  className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+                  href={`/intern/${rubrik.slug}`}
+                  className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                 >
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-navy/5">
-                    <Icon className="h-6 w-6 text-gold" />
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-navy/5 transition-colors group-hover:bg-gold/10">
+                    <RubrikIcon name={rubrik.icon} className="h-6 w-6 text-gold" />
                   </div>
-                  <h2 className="mb-2 text-xl font-bold text-slate-900">
+                  <h2 className="mb-2 text-xl font-bold text-slate-900 transition-colors group-hover:text-navy">
                     {rubrik.titel}
                   </h2>
-                  <p className="mb-4 text-sm leading-relaxed text-slate-600">
-                    {rubrik.beschreibung}
-                  </p>
-                  <ul className="space-y-2">
-                    {rubrik.geplant.map((thema) => (
-                      <li
-                        key={thema}
-                        className="flex items-start gap-2 text-sm text-slate-500"
-                      >
-                        <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gold" />
-                        {thema}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-            })}
+                  {rubrik.beschreibung && (
+                    <p className="mb-4 text-sm leading-relaxed text-slate-600">
+                      {rubrik.beschreibung}
+                    </p>
+                  )}
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-navy transition-all group-hover:gap-3">
+                    Öffnen <ArrowRight className="h-4 w-4" />
+                  </span>
+                </Link>
+            ))}
           </div>
-
-          <div className="mt-12 rounded-2xl border border-slate-200 bg-slate-50 p-8">
-            <h2 className="mb-3 text-xl font-serif font-bold text-slate-900">
-              Wie der Zugang funktionieren wird
-            </h2>
-            <ol className="space-y-3 text-slate-600">
-              <li className="flex gap-3">
-                <span className="font-bold text-gold">1.</span>
-                E-Mail-Adresse eintragen. Es gibt kein Passwort – die Anmeldung
-                läuft über einen Link, der per E-Mail zugeschickt wird.
-              </li>
-              <li className="flex gap-3">
-                <span className="font-bold text-gold">2.</span>
-                Die Registrierung landet auf einer Warteliste.
-              </li>
-              <li className="flex gap-3">
-                <span className="font-bold text-gold">3.</span>
-                Das Team gibt den Zugang von Hand frei. Erst danach werden
-                Inhalte sichtbar.
-              </li>
-            </ol>
-          </div>
-        </div>
-      </section>
-
-      <Footer />
-    </main>
+        )}
+      </div>
+    </section>
   );
 }
