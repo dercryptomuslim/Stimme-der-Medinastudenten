@@ -32,6 +32,20 @@ export function KontoForm() {
   return (
     <form action={formAction} className="space-y-5">
       <div className="space-y-2">
+        <Label htmlFor="aktuell" className="font-medium text-slate-700">
+          Aktuelles Passwort
+        </Label>
+        <Input
+          id="aktuell"
+          name="aktuell"
+          type="password"
+          autoComplete="current-password"
+          required
+          className="h-11 border-slate-200 bg-slate-50 text-slate-900 focus:ring-navy"
+        />
+      </div>
+
+      <div className="space-y-2">
         <Label htmlFor="neu" className="font-medium text-slate-700">
           Neues Passwort
         </Label>

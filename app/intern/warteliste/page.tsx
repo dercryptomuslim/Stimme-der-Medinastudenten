@@ -43,11 +43,11 @@ export default async function WartelistePage() {
             <p className="mb-6 leading-relaxed text-slate-600">
               Dein Konto steht auf der Warteliste. Neue Zugänge geben wir von
               Hand frei – das dauert in der Regel ein bis zwei Tage. Sobald es
-              soweit ist, kannst du dich hier anmelden und siehst alle Inhalte.
+              soweit ist, siehst du hier alle Inhalte.
             </p>
             {profil && (
               <p className="text-sm text-slate-500">
-                Registriert mit <strong>{profil.email}</strong>
+                Konto: <strong>{profil.email}</strong>
               </p>
             )}
           </>

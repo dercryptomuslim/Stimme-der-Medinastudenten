@@ -292,7 +292,7 @@ export default function PrivacyPage() {
               Weitere Informationen finden Sie in der Datenschutzerklärung von Supabase: <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">https://supabase.com/privacy</a>.
             </p>
             <p className="text-slate-600 mb-4">
-              Der Versand der Anmeldelinks erfolgt über denselben Dienst. Ihre E-Mail-Adresse wird dabei zum Zweck der Zustellung verarbeitet.
+              Sofern Anmeldelinks zum Einsatz kommen, erfolgt deren Versand über denselben Dienst; Ihre E-Mail-Adresse wird dabei zum Zweck der Zustellung verarbeitet.
             </p>
 
             <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">6. Analyse-Tools</h2>

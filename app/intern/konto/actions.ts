@@ -19,14 +19,18 @@ export async function passwortAendern(
   _vorher: PasswortAendernZustand,
   formData: FormData
 ): Promise<PasswortAendernZustand> {
+  const aktuell = String(formData.get("aktuell") ?? "");
   const neu = String(formData.get("neu") ?? "");
   const wiederholung = String(formData.get("wiederholung") ?? "");
 
+  if (!aktuell) {
+    return { fehler: "Bitte das aktuelle Passwort eingeben." };
+  }
   if (neu.length < 8) {
-    return { fehler: "Das Passwort muss mindestens 8 Zeichen lang sein." };
+    return { fehler: "Das neue Passwort muss mindestens 8 Zeichen lang sein." };
   }
   if (neu !== wiederholung) {
-    return { fehler: "Die beiden Passwörter stimmen nicht überein." };
+    return { fehler: "Die beiden neuen Passwörter stimmen nicht überein." };
   }
 
   const supabase = await createClient();
@@ -34,8 +38,19 @@ export async function passwortAendern(
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (!user) {
+  if (!user?.email) {
     redirect("/login?weiter=%2Fintern%2Fkonto");
+  }
+
+  // Re-Authentifizierung ohne E-Mail-Versand: Wer nur eine offene Session
+  // vorfindet (unbeaufsichtigtes Gerät), soll den Eigentümer nicht durch
+  // eine Passwortänderung aussperren können.
+  const { error: reauthFehler } = await supabase.auth.signInWithPassword({
+    email: user.email,
+    password: aktuell,
+  });
+  if (reauthFehler) {
+    return { fehler: "Das aktuelle Passwort ist nicht korrekt." };
   }
 
   const { error } = await supabase.auth.updateUser({ password: neu });

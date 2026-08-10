@@ -27,6 +27,9 @@ export function LoginForm({ weiter }: { weiter: string }) {
           autoComplete="email"
           required
           placeholder="name@example.de"
+          // React 19 leert das Formular nach jedem Action-Submit; die Adresse
+          // kommt deshalb bei Fehlern aus dem Action-Zustand zurück.
+          defaultValue={zustand.email ?? ""}
           className="h-11 border-slate-200 bg-slate-50 text-slate-900 focus:ring-navy"
         />
       </div>

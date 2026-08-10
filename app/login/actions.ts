@@ -3,10 +3,17 @@
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { sichererPfad } from "@/lib/sicherer-pfad";
 
 export interface LoginZustand {
   fehler?: string;
   gesendet?: boolean;
+  /**
+   * Bei Fehlern zurückgereicht, damit das Formular die Adresse wieder
+   * vorbelegen kann – React 19 setzt unkontrollierte Formulare nach jedem
+   * Action-Submit vollständig zurück.
+   */
+  email?: string;
 }
 
 /**
@@ -28,11 +35,10 @@ export async function passwortAnmelden(
   const passwort = String(formData.get("passwort") ?? "");
 
   // Dem Hidden-Field nicht vertrauen: nur seiteninterne Ziele zulassen.
-  const roh = String(formData.get("weiter") ?? "/intern");
-  const weiter = roh.startsWith("/") && !roh.startsWith("//") ? roh : "/intern";
+  const weiter = sichererPfad(formData.get("weiter"));
 
   if (!email || !passwort) {
-    return { fehler: "Bitte E-Mail-Adresse und Passwort eingeben." };
+    return { fehler: "Bitte E-Mail-Adresse und Passwort eingeben.", email };
   }
 
   const supabase = await createClient();
@@ -46,7 +52,7 @@ export async function passwortAnmelden(
     // bewusst eine einzige Meldung – sonst lässt sich über die Fehlertexte
     // ermitteln, welche Adressen ein Konto haben.
     console.error("Passwort-Login-Fehler:", error.message);
-    return { fehler: "E-Mail-Adresse oder Passwort ist nicht korrekt." };
+    return { fehler: "E-Mail-Adresse oder Passwort ist nicht korrekt.", email };
   }
 
   redirect(weiter);
@@ -57,7 +63,7 @@ export async function magicLinkSenden(
   formData: FormData
 ): Promise<LoginZustand> {
   const email = String(formData.get("email") ?? "").trim().toLowerCase();
-  const weiter = String(formData.get("weiter") ?? "/intern");
+  const weiter = sichererPfad(formData.get("weiter"));
 
   if (!email || !email.includes("@")) {
     return { fehler: "Bitte eine gültige E-Mail-Adresse eingeben." };

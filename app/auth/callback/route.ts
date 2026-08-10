@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { INTERN_ENABLED } from "@/lib/supabase/config";
+import { sichererPfad } from "@/lib/sicherer-pfad";
 
 export async function GET(request: NextRequest) {
   if (!INTERN_ENABLED) {
@@ -11,8 +12,7 @@ export async function GET(request: NextRequest) {
   const code = searchParams.get("code");
 
   // Offene Weiterleitungen verhindern: nur seiteninterne Pfade zulassen.
-  const roh = searchParams.get("weiter") ?? "/intern";
-  const weiter = roh.startsWith("/") && !roh.startsWith("//") ? roh : "/intern";
+  const weiter = sichererPfad(searchParams.get("weiter"));
 
   if (!code) {
     return NextResponse.redirect(`${origin}/login?fehler=kein_code`);

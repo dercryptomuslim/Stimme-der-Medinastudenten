@@ -157,10 +157,11 @@ Architektur, Datenmodell, Rechtekonzept und die Einrichtung stehen in
 [docs/intranet.md](docs/intranet.md), die Migration in
 `supabase/migrations/`.
 
-**Wichtig:** Die E-Mail-Vorlagen in Supabase müssen auf `token_hash`
-umgestellt sein (siehe Einrichtung, Schritt 2b). Mit dem Standardlink
-scheitert jede Anmeldung, die nicht im selben Browser geöffnet wird, der sie
-angefordert hat.
+**Für den späteren Magic-Link-Betrieb:** Die E-Mail-Vorlagen in Supabase
+müssen auf `token_hash` umgestellt sein (siehe Einrichtung, Schritt 2b). Mit
+dem Standardlink scheitert jede Link-Anmeldung, die nicht im selben Browser
+geöffnet wird, der sie angefordert hat. Der laufende Passwort-Betrieb ist
+davon nicht betroffen.
 
 | Route | Zugriff |
 |---|---|

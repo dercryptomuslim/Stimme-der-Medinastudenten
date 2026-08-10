@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Lock } from "lucide-react";
 import { INTERN_ENABLED } from "@/lib/supabase/config";
+import { sichererPfad } from "@/lib/sicherer-pfad";
 import { LoginForm } from "./login-form";
 
 export const metadata: Metadata = {
@@ -14,11 +15,14 @@ export const metadata: Metadata = {
 // Die Seite liest searchParams und ist damit ohnehin nicht statisch.
 export const dynamic = "force-dynamic";
 
+// Erreichbar über alte Anmeldelinks (/auth/confirm, /auth/callback). Die
+// Texte dürfen nicht zum Anfordern eines neuen Links auffordern – diesen Weg
+// gibt es im Formular derzeit nicht.
 const FEHLERTEXTE: Record<string, string> = {
   abgelaufen:
-    "Der Anmeldelink ist abgelaufen oder wurde bereits verwendet. Bitte fordere einen neuen an.",
+    "Der Anmeldelink ist abgelaufen oder wurde bereits verwendet. Bitte melde dich unten mit E-Mail-Adresse und Passwort an.",
   kein_code:
-    "Der Aufruf war unvollständig. Bitte fordere einen neuen Anmeldelink an.",
+    "Der Aufruf war unvollständig. Bitte melde dich unten mit E-Mail-Adresse und Passwort an.",
 };
 
 /**
@@ -37,8 +41,7 @@ export default async function LoginPage({
   }
 
   const { weiter, fehler } = await searchParams;
-  const ziel =
-    weiter?.startsWith("/") && !weiter.startsWith("//") ? weiter : "/intern";
+  const ziel = sichererPfad(weiter);
 
   return (
     <main className="flex min-h-screen flex-col bg-slate-50 text-slate-900">

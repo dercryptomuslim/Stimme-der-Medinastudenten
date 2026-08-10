@@ -12,7 +12,7 @@ Umgebungsvariablen in Vercel und der erste Admin – siehe
 | Frage | Entscheidung |
 |---|---|
 | Wer schreibt | Nur das Team, Mitglieder lesen |
-| Zugang | Registrierung landet auf Warteliste, Freigabe von Hand |
+| Zugang | Konten legt das Team an; Freigabe von Hand |
 | Anmeldung | Vorerst E-Mail + Passwort; Magic Link, sobald eigenes SMTP steht |
 | Erster Ausbaustand | Login, Freigabe-Workflow, drei Rubriken |
 
@@ -223,9 +223,12 @@ Im Dashboard unter **SQL Editor** den Inhalt von
 
 ### 2. Anmeldung konfigurieren
 
-Unter **Authentication → Providers** nur *Email* aktiv lassen, *Enable
-Signups* eingeschaltet lassen — die Zugangskontrolle passiert über die
-Freigabe, nicht über gesperrte Registrierung.
+Unter **Authentication → Providers** nur *Email* aktiv lassen. **„Allow new
+users to sign up“ ausschalten**, solange der Passwort-Betrieb läuft — Konten
+entstehen ausschließlich über das Dashboard. Erst wenn später der
+Magic-Link-Betrieb mit Selbstregistrierung gewünscht ist, wird die
+Einstellung wieder aktiviert; die Zugangskontrolle bleibt auch dann die
+Freigabe.
 
 Unter **Authentication → URL Configuration** eintragen:
 
@@ -265,12 +268,13 @@ laufenden Passwort-Betrieb (siehe oben) ist dieser Schritt nicht nötig.
 Für den Magic-Link-Betrieb ist er zwingend: **Supabase erlaubt das
 Bearbeiten der E-Mail-Vorlagen nur mit eigenem SMTP.** Ohne diesen Schritt
 lässt sich Schritt 2b nicht ausführen, und ohne 2b schlägt jede
-Link-Anmeldung fehl, die nicht im selben Browser geöffnet wird.
+Link-Anmeldung fehl, die nicht im selben Browser geöffnet wird. Im reinen
+Link-Betrieb wäre der Mailversand damit gleichbedeutend mit dem
+Anmeldesystem; im aktuellen Passwort-Betrieb ist das Passwort die
+Rückfallebene.
 
 Dazu kommt das Sendelimit des eingebauten Mailers, den Supabase selbst als
-nur zu Demonstrationszwecken gedacht bezeichnet. Da der Anmeldelink der
-einzige Weg in den Bereich ist, ist der Mailversand gleichbedeutend mit dem
-Anmeldesystem – es gibt kein Passwort als Rückfallebene.
+nur zu Demonstrationszwecken gedacht bezeichnet.
 
 Zugangsdaten für Resend:
 
@@ -315,7 +319,9 @@ Erst wenn beide gesetzt sind, existieren `/login` und `/intern` überhaupt.
 
 ### 5. Ersten Admin setzen
 
-Einmal über `/login` registrieren, danach im SQL Editor:
+Das eigene Konto im Dashboard anlegen (**Authentication → Users → Add user →
+„Create new user“**, Haken bei *Auto Confirm User* — nicht „Send
+invitation“), danach im SQL Editor:
 
 ```sql
 update public.profile
@@ -332,7 +338,7 @@ Der interne Bereich darf erst online gehen, wenn diese Punkte erledigt sind:
 - [ ] **Impressum vollständig.** Enthält weiterhin Platzhalter. Ohne gültige
       Anbieterkennzeichnung dürfen keine Mitgliederkonten betrieben werden.
 - [x] **Datenschutzerklärung erweitert** – Abschnitt 5 deckt Nutzerkonto,
-      Anmeldung ohne Passwort, Session-Cookie und Supabase ab.
+      Anmeldung, Session-Cookie und Supabase ab.
 - [ ] **AV-Vertrag mit Supabase abschließen** und die dort genannte Anschrift
       in der Datenschutzerklärung ergänzen (TODO im Quelltext markiert).
 - [x] **Löschkonzept** – Konten auf Wunsch, abgelehnte Registrierungen nach

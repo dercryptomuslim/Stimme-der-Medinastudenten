@@ -2,6 +2,7 @@ import { type EmailOtpType } from "@supabase/supabase-js";
 import { NextResponse, type NextRequest } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { INTERN_ENABLED } from "@/lib/supabase/config";
+import { sichererPfad } from "@/lib/sicherer-pfad";
 
 /**
  * Bestätigt einen Anmeldelink über token_hash.
@@ -22,8 +23,7 @@ export async function GET(request: NextRequest) {
   const type = searchParams.get("type") as EmailOtpType | null;
 
   // Offene Weiterleitungen verhindern: nur seiteninterne Pfade zulassen.
-  const roh = searchParams.get("weiter") ?? "/intern";
-  const weiter = roh.startsWith("/") && !roh.startsWith("//") ? roh : "/intern";
+  const weiter = sichererPfad(searchParams.get("weiter"));
 
   if (!tokenHash || !type) {
     return NextResponse.redirect(`${origin}/login?fehler=kein_code`);
