@@ -3,8 +3,9 @@
 Geschützter Mitgliederbereich für Studenten der Islamischen Universität Medina
 mit praktischen Informationen zum Leben vor Ort.
 
-**Stand:** Anwendung gebaut, Datenbank noch nicht eingerichtet.
-Zur Inbetriebnahme siehe [Einrichtung](#einrichtung) am Ende.
+**Stand:** Anwendung gebaut, Datenbank eingerichtet. Offen sind nur noch die
+Umgebungsvariablen in Vercel und der erste Admin – siehe
+[Einrichtung](#einrichtung).
 
 ## Entscheidungen
 
@@ -21,8 +22,9 @@ genügt es, Schreibrechte in den Policies auf freigegebene Mitglieder
 auszuweiten und eine Versionstabelle zu ergänzen.
 
 Magic Link statt Passwort, weil es keine Passwort-Resets, keine schwachen
-Passwörter und keinen Support-Aufwand gibt. Der Versand läuft über das
-bereits eingerichtete Resend-Konto als SMTP-Anbieter in Supabase.
+Passwörter und keinen Support-Aufwand gibt. Der Versand läuft vorerst über
+den eingebauten Mailer von Supabase – zu dessen Grenzen siehe Einrichtung,
+Schritt 3.
 
 ## Technik
 
@@ -169,12 +171,20 @@ Unter **Authentication → URL Configuration** eintragen:
 
 Ohne den Callback-Eintrag lehnt Supabase jeden Anmeldelink ab.
 
-### 3. Mailversand auf Resend umstellen
+### 3. Mailversand auf Resend umstellen (aufgeschoben)
 
-Unter **Project Settings → Authentication → SMTP Settings**. Der eingebaute
-Versand von Supabase hat ein enges Sendelimit und ist für den Betrieb nicht
-gedacht. Zugangsdaten liefert Resend, das für das Kontaktformular ohnehin
-schon eingerichtet ist.
+Unter **Project Settings → Authentication → SMTP Settings**.
+
+Derzeit läuft der Versand über den eingebauten Mailer von Supabase. Der ist
+laut deren eigener Dokumentation nur zu Demonstrationszwecken gedacht und hat
+ein projektweites Stundenlimit, das sich ausschließlich mit eigenem SMTP
+anheben lässt. Da der Anmeldelink der einzige Weg in den Bereich ist, ist der
+Mailversand hier gleichbedeutend mit dem Anmeldesystem: Läuft das Limit voll,
+kommt niemand mehr hinein – es gibt kein Passwort als Rückfallebene.
+
+Für die ersten Anmeldungen genügt der eingebaute Versand. Vor der Freigabe an
+eine größere Gruppe sollte umgestellt werden. Der Wechsel erfordert keine
+Codeänderung.
 
 ### 4. Umgebungsvariablen setzen
 
@@ -205,15 +215,13 @@ Der interne Bereich darf erst online gehen, wenn diese Punkte erledigt sind:
 
 - [ ] **Impressum vollständig.** Enthält weiterhin Platzhalter. Ohne gültige
       Anbieterkennzeichnung dürfen keine Mitgliederkonten betrieben werden.
-- [ ] **Datenschutzerklärung erweitern** um Nutzerkonten, gespeicherte Daten
-      (E-Mail, Name, Zeitstempel), Login-Cookies, Löschfristen und die
-      Rechtsgrundlage.
-- [ ] **Supabase als Auftragsverarbeiter** — AV-Vertrag abschließen und in der
-      Erklärung nennen.
-- [ ] **Resend** ist bereits Auftragsverarbeiter, kommt durch den Magic-Link-
-      Versand aber zusätzlich mit Mitgliederdaten in Berührung.
-- [ ] **Löschkonzept.** Was passiert mit Konten von Abgängern, was mit
-      abgelehnten Registrierungen.
+- [x] **Datenschutzerklärung erweitert** – Abschnitt 5 deckt Nutzerkonto,
+      Anmeldung ohne Passwort, Session-Cookie und Supabase ab.
+- [ ] **AV-Vertrag mit Supabase abschließen** und die dort genannte Anschrift
+      in der Datenschutzerklärung ergänzen (TODO im Quelltext markiert).
+- [x] **Löschkonzept** – Konten auf Wunsch, abgelehnte Registrierungen nach
+      sechs Monaten. Der Turnus muss gelebt werden, automatisiert ist er nicht.
+- [ ] **Eigenes SMTP (Resend)** – siehe unten.
 
 Login-Cookies sind technisch notwendig und brauchen keine Einwilligung, müssen
 aber in der Erklärung stehen.

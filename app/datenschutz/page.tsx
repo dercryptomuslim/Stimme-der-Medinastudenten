@@ -256,7 +256,46 @@ export default function PrivacyPage() {
               Die Nutzung erfolgt auf Grundlage unseres berechtigten Interesses an einer zuverlässigen Bearbeitung eingehender Anfragen (Art. 6 Abs. 1 lit. f DSGVO). Die Datenübermittlung in die USA wird auf die EU-Standardvertragsklauseln gestützt. Weitere Informationen: <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">https://resend.com/legal/privacy-policy</a>.
             </p>
 
-            <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">5. Analyse-Tools</h2>
+            <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">5. Interner Mitgliederbereich</h2>
+
+            <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">Nutzerkonto und Registrierung</h3>
+            <p className="text-slate-600 mb-4">
+              Für den geschützten Mitgliederbereich können Sie ein Nutzerkonto anlegen. Dabei verarbeiten wir Ihre E-Mail-Adresse, optional einen von Ihnen angegebenen Namen, den Freigabestatus Ihres Kontos sowie die Zeitpunkte der Registrierung und der Freigabe.
+            </p>
+            <p className="text-slate-600 mb-4">
+              Neue Konten werden von uns von Hand geprüft und freigegeben. Bis zur Freigabe haben Sie keinen Zugriff auf Inhalte des internen Bereichs. Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, da sie zur Bereitstellung des von Ihnen angeforderten Zugangs erforderlich ist.
+            </p>
+            <p className="text-slate-600 mb-4">
+              Ihre Kontodaten speichern wir, solange das Konto besteht. Sie können die Löschung jederzeit formlos verlangen; wir löschen das Konto dann einschließlich der zugehörigen Anmeldedaten. Registrierungen, die wir nicht freigeben, löschen wir spätestens nach sechs Monaten.
+            </p>
+
+            <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">Anmeldung ohne Passwort</h3>
+            <p className="text-slate-600 mb-4">
+              Die Anmeldung erfolgt ausschließlich über einen einmaligen Anmeldelink, den wir an Ihre E-Mail-Adresse senden. Wir speichern kein Passwort. Der Link ist nur kurze Zeit und nur einmal gültig.
+            </p>
+            <p className="text-slate-600 mb-4">
+              Nach der Anmeldung wird ein Cookie gesetzt, das Ihre Sitzung ausweist. Dieses Cookie ist für den Betrieb des geschützten Bereichs technisch erforderlich – ohne es wäre eine Anmeldung nicht möglich. Rechtsgrundlage ist § 25 Abs. 2 Nr. 2 TDDDG; eine Einwilligung ist hierfür nicht erforderlich. Sie können sich jederzeit abmelden, wodurch das Cookie ungültig wird.
+            </p>
+
+            <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">Supabase</h3>
+            <p className="text-slate-600 mb-4">
+              Für Nutzerkonten, Anmeldung und die Speicherung der Inhalte des internen Bereichs nutzen wir Supabase. Anbieter ist die Supabase, Inc., USA. Die Daten werden in einem Rechenzentrum in Frankfurt am Main (Region eu-central-1) gespeichert.
+            </p>
+            {/*
+              TODO: Nach Abschluss des Auftragsverarbeitungsvertrags die dort
+              genannte vollständige Anschrift von Supabase, Inc. ergänzen.
+            */}
+            <p className="text-slate-600 mb-4">
+              Supabase verarbeitet die Daten ausschließlich weisungsgebunden für uns; wir haben mit Supabase einen Vertrag über Auftragsverarbeitung geschlossen. Da es sich um ein US-amerikanisches Unternehmen handelt, ist ein Zugriff aus den USA nicht auszuschließen. Die Übermittlung wird auf die von der Europäischen Kommission genehmigten Standardvertragsklauseln gestützt.
+            </p>
+            <p className="text-slate-600 mb-4">
+              Weitere Informationen finden Sie in der Datenschutzerklärung von Supabase: <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">https://supabase.com/privacy</a>.
+            </p>
+            <p className="text-slate-600 mb-4">
+              Der Versand der Anmeldelinks erfolgt über denselben Dienst. Ihre E-Mail-Adresse wird dabei zum Zweck der Zustellung verarbeitet.
+            </p>
+
+            <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">6. Analyse-Tools</h2>
 
             <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">Google Analytics</h3>
             <p className="text-slate-600 mb-4">
@@ -272,7 +311,7 @@ export default function PrivacyPage() {
               Die Datenübermittlung in die USA wird auf die EU-Standardvertragsklauseln gestützt. Wir haben mit Google einen Vertrag über Auftragsverarbeitung (AVV) geschlossen. Weitere Informationen zum Umgang mit Nutzerdaten bei Google Analytics finden Sie in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-dark hover:underline">https://policies.google.com/privacy?hl=de</a>.
             </p>
 
-            <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">6. Plugins und Tools</h2>
+            <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">7. Plugins und Tools</h2>
 
             <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">Google Fonts (lokales Hosting)</h3>
             <p className="text-slate-600 mb-4">
