@@ -22,9 +22,20 @@ export async function magicLinkSenden(
 
   const supabase = await createClient();
   const kopf = await headers();
-  const herkunft =
-    process.env.NEXT_PUBLIC_SITE_URL ??
-    `https://${kopf.get("host") ?? "localhost:7001"}`;
+
+  // Der Anmeldelink muss dorthin zurückführen, wo die Anmeldung begonnen hat –
+  // also primär auf den anfragenden Host, nicht auf eine feste Adresse. Sonst
+  // schickt eine lokale Anmeldung den Link auf die Produktionsseite.
+  // Das Schema kommt von Vercel per x-forwarded-proto; lokal gibt es kein TLS.
+  const host = kopf.get("host");
+  const schema =
+    kopf.get("x-forwarded-proto") ??
+    (host?.startsWith("localhost") || host?.startsWith("127.0.0.1")
+      ? "http"
+      : "https");
+  const herkunft = host
+    ? `${schema}://${host}`
+    : (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:7001");
 
   const { error } = await supabase.auth.signInWithOtp({
     email,
