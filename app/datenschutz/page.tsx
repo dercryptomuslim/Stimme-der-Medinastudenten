@@ -260,7 +260,7 @@ export default function PrivacyPage() {
 
             <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">Nutzerkonto und Registrierung</h3>
             <p className="text-slate-600 mb-4">
-              Für den geschützten Mitgliederbereich können Sie ein Nutzerkonto anlegen. Dabei verarbeiten wir Ihre E-Mail-Adresse, optional einen von Ihnen angegebenen Namen, den Freigabestatus Ihres Kontos sowie die Zeitpunkte der Registrierung und der Freigabe.
+              Für den geschützten Mitgliederbereich wird ein Nutzerkonto benötigt, das Sie bei uns anfordern können oder das wir auf Ihre Bitte für Sie anlegen. Dabei verarbeiten wir Ihre E-Mail-Adresse, optional einen von Ihnen angegebenen Namen, den Freigabestatus Ihres Kontos sowie die Zeitpunkte der Registrierung und der Freigabe.
             </p>
             <p className="text-slate-600 mb-4">
               Neue Konten werden von uns von Hand geprüft und freigegeben. Bis zur Freigabe haben Sie keinen Zugriff auf Inhalte des internen Bereichs. Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, da sie zur Bereitstellung des von Ihnen angeforderten Zugangs erforderlich ist.
@@ -269,9 +269,9 @@ export default function PrivacyPage() {
               Ihre Kontodaten speichern wir, solange das Konto besteht. Sie können die Löschung jederzeit formlos verlangen; wir löschen das Konto dann einschließlich der zugehörigen Anmeldedaten. Registrierungen, die wir nicht freigeben, löschen wir spätestens nach sechs Monaten.
             </p>
 
-            <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">Anmeldung ohne Passwort</h3>
+            <h3 className="text-xl font-bold text-slate-900 mt-6 mb-3">Anmeldung</h3>
             <p className="text-slate-600 mb-4">
-              Die Anmeldung erfolgt ausschließlich über einen einmaligen Anmeldelink, den wir an Ihre E-Mail-Adresse senden. Wir speichern kein Passwort. Der Link ist nur kurze Zeit und nur einmal gültig.
+              Die Anmeldung erfolgt mit Ihrer E-Mail-Adresse und einem Passwort. Das Passwort wird ausschließlich als kryptografischer Hash gespeichert und ist im Klartext weder für uns noch für unseren Dienstleister einsehbar. Alternativ kann die Anmeldung über einen einmaligen, nur kurze Zeit gültigen Anmeldelink erfolgen, den wir an Ihre E-Mail-Adresse senden.
             </p>
             <p className="text-slate-600 mb-4">
               Nach der Anmeldung wird ein Cookie gesetzt, das Ihre Sitzung ausweist. Dieses Cookie ist für den Betrieb des geschützten Bereichs technisch erforderlich – ohne es wäre eine Anmeldung nicht möglich. Rechtsgrundlage ist § 25 Abs. 2 Nr. 2 TDDDG; eine Einwilligung ist hierfür nicht erforderlich. Sie können sich jederzeit abmelden, wodurch das Cookie ungültig wird.

@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Metadata } from "next";
-import { LogOut, ShieldCheck } from "lucide-react";
+import { KeyRound, LogOut, ShieldCheck } from "lucide-react";
 import { Footer } from "@/components/footer";
 import { INTERN_ENABLED } from "@/lib/supabase/config";
 import { aktuellesProfil, istAdmin } from "@/lib/supabase/mitglied";
@@ -43,6 +43,13 @@ export default async function InternLayout({
                 <span className="hidden sm:inline">Verwaltung</span>
               </Link>
             )}
+            <Link
+              href="/intern/konto"
+              className="flex items-center gap-1.5 text-sm font-medium text-slate-600 transition-colors hover:text-navy"
+            >
+              <KeyRound className="h-4 w-4" />
+              <span className="hidden sm:inline">Konto</span>
+            </Link>
             {profil && (
               <span className="hidden text-sm text-slate-500 md:inline">
                 {profil.email}

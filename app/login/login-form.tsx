@@ -4,31 +4,13 @@ import { useActionState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { MailCheck } from "lucide-react";
-import { magicLinkSenden, type LoginZustand } from "./actions";
+import { passwortAnmelden, type LoginZustand } from "./actions";
 
 export function LoginForm({ weiter }: { weiter: string }) {
   const [zustand, formAction, laeuft] = useActionState<LoginZustand, FormData>(
-    magicLinkSenden,
+    passwortAnmelden,
     {}
   );
-
-  if (zustand.gesendet) {
-    return (
-      <div className="rounded-xl border border-slate-200 bg-slate-50 p-6 text-center">
-        <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-navy/5">
-          <MailCheck className="h-6 w-6 text-gold" />
-        </div>
-        <h2 className="mb-2 text-lg font-bold text-slate-900">
-          E-Mail unterwegs
-        </h2>
-        <p className="text-sm leading-relaxed text-slate-600">
-          Falls für diese Adresse ein Zugang besteht oder angelegt werden kann,
-          ist ein Anmeldelink unterwegs. Er ist nur kurze Zeit gültig.
-        </p>
-      </div>
-    );
-  }
 
   return (
     <form action={formAction} className="space-y-5">
@@ -49,6 +31,20 @@ export function LoginForm({ weiter }: { weiter: string }) {
         />
       </div>
 
+      <div className="space-y-2">
+        <Label htmlFor="passwort" className="font-medium text-slate-700">
+          Passwort
+        </Label>
+        <Input
+          id="passwort"
+          name="passwort"
+          type="password"
+          autoComplete="current-password"
+          required
+          className="h-11 border-slate-200 bg-slate-50 text-slate-900 focus:ring-navy"
+        />
+      </div>
+
       {zustand.fehler && (
         <p className="text-sm text-red-700" role="alert">
           {zustand.fehler}
@@ -60,12 +56,12 @@ export function LoginForm({ weiter }: { weiter: string }) {
         disabled={laeuft}
         className="h-12 w-full bg-slate-900 text-base font-semibold text-white shadow-md hover:bg-slate-800"
       >
-        {laeuft ? "Sende…" : "Anmeldelink anfordern"}
+        {laeuft ? "Melde an…" : "Anmelden"}
       </Button>
 
       <p className="text-center text-xs leading-relaxed text-slate-500">
-        Es gibt kein Passwort. Du bekommst einen Link per E-Mail, mit dem du
-        dich anmeldest.
+        Dein Passwort hast du vom Team erhalten. Nach der ersten Anmeldung
+        kannst du es unter „Konto&ldquo; ändern.
       </p>
     </form>
   );

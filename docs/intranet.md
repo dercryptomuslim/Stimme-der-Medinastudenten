@@ -13,7 +13,7 @@ Umgebungsvariablen in Vercel und der erste Admin – siehe
 |---|---|
 | Wer schreibt | Nur das Team, Mitglieder lesen |
 | Zugang | Registrierung landet auf Warteliste, Freigabe von Hand |
-| Anmeldung | Magic Link per E-Mail, kein Passwort |
+| Anmeldung | Vorerst E-Mail + Passwort; Magic Link, sobald eigenes SMTP steht |
 | Erster Ausbaustand | Login, Freigabe-Workflow, drei Rubriken |
 
 Redaktionell statt Wiki, weil damit weder Moderation noch Haftung für fremde
@@ -21,10 +21,12 @@ Inhalte anfällt. Die Datenstruktur lässt eine spätere Öffnung offen: dafür
 genügt es, Schreibrechte in den Policies auf freigegebene Mitglieder
 auszuweiten und eine Versionstabelle zu ergänzen.
 
-Magic Link statt Passwort, weil es keine Passwort-Resets, keine schwachen
-Passwörter und keinen Support-Aufwand gibt. Der Versand läuft vorerst über
-den eingebauten Mailer von Supabase – zu dessen Grenzen siehe Einrichtung,
-Schritt 3.
+Langfristig ist Magic Link das Ziel (keine Passwort-Resets, keine schwachen
+Passwörter). Er setzt aber eigenes SMTP voraus – ohne SMTP lassen sich die
+E-Mail-Vorlagen nicht auf token_hash umstellen, und der Standardlink
+scheitert außerhalb des anfordernden Browsers. Bis Domain und SMTP stehen,
+läuft der Betrieb deshalb mit Passwörtern, siehe „Betrieb ohne eigenes
+SMTP“.
 
 ## Technik
 
@@ -109,20 +111,24 @@ Statusseite. Das ist in den Policies verankert, nicht im Frontend.
 ## Ablauf
 
 ```
-Registrierung
-  │  E-Mail eingeben -> Magic Link
+Team legt Konto im Dashboard an (Add user, Auto Confirm)
+  │  Trigger legt profile an, status = 'wartend'
   ▼
-Konto angelegt, profile.status = 'wartend'
-  │  Team wird benachrichtigt
-  ▼
-Freigabe von Hand  ──abgelehnt──> Hinweisseite, kein Zugriff
+Freigabe: SQL oder /intern/verwaltung   ──abgelehnt──> Hinweisseite
   │
   ▼
-status = 'freigegeben'  ->  Zugriff auf /intern
+status = 'freigegeben'
+  │  Zugangsdaten werden persönlich übergeben
+  ▼
+Anmeldung mit E-Mail + Passwort  ->  Zugriff auf /intern
+  │
+  ▼
+Passwort ändern unter /intern/konto
 ```
 
-Jeder weitere Login läuft über einen neuen Magic Link. Die Session liegt in
-einem httpOnly-Cookie.
+Die Session liegt in einem httpOnly-Cookie. Im späteren Magic-Link-Betrieb
+ersetzt der E-Mail-Link nur den Passwort-Schritt – Freigabe und Rollen
+bleiben identisch.
 
 ## Routen
 
@@ -135,6 +141,7 @@ einem httpOnly-Cookie.
 | `/intern/[rubrik]` | nur freigegeben — Beiträge der Rubrik |
 | `/intern/[rubrik]/[slug]` | nur freigegeben — einzelner Beitrag |
 | `/intern/warteliste` | eingeloggt, noch nicht freigegeben |
+| `/intern/konto` | eingeloggt — eigenes Passwort ändern |
 | `/intern/verwaltung` | nur Admins — Freigaben |
 
 Abgesichert wird in `middleware.ts` **und** über RLS. Die Middleware ist
@@ -159,6 +166,49 @@ drei gefüllt sind.
   je Rubrik wird die Plattform binnen eines Jahres unbrauchbar.
 - **Benachrichtigung bei Registrierung.** Über Resend an eine Team-Adresse,
   analog zum Kontaktformular.
+
+## Betrieb ohne eigenes SMTP (aktueller Stand)
+
+Solange kein eigenes SMTP eingerichtet ist, verschickt der Mitgliederbereich
+**keine einzige E-Mail**. Anmeldung läuft über E-Mail + Passwort
+(`signInWithPassword`), Passwortänderung über `/intern/konto`
+(`updateUser` – versendet nichts, solange „Secure password change“ in den
+Auth-Einstellungen deaktiviert bleibt; das ist der Standard).
+
+### Konten anlegen
+
+Im Dashboard unter **Authentication → Users → Add user → „Create new
+user“**: E-Mail und Startpasswort eintragen, Haken bei **Auto Confirm
+User**. Nicht „Send invitation“ wählen – das würde eine E-Mail verschicken,
+die ohne SMTP nicht ankommt.
+
+`auth.users` direkt per SQL zu befüllen ist keine Option: Die Tabelle
+enthält interne Spalten (Passwort-Hash, Token, Bestätigungsfelder), die das
+Dashboard korrekt setzt und Hand-SQL fast sicher nicht.
+
+Der Trigger legt das Profil automatisch mit `status = 'wartend'` an.
+Freigeben entweder als Admin unter `/intern/verwaltung` oder per SQL:
+
+```sql
+update public.profile
+   set status = 'freigegeben', freigegeben_am = now()
+ where email = 'NEUE-ADRESSE';
+```
+
+### Regeln für diese Phase
+
+- Startpasswörter zufällig wählen, pro Person verschieden, persönlich
+  übergeben (nicht in Gruppen posten).
+- Jedes Mitglied ändert sein Passwort bei der ersten Anmeldung unter
+  `/intern/konto` – sonst kennt das Team dauerhaft alle Passwörter.
+- **Sign-ups deaktivieren:** Unter **Authentication → Sign In / Providers**
+  „Allow new users to sign up“ ausschalten. Konten entstehen in dieser Phase
+  ausschließlich über das Dashboard; die Registrierungs-Route bliebe sonst
+  offen, obwohl ihre Bestätigungsmails nie ankommen.
+- Passwort vergessen: Ohne SMTP gibt es keinen Self-Service-Reset. Der Admin
+  löscht das Konto im Dashboard und legt es mit neuem Startpasswort neu an
+  (Profil-Freigabe danach erneut setzen – der Löschvorgang räumt das Profil
+  mit ab).
 
 ## Einrichtung
 
@@ -207,14 +257,15 @@ Die Folge ist der Fehler „PKCE code verifier not found in storage".
 Das `&` vor `token_hash` ist Absicht – `{{ .RedirectTo }}` enthält bereits
 `?weiter=…`.
 
-### 3. Eigenes SMTP einrichten – zwingend
+### 3. Eigenes SMTP einrichten – Voraussetzung für Magic Link
 
-Unter **Project Settings → Authentication → SMTP Settings**.
+Unter **Project Settings → Authentication → SMTP Settings**. Für den
+laufenden Passwort-Betrieb (siehe oben) ist dieser Schritt nicht nötig.
 
-Das ist keine Optimierung, sondern Voraussetzung: **Supabase erlaubt das
+Für den Magic-Link-Betrieb ist er zwingend: **Supabase erlaubt das
 Bearbeiten der E-Mail-Vorlagen nur mit eigenem SMTP.** Ohne diesen Schritt
-lässt sich Schritt 2b nicht ausführen, und ohne 2b schlägt jede Anmeldung
-fehl, die nicht im selben Browser geöffnet wird.
+lässt sich Schritt 2b nicht ausführen, und ohne 2b schlägt jede
+Link-Anmeldung fehl, die nicht im selben Browser geöffnet wird.
 
 Dazu kommt das Sendelimit des eingebauten Mailers, den Supabase selbst als
 nur zu Demonstrationszwecken gedacht bezeichnet. Da der Anmeldelink der

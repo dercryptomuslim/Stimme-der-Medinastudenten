@@ -149,8 +149,9 @@ und lokal ausgeliefert. Es besteht zur Laufzeit keine Verbindung zu Google.
 ## Interner Bereich
 
 Geschützter Mitgliederbereich mit praktischen Informationen zum Leben in
-Medina. Anmeldung per Magic Link über Supabase, Freigabe neuer Konten von
-Hand.
+Medina. Anmeldung mit E-Mail und Passwort über Supabase; Konten legt das
+Team im Supabase-Dashboard an, Freigabe von Hand. Magic Link ist vorbereitet
+und wird aktiviert, sobald eigenes SMTP eingerichtet ist.
 
 Architektur, Datenmodell, Rechtekonzept und die Einrichtung stehen in
 [docs/intranet.md](docs/intranet.md), die Migration in
@@ -163,12 +164,13 @@ angefordert hat.
 
 | Route | Zugriff |
 |---|---|
-| `/login` | offen, fordert einen Anmeldelink an |
+| `/login` | offen, Anmeldung mit E-Mail und Passwort |
 | `/auth/confirm` | prüft den Anmeldelink und legt die Session an |
 | `/auth/callback` | Rückfallebene für Links im PKCE-Code-Format |
 | `/intern` | nur freigegebene Mitglieder |
 | `/intern/[rubrik]` | nur freigegebene Mitglieder |
 | `/intern/warteliste` | angemeldet, noch nicht freigegeben |
+| `/intern/konto` | angemeldet — eigenes Passwort ändern |
 | `/intern/verwaltung` | nur Admins |
 
 Solange `NEXT_PUBLIC_SUPABASE_URL` und `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`

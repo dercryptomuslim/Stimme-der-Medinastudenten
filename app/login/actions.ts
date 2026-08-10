@@ -9,6 +9,49 @@ export interface LoginZustand {
   gesendet?: boolean;
 }
 
+/**
+ * Anmeldung mit E-Mail und Passwort.
+ *
+ * Der primäre Weg, solange kein eigenes SMTP eingerichtet ist: Ohne SMTP
+ * lassen sich die Supabase-E-Mail-Vorlagen nicht bearbeiten, und der
+ * Standard-Magic-Link scheitert außerhalb des anfordernden Browsers
+ * (PKCE-Verifier). Passwort-Login verschickt keine einzige E-Mail.
+ *
+ * Konten legt das Team im Supabase-Dashboard an (Add user, Auto Confirm) –
+ * es gibt bewusst keine Selbstregistrierung über dieses Formular.
+ */
+export async function passwortAnmelden(
+  _vorher: LoginZustand,
+  formData: FormData
+): Promise<LoginZustand> {
+  const email = String(formData.get("email") ?? "").trim().toLowerCase();
+  const passwort = String(formData.get("passwort") ?? "");
+
+  // Dem Hidden-Field nicht vertrauen: nur seiteninterne Ziele zulassen.
+  const roh = String(formData.get("weiter") ?? "/intern");
+  const weiter = roh.startsWith("/") && !roh.startsWith("//") ? roh : "/intern";
+
+  if (!email || !passwort) {
+    return { fehler: "Bitte E-Mail-Adresse und Passwort eingeben." };
+  }
+
+  const supabase = await createClient();
+  const { error } = await supabase.auth.signInWithPassword({
+    email,
+    password: passwort,
+  });
+
+  if (error) {
+    // Serverseitig konkret loggen (z. B. "Email not confirmed"), nach außen
+    // bewusst eine einzige Meldung – sonst lässt sich über die Fehlertexte
+    // ermitteln, welche Adressen ein Konto haben.
+    console.error("Passwort-Login-Fehler:", error.message);
+    return { fehler: "E-Mail-Adresse oder Passwort ist nicht korrekt." };
+  }
+
+  redirect(weiter);
+}
+
 export async function magicLinkSenden(
   _vorher: LoginZustand,
   formData: FormData

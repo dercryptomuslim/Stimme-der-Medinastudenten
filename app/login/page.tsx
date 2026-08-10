@@ -87,8 +87,9 @@ export default async function LoginPage({
           </div>
 
           <p className="mt-6 text-center text-sm leading-relaxed text-slate-500">
-            Neue Zugänge werden von Hand freigegeben. Nach der ersten Anmeldung
-            steht dein Konto auf der Warteliste, bis wir es bestätigt haben.
+            Zugänge werden vom Team vergeben. Wenn du noch keinen hast, melde
+            dich über das Kontaktformular – wir legen dein Konto an und
+            schicken dir die Zugangsdaten.
           </p>
 
           <p className="mt-8 text-center text-sm">
