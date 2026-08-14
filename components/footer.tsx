@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Instagram } from "lucide-react";
 
 export function Footer() {
   return (
@@ -42,18 +41,12 @@ export function Footer() {
           <div>
             <h4 className="font-semibold text-white mb-6">Kontakt</h4>
             <ul className="space-y-3 text-sm text-slate-400">
-              <li className="flex items-center gap-2">Medina, Saudi Arabia 🇸🇦</li>
+              <li>
+                <Link href="/#kontakt" className="hover:text-white transition-colors">
+                  Nachricht senden
+                </Link>
+              </li>
             </ul>
-
-            <div className="flex gap-4 mt-6">
-              <a
-                href="#"
-                className="text-slate-400 hover:text-white transition-colors"
-              >
-                <Instagram className="h-5 w-5" />
-                <span className="sr-only">Instagram</span>
-              </a>
-            </div>
           </div>
         </div>
 
