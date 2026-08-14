@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 import { aktuellesProfil, darfLesen } from "@/lib/supabase/mitglied";
 import { type Rubrik } from "@/lib/intern";
 import { RubrikIcon } from "@/components/rubrik-icon";
+import { Suchfeld } from "@/components/suchfeld";
 
 export const dynamic = "force-dynamic";
 
@@ -31,10 +32,14 @@ export default async function InternPage() {
         <h1 className="mb-3 font-serif text-3xl font-bold text-slate-900 md:text-4xl">
           Willkommen{profil?.name ? `, ${profil.name}` : ""}
         </h1>
-        <p className="mb-10 text-lg text-slate-600">
+        <p className="mb-8 text-lg text-slate-600">
           Praktische Informationen zum Leben in Medina – gesammelt von
           Studenten, die vor Ort sind.
         </p>
+
+        <div className="mb-12">
+          <Suchfeld />
+        </div>
 
         {rubriken.length === 0 ? (
           <p className="rounded-xl border border-slate-200 bg-slate-50 p-6 text-slate-600">

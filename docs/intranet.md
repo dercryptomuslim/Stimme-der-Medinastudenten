@@ -139,6 +139,7 @@ bleiben identisch.
 | `/auth/callback` | offen, Rückfallebene für Links im PKCE-Code-Format |
 | `/intern` | nur freigegeben — Übersicht der Rubriken |
 | `/intern/[rubrik]` | nur freigegeben — Beiträge der Rubrik |
+| `/intern/suche` | nur freigegeben — Volltextsuche |
 | `/intern/[rubrik]/[slug]` | nur freigegeben — einzelner Beitrag |
 | `/intern/warteliste` | eingeloggt, noch nicht freigegeben |
 | `/intern/konto` | eingeloggt — eigenes Passwort ändern |
@@ -157,6 +158,29 @@ Komfort, die Datenbank ist die eigentliche Grenze.
 
 Restaurants und Einkaufen sind als vierte Rubrik vorgesehen, sobald die ersten
 drei gefüllt sind.
+
+## Suche
+
+Volltextsuche über Titel, Anriss, Tags und Inhalt aller Beiträge – deutsche
+Wortstammsuche direkt in Postgres (`to_tsvector('german', …)`), damit
+„Werkstatt“ auch „Werkstätten“ findet. Gewichtung: Titel vor Anriss und Tags
+vor Fließtext.
+
+Der Suchindex liegt in `beitrag.suche` und wird per Trigger gepflegt.
+Die Funktion `beitrag_suchen(text)` ist bewusst **SECURITY INVOKER**: Damit
+greifen die RLS-Policies des Aufrufers, ein Mitglied bekommt nur
+veröffentlichte Beiträge, ein Redakteur auch Entwürfe – ohne Sonderlogik in
+der Anwendung.
+
+Kein Sprachmodell im Spiel: Die Suche kostet nichts, braucht keine externe
+API und kann nichts erfinden. Bei praktischen Ortsangaben (Werkstätten,
+Behördenwege) ist genau das der Punkt – eine erfundene Antwort würde dazu
+führen, dass jemand zur falschen Adresse fährt.
+
+Ein KI-Bot (RAG) bleibt als späterer Ausbau denkbar, sobald genug Inhalt da
+ist. Festgelegt ist bereits: Er dürfte **ausschließlich** aus den Beiträgen
+antworten, immer mit Quellenangabe, und müsste „steht bei uns noch nicht
+drin“ sagen statt zu raten.
 
 ## Was noch offen ist
 

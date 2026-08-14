@@ -7,6 +7,21 @@ export interface Rubrik {
   reihenfolge: number;
 }
 
+/** Ein Suchtreffer aus der Datenbankfunktion `beitrag_suchen`. */
+export interface Suchtreffer {
+  id: string;
+  rubrik_slug: string;
+  slug: string;
+  titel: string;
+  anriss: string | null;
+  veroeffentlicht: boolean;
+  tags: string[];
+  geaendert_am: string;
+  /** Textauszug mit « » um die Fundstellen. */
+  auszug: string | null;
+  relevanz: number;
+}
+
 export interface Beitrag {
   id: string;
   rubrik_slug: string;

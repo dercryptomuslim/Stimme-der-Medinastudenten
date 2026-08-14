@@ -170,6 +170,7 @@ davon nicht betroffen.
 | `/auth/callback` | Rückfallebene für Links im PKCE-Code-Format |
 | `/intern` | nur freigegebene Mitglieder |
 | `/intern/[rubrik]` | nur freigegebene Mitglieder |
+| `/intern/suche` | Volltextsuche über alle Beiträge |
 | `/intern/warteliste` | angemeldet, noch nicht freigegeben |
 | `/intern/konto` | angemeldet — eigenes Passwort ändern |
 | `/intern/verwaltung` | nur Admins |
