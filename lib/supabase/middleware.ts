@@ -47,9 +47,16 @@ export async function updateSession(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   if (istGeschuetzt && !user) {
+    // Ziel samt Suchparametern merken, damit ein geteilter Link wie
+    // /intern/suche?q=Werkstatt nach der Anmeldung wieder beim Treffer landet.
+    const ziel = pathname + request.nextUrl.search;
+
     const url = request.nextUrl.clone();
     url.pathname = "/login";
-    url.searchParams.set("weiter", pathname);
+    // Die Parameter des Ziels dürfen nicht zusätzlich an /login hängen –
+    // sonst stünde q=… doppelt in der Adresse.
+    url.search = "";
+    url.searchParams.set("weiter", ziel);
     return NextResponse.redirect(url);
   }
 
