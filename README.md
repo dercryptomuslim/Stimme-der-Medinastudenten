@@ -108,7 +108,7 @@ Verfügbare Auszeichnungen im `content`: `h2`, `h3`, `p`, `p.lead` für den
 Vorspann, `ul`/`li`, `strong`, `em`, `a`, `figure`/`figcaption`, `img`. Die
 Formatierung steckt in `app/blog/[slug]/page.tsx`.
 
-Die drei vorhandenen Artikel sind bewusst faktisch gehalten und stützen sich
+Die drei ursprünglichen Artikel sind bewusst faktisch gehalten und stützen sich
 nur auf Angaben, die auch auf der Startseite stehen. Erfahrungsberichte aus
 erster Hand fehlen bislang — die sollten von Studenten selbst kommen.
 
@@ -116,10 +116,21 @@ Artikelbilder liegen als SVG unter `public/blog/` und werden über das Feld
 `image` zugeordnet. Ohne `image` fällt die Karte auf den Platzhalter „Bild
 folgt" zurück.
 
-Die vorhandenen Muster sind mit Higgsfield (Modell `recraft_v4_1`, Variante
-`vector`) erzeugt, mit der Markenpalette als `colors`-Parameter. Bewusst
-gegenstandslose Ornamentik – die Seite verzichtet durchgängig auf
-Abbildungen von Lebewesen. Nach dem Generieren einmal durch SVGO schicken:
+Bewusst gegenstandslose Ornamentik – die Seite verzichtet durchgängig auf
+Abbildungen von Lebewesen.
+
+Drei Muster stammen von Higgsfield (Modell `recraft_v4_1`, Variante
+`vector`, Markenpalette als `colors`-Parameter). `probeaufenthalt.svg` ist
+dagegen von Hand gerechnet: ein Khatam-Raster aus achtzackigen Sternen,
+erzeugt über ein kurzes Python-Skript. Islamische Geometrie ist Mathematik,
+dafür braucht es kein Modell – und das Ergebnis komprimiert deutlich besser
+(2 KB gzip gegenüber 44–60 KB bei den generierten Mustern).
+
+Wichtig bei der Geometrie: Der Sternradius muss zum Rasterabstand passen
+(`R = S/2`), sonst überlagern sich benachbarte Sterne zu Schleifen statt zu
+einer sauberen Parkettierung.
+
+Nach dem Generieren einmal durch SVGO schicken:
 
 ```bash
 npx svgo@3 -f public/blog -o public/blog --multipass -p 2

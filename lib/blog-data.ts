@@ -25,6 +25,70 @@ export const blogCategories = {
 
 export const blogPostsDe: BlogPost[] = [
   {
+    slug: "probeaufenthalt-vor-dem-studium",
+    image: "/blog/probeaufenthalt.svg",
+    title: "Bevor du nach Medina ziehst: Mach dir erst ein Bild",
+    excerpt:
+      "Warum ein kurzer Probeaufenthalt mit Touristenvisum vor dem Studium so wichtig ist und wie du ihn am besten planst.",
+    metaDescription:
+      "Probeaufenthalt in Medina vor dem Studium: Warum sich ein Besuch mit Touristenvisum lohnt, wie du ihn planst und was du daraus mitnimmst.",
+    date: "10. August 2026",
+    dateISO: "2026-08-10",
+    readTime: "5 min",
+    category: "bewerbung",
+    content: `
+<p class="lead">Jedes Jahr kommen Brüder mit großen Erwartungen nach Medina, packen ihr ganzes Leben zusammen, kündigen ihren Job, verabschieden sich von der Familie und beginnen ihr Studium an der Islamischen Universität. Und jedes Jahr gibt es auch Brüder, die nach wenigen Monaten wieder abreisen, weil das Leben hier einfach nicht zu ihnen gepasst hat. Nicht weil sie es nicht ernst gemeint hätten, sondern weil sie vorher nie wirklich wussten, worauf sie sich einlassen.</p>
+
+<p>Das lässt sich vermeiden. Und die Lösung ist einfacher, als viele denken.</p>
+
+<h2>Warum ein Probebesuch so wichtig ist</h2>
+
+<p>Medina von außen zu kennen, durch Videos, Erzählungen oder ein paar Wochen Umrah, ist etwas völlig anderes, als hier tatsächlich als Student zu leben. Der Alltag zwischen Vorlesungen, Halaqat, Wohnungssuche, Verwaltung und dem Leben fernab der Familie fühlt sich anders an, als man es sich zu Hause vorstellt.</p>
+
+<p>Ein kurzer Aufenthalt vor dem eigentlichen Studienbeginn gibt dir die Möglichkeit, das wirklich zu spüren, bevor du eine langfristige Entscheidung triffst. Das ist heute unkomplizierter als je zuvor, du brauchst kein Stipendium und keine Immatrikulation, um herzukommen und dir selbst ein Bild zu machen.</p>
+
+<h2>Wie so ein Probeaufenthalt aussehen kann</h2>
+
+<h3>Visum beantragen</h3>
+
+<p>Über die offizielle Seite ein Touristenvisum für Saudi-Arabien beantragen. Das geht mittlerweile unkompliziert online und ist innerhalb weniger Tage erledigt.</p>
+
+<h3>Unterkunft organisieren</h3>
+
+<p>Für die ersten Tage ein Hotel oder eine Unterkunft über Airbnb buchen. Danach lohnt es sich, nach einer möblierten Wohnung auf Zeit zu suchen, so wie viele Studenten hier tatsächlich leben, das gibt dir ein realistischeres Bild als ein Hotelzimmer.</p>
+
+<h3>Etwas Geld einplanen</h3>
+
+<p>Du brauchst kein großes Budget, aber genug, um einige Wochen zu leben, ohne dich ständig sorgen zu müssen. Das nimmt Druck raus und lässt dich die Zeit wirklich nutzen.</p>
+
+<h3>Die Universität besuchen</h3>
+
+<p>Geh zur Islamischen Universität, schau dir das Gelände an, sprich mit Studenten vor Ort, wenn möglich, sitz in einer Vorlesung oder einer Halaqah mit. So bekommst du ein echtes Gefühl für den akademischen Alltag, nicht nur eine Vorstellung davon.</p>
+
+<h3>In einer Halaqah mitlaufen</h3>
+
+<p>Schreib dich für die Zeit deines Aufenthalts in einer Halaqah ein und nimm ehrlich am Ablauf teil, so wie ein Student es später tun würde. Frühes Aufstehen, feste Zeiten, das Lernen selbst, all das gehört dazu.</p>
+
+<h3>Den Alltag eines Studenten nachleben</h3>
+
+<p>Versuch für ein paar Wochen wirklich so zu leben, wie ein Student hier lebt. Einkaufen, kochen, zur Moschee gehen, den Tagesrhythmus einhalten. Genau das zeigt dir, ob dieses Leben zu dir passt.</p>
+
+<h2>Was du daraus mitnimmst</h2>
+
+<p>Nach so einem Aufenthalt weißt du deutlich klarer, ob Medina und das Studentenleben hier wirklich das Richtige für dich sind. Diese Klarheit ist wertvoll, in beide Richtungen.</p>
+
+<p>Wenn es passt, gehst du mit echtem Vertrauen in deinen Umzug, du weißt, worauf du dich einlässt, und die Umstellung fällt dir leichter, weil du sie schon einmal erlebt hast.</p>
+
+<p>Wenn es nicht passt, hast du eine wichtige Entscheidung getroffen, bevor du dein Leben zu Hause aufgegeben hast. Das ist keine Niederlage, das ist Weisheit.</p>
+
+<h2>Ein Punkt, der oft übersehen wird</h2>
+
+<p>Es geht hier nicht nur um dich selbst. Jeder Studienplatz und jedes Stipendium, das jemand beginnt und dann abbricht, hätte auch einem anderen Bruder zugutekommen können, der wirklich bereit war und durchgehalten hätte. Wenn du dir vorher ein ehrliches Bild machst, schützt du nicht nur deine eigene Zeit und dein Vertrauen, sondern respektierst auch die Gelegenheit selbst und die, die sie ernsthaft suchen.</p>
+
+<p>Ein paar Wochen Probeaufenthalt kosten wenig im Vergleich zu dem, was ein abgebrochenes Studium an Zeit, Geld und Enttäuschung kosten kann, für dich und für andere. Mach dir erst ein Bild, dann triff deine Entscheidung.</p>
+`,
+  },
+  {
     slug: "bewerbungstipps",
     image: "/blog/bewerbung.svg",
     title: "Bewerbung an der Islamischen Universität Medina – der Ablauf im Überblick",
